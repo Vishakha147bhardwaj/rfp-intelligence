@@ -96,3 +96,10 @@ class BidRecord(BaseModel):
     fields: dict[str, FieldResult]
     addendum_changes: list[AddendumChange] = Field(default_factory=list)
     validation: ValidationSummary = Field(default_factory=ValidationSummary)
+
+class FieldValidation(BaseModel):
+    field: str
+    status: Literal["passed", "failed", "not_found"]
+    reasons: list[str] = Field(default_factory=list)        # why it failed
+    warnings: list[str] = Field(default_factory=list)       # passed, but worth noting
+    retry_queries: list[str] = Field(default_factory=list)  # validator's suggestions for a retry

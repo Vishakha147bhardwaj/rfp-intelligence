@@ -28,3 +28,4 @@ agents:
   per_query_k: 5 # results kept from each search query
   per_field_k: 5 # evidence chunks kept per field after fusing its queries
   extraction_tier: fast # fast = Haiku, smart = Sonnet
+  validator_tier: smart # the fact-check needs careful reading

@@ -237,5 +237,44 @@ def reconcile(bid: str = typer.Argument(..., help="Bid id, e.g. Bid1")) -> None:
     if usage:
         console.print(f"reconcile: {usage.model}, {usage.input_tokens} in, {usage.output_tokens} out, "
                       f"{usage.latency_ms} ms", markup=False)
+@app.command()
+def validate(
+    bid: str = typer.Argument(..., help="Bid id, e.g. Bid2"),
+    group: str = typer.Option("commercial_legal", help="Field group to extract and validate"),
+) -> None:
+    """Extract one field group, then run the validator on it (development helper)."""
+    from rfp.agents.extraction import ExtractionAgent
+    from rfp.agents.registry import fields_by_group, load_registry
+    from rfp.agents.retrieval import RetrievalAgent
+    from rfp.agents.validator import ValidatorAgent
+    from rfp.llm.client import LLMClient
+    from rfp.settings import get_settings
+
+    groups, _ = load_registry()
+    specs = fields_by_group()[group]
+    llm = LLMClient()
+    store = ChunkStore()
+    try:
+        bundle = RetrievalAgent(SearchEngine(store)).gather(bid, specs)
+    finally:
+        store.close()
+
+    cfg = get_settings().agents
+    results, _ = ExtractionAgent(llm, group, groups[group], tier=cfg.extraction_tier).run(bid, specs, bundle)
+    texts = {e.chunk_id: e.text for e in bundle.evidence}
+    validations, usage = ValidatorAgent(llm, tier=cfg.validator_tier).run(bid, specs, results, texts)
+
+    table = Table(title=f"{bid} - {group} - validation", show_lines=True)
+    for column in ("field", "value", "status", "reasons / warnings", "retry queries"):
+        table.add_column(column)
+    for spec in specs:
+        r, v = results[spec.name], validations[spec.name]
+        value = "\n".join(r.value) if isinstance(r.value, list) else (r.value or "-")
+        detail = "\n".join(v.reasons + [f"(warning) {w}" for w in v.warnings])
+        table.add_row(spec.name, Text(value[:150]), v.status, Text(detail[:250]), Text("\n".join(v.retry_queries)))
+    console.print(table)
+    if usage:
+        console.print(f"validate: {usage.model}, {usage.input_tokens} in, {usage.output_tokens} out, "
+                      f"{usage.latency_ms} ms", markup=False)
 if __name__ == "__main__":
     app()

@@ -41,6 +41,7 @@ class AgentsConfig(BaseModel):
     extraction_tier: str = "fast"
     neighbor_seeds: int = 2     # expand around this many top hits
     neighbor_window: int = 1    # how many chunks before/after each seed
+    validator_tier: str = "smart"
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 
