@@ -1,0 +1,7 @@
+# Tunable settings. Secrets go in .env, never here.
+
+chunking:
+  target_tokens: 500 # aim for this many tokens per chunk
+  max_tokens: 650 # hard ceiling (tables and overlap may approach it)
+  min_tokens: 80 # a chunk smaller than this absorbs the next section instead of ending
+  overlap_tokens: 80 # trailing sentences repeated at the start of the next chunk

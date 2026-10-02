@@ -5,8 +5,8 @@ from pathlib import Path
 import typer
 from rich.console import Console
 from rich.table import Table
-
-from rfp.ingestion.pipeline import ingest_folder
+from rfp.ingestion.pipeline import ingest_folder, load_processed
+from rfp.search.chunker import chunk_document
 
 app = typer.Typer(help="RFP Intelligence Platform: search and extract bid documents.")
 console = Console()
@@ -43,6 +43,37 @@ def ingest(
     console.print(table)
     console.print(f"Saved to {out / report.bid_id}")
 
+@app.command()
+def chunk(
+    bid: str = typer.Argument(..., help="Bid id, e.g. Bid1 (run ingest first)"),
+    processed: Path = typer.Option(Path("data/processed"), help="Folder with ingested JSON"),
+    find: str = typer.Option("", help="Only show sample chunks containing this text"),
+    show: int = typer.Option(3, help="How many sample chunks to print"),
+) -> None:
+    """Chunk an ingested bid; print stats and sample chunks; save chunks.jsonl."""
+    bid_dir = processed / bid
+    docs = load_processed(bid_dir)
+    if not docs:
+        console.print(f"No ingested documents in {bid_dir}. Run ingest first.", style="red")
+        raise typer.Exit(1)
 
+    all_chunks = []
+    table = Table(title=f"Chunks: {bid}")
+    for column in ("file", "chunks", "tables", "avg tok", "max tok", "sections"):
+        table.add_column(column)
+    for doc in docs:
+        chunks = chunk_document(doc)
+        all_chunks += chunks
+        sizes = [c.n_tokens for c in chunks] or [0]
+        table.add_row(doc.file_name[:48], str(len(chunks)), str(sum(c.is_table for c in chunks)),
+                      str(sum(sizes) // len(sizes)), str(max(sizes)), str(len({c.section for c in chunks})))
+    console.print(table)
+    (bid_dir / "chunks.jsonl").write_text("\n".join(c.model_dump_json() for c in all_chunks))
+
+    samples = [c for c in all_chunks if find.lower() in c.text.lower()] if find else all_chunks
+    for c in samples[:show]:
+        console.rule(f"{c.file_name[:40]} | p.{c.page_number} | {c.n_tokens} tokens")
+        console.print(c.context_header, markup=False)
+        console.print(c.text[:700], markup=False)
 if __name__ == "__main__":
     app()

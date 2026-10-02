@@ -127,3 +127,11 @@ def ingest_folder(folder: Path, out_dir: Path | None = None) -> tuple[list[Parse
     if out_dir:
         save_outputs(docs, report, out_dir)
     return docs, report
+
+def load_processed(bid_dir: Path) -> list[ParsedDocument]:
+    """Load ParsedDocuments saved by a previous ingest run."""
+    return [
+        ParsedDocument.model_validate_json(p.read_text())
+        for p in sorted(bid_dir.glob("*.json"))
+        if p.name != "ingestion_report.json"
+    ]
