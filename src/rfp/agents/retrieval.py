@@ -77,7 +77,7 @@ class RetrievalAgent:
 
             best = list(reciprocal_rank_fusion(rankings))[:k] if rankings else []
             if spec.expand_neighbors and self.fetch_chunks and best:
-                added = self._neighbors(bid_id, best, hits)
+                added = self._neighbors(bid_id, best, hits, spec.neighbor_window or self.cfg.neighbor_window)
                 bundle.neighbors_added += len(added)
                 best += added
 
@@ -98,14 +98,14 @@ class RetrievalAgent:
                  neighbors_added=bundle.neighbors_added)
         return bundle
 
-    def _neighbors(self, bid_id: str, best: list[str], hits: dict[str, SearchResult]) -> list[str]:
+    def _neighbors(self, bid_id: str, best: list[str], hits: dict[str, SearchResult],window: int) -> list[str]:
         """Chunks just before/after the top seeds in the same file (small-to-big expansion)."""
         wanted: dict[str, set[int]] = {}
         for chunk_id in best[: self.cfg.neighbor_seeds]:
             seed = hits[chunk_id]
             if seed.chunk_index is None:
                 continue
-            for d in range(1, self.cfg.neighbor_window + 1):
+            for d in range(1, window + 1):
                 wanted.setdefault(seed.file_name, set()).update({seed.chunk_index - d, seed.chunk_index + d})
 
         selected, added = set(best), []

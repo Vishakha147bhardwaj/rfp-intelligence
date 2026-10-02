@@ -22,6 +22,7 @@ class FieldSpec(BaseModel):
     evidence_k: int | None = None   # override agents.per_field_k for this field
     expand_neighbors: bool = False
     id_patterns: list[str] = Field(default_factory=list)  # regexes for IDs that code copies exactly 
+    neighbor_window: int | None = None  # override agents.neighbor_window for this field
 
 class Evidence(BaseModel):
     """A retrieved passage given to an agent. Agents cite it only by evidence_id."""

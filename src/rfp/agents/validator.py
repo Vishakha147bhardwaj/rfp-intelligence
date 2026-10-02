@@ -236,7 +236,7 @@ class ValidatorAgent:
                 f"[{s.file}, page {s.page}]\n{texts.get(s.chunk_id or '', '')[:PASSAGE_CHARS]}"
                 for s in r.sources
             )
-            blocks.append(f"### Field: {spec.name}\nMeaning: {spec.description}\n"
+            blocks.append(f"### Field: {spec.name}\nMeaning: {spec.description} {spec.hints}\n"
                           f"Value: {_text(r.value)}\nPassages:\n{passages}")
         user = (f"Bid: {bid_id}\n\n" + "\n\n".join(blocks)
                 + "\n\nReturn exactly one judgement per field.")

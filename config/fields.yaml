@@ -144,10 +144,17 @@ fields:
     format: contact
     description: Procurement contact - name, email, phone.
     hints: >-
-      Prefer the named buyer or procurement officer. Format "Name | email | phone". Never combine
-      one person's name with another office's phone or email - if the buyer's phone is not given,
-      write the phone as "not stated" and mention the general number in reasoning.
-    queries: [buyer contact email phone, procurement officer, point of contact]
+      The person named as Buyer or Procurement Officer for THIS solicitation (usually on the cover
+      or first pages). NOT M/WBE, HUB, compliance, insurance or legal department contacts. Format
+      "Name | email | phone". Never combine one person's name with another office's phone or
+      email - if the buyer's phone is not given, write "not stated".
+    queries:
+      [
+        buyer name email,
+        procurement officer contact,
+        buyer contact phone,
+        point of contact for questions,
+      ]
 
   - name: company_name
     group: commercial_legal
@@ -179,10 +186,21 @@ fields:
   - name: Product
     group: product_specs
     format: list
+    evidence_k: 8
+    expand_neighbors: true
+    neighbor_window: 3
     description: Product name(s) and quantity.
-    hints: One item per product, formatted "Name - quantity".
+    hints: >-
+      One item per product, formatted "Name - quantity". Quantities are often in pricing or
+      line-item tables; estimated quantities count - write e.g. "Display Monitor - Touch - 5,000
+      (estimated)". Write "quantity not stated" only if no line item gives one.
     queries:
-      [products requested quantity, required functionality product name qty]
+      [
+        products requested quantity,
+        required functionality product name qty,
+        pricing lines estimated quantity,
+        line item unit each,
+      ]
 
   - name: Product Specification
     group: product_specs
