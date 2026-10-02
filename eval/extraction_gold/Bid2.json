@@ -1,0 +1,21 @@
+{
+  "Bid Number": {"keywords": ["E20P4600040"]},
+  "Title": {"keywords": ["Dell Laptops", "Extended Warranty"]},
+  "Due Date": {"datetime": "06/10/2024 2:00 PM", "source": "PORFP|BidNet"},
+  "Bid Submission Type": {"keywords": ["eMMA|eMaryland"]},
+  "Term of Bid": {"null": true},
+  "Pre Bid Meeting": {"null": true},
+  "Delivery Date": {"keywords": ["45 days"]},
+  "Bid Bond Requirement": {"null": true},
+  "Payment Terms": {"keywords": ["10 days"], "accept_null": true},
+  "Any Additional Documentation Required": {"list": ["Mercury Affidavit", "Letter of Authorization|LOA"]},
+  "MFG for Registration": {"list": ["Dell"]},
+  "Contract or Cooperative to use": {"keywords": ["060B5400007"]},
+  "contact_info": {"keywords": ["Hawkins", "thawkins@treasurer.state.md.us", "410-260-7533"]},
+  "company_name": {"text": "State of Maryland Treasurer's Office"},
+  "Model_no": {"list": ["Latitude 5550", "WD22TB4"]},
+  "Part_no": {"list": ["210-BLYZ", "379-BFNZ", "370-BBTL", "391-BJHB", "340-DMMK", "389-FGSN", "319-BBKK", "634-BRWG", "379-BDZB", "362-7806"]},
+  "Product": {"list": ["Latitude 5550", "WD22TB4"]},
+  "Product Specification": {"keywords": ["Core Ultra 5", "16 GB|16GB", "256 GB|256GB", "1920x1080", "3 Year|3 years|three"]},
+  "Installation": {"keywords": ["factory"], "accept_null": true}
+}

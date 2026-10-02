@@ -19,6 +19,7 @@ CONFIGS = [
     ("C. Hybrid (RRF)", "hybrid", {}),
     ("D. Hybrid + MiniLM rerank", "hybrid_rerank", {"rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2"}),
     ("E. Hybrid + bge rerank", "hybrid_rerank", {"rerank_model": "BAAI/bge-reranker-base"}),
+    ("F. Hybrid + MiniLM, 12 candidates", "hybrid_rerank",{"rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2", "retrieve_k": 12}),
 ]
 
 

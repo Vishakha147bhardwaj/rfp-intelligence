@@ -7,3 +7,4 @@ Questions: 28
 | C. Hybrid (RRF) | 0.64 | 0.82 | 0.89 | 0.93 | 0.75 | 0.79 |
 | D. Hybrid + MiniLM rerank | 0.68 | 0.93 | 0.96 | 1.00 | 0.81 | 0.86 |
 | E. Hybrid + bge rerank | 0.57 | 0.89 | 0.96 | 1.00 | 0.74 | 0.80 |
+| F. Hybrid + MiniLM, 12 candidates | 0.68 | 0.89 | 0.93 | 0.96 | 0.79 | 0.84 |
