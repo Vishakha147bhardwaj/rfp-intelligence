@@ -29,3 +29,4 @@ agents:
   per_field_k: 5 # evidence chunks kept per field after fusing its queries
   extraction_tier: fast # fast = Haiku, smart = Sonnet
   validator_tier: smart # the fact-check needs careful reading
+  max_field_retries: 2 # validator -> re-extraction attempts per field

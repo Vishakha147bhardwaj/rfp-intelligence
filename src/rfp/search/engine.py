@@ -43,10 +43,7 @@ class SearchEngine:
         self.cfg = cfg or get_settings().search
 
     def _retrieve(self, vector, using: str, flt, limit: int):
-        return self.store.client.query_points(
-            self.store.collection, query=vector, using=using,
-            query_filter=flt, limit=limit, with_payload=True,
-        ).points
+        return self.store.query(vector, using, flt, limit)
 
     def search(
         self,

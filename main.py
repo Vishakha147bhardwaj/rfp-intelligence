@@ -276,5 +276,34 @@ def validate(
     if usage:
         console.print(f"validate: {usage.model}, {usage.input_tokens} in, {usage.output_tokens} out, "
                       f"{usage.latency_ms} ms", markup=False)
+@app.command()
+def extract(
+    folder: Path = typer.Argument(..., exists=True, file_okay=False, help="Bid folder, e.g. data/bids/Bid1"),
+) -> None:
+    """Full pipeline for one bid: ingest + index (incremental), then multi-agent extraction to JSON."""
+    from rfp.agents.graph import run_extraction
+
+    docs, _ = ingest_folder(folder, Path("data/processed"))
+    store = ChunkStore()
+    try:
+        index_documents(docs, store)
+        record, run_dir, errors = run_extraction(folder.name, store)
+    finally:
+        store.close()
+
+    table = Table(title=f"{record.bid_id} - extracted fields", show_lines=True)
+    for column in ("field", "value", "conf", "source"):
+        table.add_column(column)
+    for name, r in record.fields.items():
+        value = "\n".join(r.value) if isinstance(r.value, list) else (r.value or "-")
+        source = f"{r.sources[0].file[:35]} p.{r.sources[0].page}" if r.sources else ""
+        table.add_row(name, Text(value[:300]), f"{r.confidence:.2f}", Text(source))
+    console.print(table)
+    v = record.validation
+    console.print(f"Validation: {v.passed} passed, {v.failed} failed, {v.not_found} not found | "
+                  f"{len(record.addendum_changes)} addendum change(s)")
+    for e in errors:
+        console.print(f"error: {e}", style="red", markup=False)
+    console.print(f"JSON: outputs/{record.bid_id}.json | Trace: {run_dir}", markup=False)
 if __name__ == "__main__":
     app()

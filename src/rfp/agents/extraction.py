@@ -147,8 +147,9 @@ class ExtractionAgent:
         self.group_description = group_description
         self.tier = tier
 
-    def run(self, bid_id: str, specs: list[FieldSpec],
-            bundle: EvidenceBundle) -> tuple[dict[str, FieldResult], LLMUsage | None]:
+    def run(self, bid_id: str, specs: list[FieldSpec], bundle: EvidenceBundle,
+            feedback: dict[str, str] | None = None
+            ) -> tuple[dict[str, FieldResult], LLMUsage | None]:
         names = [s.name for s in specs]
         evidence_text = _evidence_block(bundle, names)
         if not evidence_text:
@@ -159,6 +160,10 @@ class ExtractionAgent:
                   f"({self.group_description}).\n\nFields:\n{_field_block(specs)}")
         user = (f"Bid: {bid_id}\nExtract these fields: {', '.join(names)}\n\n"
                 f"Evidence:\n\n{evidence_text}\n\nReturn exactly one entry per field, in the order listed.")
+        if feedback:
+            problems = "\n".join(f"- {name}: {reason}" for name, reason in feedback.items())
+            user += (f"\n\nA previous answer was REJECTED by the validator:\n{problems}\n"
+                     "Fix these problems. If the evidence does not support a value, return null.")
 
         output, usage = self.llm.structured(
             agent=f"extract:{self.group}", system=system, user=user,
