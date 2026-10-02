@@ -28,6 +28,7 @@ class SearchConfig(BaseModel):
     rrf_k: int = 60
     sparse_weight: float = 1.0
     identifier_sparse_weight: float = 2.0
+    rerank_include_header: bool = False
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")

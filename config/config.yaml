@@ -17,3 +17,4 @@ search:
   rrf_k: 60 # standard RRF constant
   sparse_weight: 1.0
   identifier_sparse_weight: 2.0 # when the query contains IDs like JA-207652
+  rerank_include_header: false # the header helps dense/BM25 but confused the MiniLM reranker

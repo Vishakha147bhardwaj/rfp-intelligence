@@ -85,7 +85,11 @@ class SearchEngine:
         candidates = list(fused)[:n]
 
         if mode == "hybrid_rerank" and candidates:
-            passages = [f"{payloads[c]['context_header']}\n{payloads[c]['text']}" for c in candidates]
+            passages = [
+                (f"{payloads[c]['context_header']}\n" if self.cfg.rerank_include_header else "")
+                + payloads[c]["text"]
+                for c in candidates
+            ]
             scores = dict(zip(candidates, rerank_scores(query, passages)))
             candidates.sort(key=lambda c: scores[c], reverse=True)
         else:
