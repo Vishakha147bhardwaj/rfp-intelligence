@@ -30,6 +30,12 @@ class SearchConfig(BaseModel):
     identifier_sparse_weight: float = 2.0
     rerank_include_header: bool = False
 
+class LLMConfig(BaseModel):
+    timeout_s: float = 60
+    max_tokens: int = 2048
+    temperature: float | None = None
+    validation_retries: int = 2
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 
@@ -44,6 +50,7 @@ class Settings(BaseSettings):
     # from config.yaml
     chunking: ChunkingConfig = ChunkingConfig()
     search: SearchConfig = SearchConfig()
+    llm: LLMConfig = LLMConfig()
 
 @lru_cache
 def get_settings() -> Settings:

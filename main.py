@@ -132,6 +132,28 @@ def serve(
     import uvicorn
 
     uvicorn.run("rfp.api.app:app", host=host, port=port, reload=reload)
+@app.command("llm-check")
+def llm_check() -> None:
+    """Call Claude once per model tier with a tiny structured task to verify key and models."""
+    from pydantic import BaseModel
 
+    from rfp.llm.client import LLMClient
+
+    class Check(BaseModel):
+        bid_number: str | None
+        due_date: str | None
+
+    client = LLMClient()
+    text = "ADDENDUM No. 2 to RFP JA-207652. The new due date for this RFP will be July 9, 2024 at 2:00 PM CST."
+    for tier in ("fast", "smart"):
+        result, usage = client.structured(
+            agent="llm_check",
+            system="Extract the requested fields from the text. Use null if a field is absent.",
+            user=text,
+            response_model=Check,
+            tier=tier,
+        )
+        console.print(f"[{tier}] {result.model_dump()}  |  {usage.input_tokens} in, "
+                      f"{usage.output_tokens} out, {usage.latency_ms} ms", markup=False)
 if __name__ == "__main__":
     app()
