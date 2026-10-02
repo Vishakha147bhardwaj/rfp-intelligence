@@ -43,6 +43,7 @@ class AgentsConfig(BaseModel):
     neighbor_window: int = 1    # how many chunks before/after each seed
     validator_tier: str = "smart"
     max_field_retries: int = 2
+    rerank_candidates: int = 12
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 

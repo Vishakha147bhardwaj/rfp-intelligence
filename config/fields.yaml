@@ -68,6 +68,9 @@ fields:
     format: text
     addendum_sensitive: true
     description: Contract duration and any renewal options.
+    hints: >-
+      The length of the contract or agreement and its renewals. NOT how long a proposal or quote
+      must remain valid, and NOT a warranty period. If no contract term is stated, return null.
     queries: [contract term, length of contract, renewal options, initial term]
 
   - name: Pre Bid Meeting

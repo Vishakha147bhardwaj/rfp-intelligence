@@ -54,13 +54,14 @@ class SearchEngine:
         doc_type: str | list[str] | None = None,
         addendum_number: int | None = None,
         file_name: str | None = None,
+        candidates: int | None = None,
     ) -> list[SearchResult]:
         if mode not in MODES:
             raise ValueError(f"mode must be one of {MODES}")
         plan = plan_query(query, self.cfg)
         flt = build_filter(bid_id=bid_id, doc_type=doc_type,
                            addendum_number=addendum_number, file_name=file_name)
-        n = self.cfg.retrieve_k
+        n = candidates or self.cfg.retrieve_k
         payloads: dict[str, dict] = {}
         dense_ids: list[str] = []
         sparse_ids: list[str] = []

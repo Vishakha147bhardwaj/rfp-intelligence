@@ -32,6 +32,8 @@ Decide whether the passages fully support the value:
   follows from, the passages.
 - Any addition the passages do not state (for example a payment term, a time zone, or a phone
   number belonging to a different office) makes the value unsupported.
+- Also mark it unsupported if the value is true but does not answer the field's Meaning (for
+  example a proposal-validity period given as the contract term, or a warranty given as delivery).
 - If unsupported: give a one-sentence reason and up to 3 short search queries that could find
   the correct value in the documents.
 Judge only support by the passages, not importance or style.

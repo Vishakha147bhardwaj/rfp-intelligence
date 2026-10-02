@@ -30,3 +30,4 @@ agents:
   extraction_tier: fast # fast = Haiku, smart = Sonnet
   validator_tier: smart # the fact-check needs careful reading
   max_field_retries: 2 # validator -> re-extraction attempts per field
+  rerank_candidates: 12 # agent searches rerank fewer candidates than interactive search (30)

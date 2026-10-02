@@ -295,7 +295,11 @@ def extract(
     for column in ("field", "value", "conf", "source"):
         table.add_column(column)
     for name, r in record.fields.items():
-        value = "\n".join(r.value) if isinstance(r.value, list) else (r.value or "-")
+        if isinstance(r.value, list):
+            more = f"\n... (+{len(r.value) - 8} more)" if len(r.value) > 8 else ""
+            value = "\n".join(r.value[:8]) + more
+        else:
+            value = r.value or "-"
         source = f"{r.sources[0].file[:35]} p.{r.sources[0].page}" if r.sources else ""
         table.add_row(name, Text(value[:300]), f"{r.confidence:.2f}", Text(source))
     console.print(table)
