@@ -122,7 +122,16 @@ def search(
         snippet = " ".join(r.text.split())[:220]
         table.add_row(str(i), f"{r.score:.3f}", Text(r.citation), ranks, Text(snippet))
     console.print(table)
+@app.command()
+def serve(
+    host: str = typer.Option("127.0.0.1"),
+    port: int = typer.Option(8000),
+    reload: bool = typer.Option(False, help="Auto-restart on code changes (development)"),
+) -> None:
+    """Start the REST API. Interactive docs at http://HOST:PORT/docs"""
+    import uvicorn
 
+    uvicorn.run("rfp.api.app:app", host=host, port=port, reload=reload)
 
 if __name__ == "__main__":
     app()

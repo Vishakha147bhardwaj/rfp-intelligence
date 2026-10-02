@@ -38,7 +38,9 @@ class Settings(BaseSettings):
     llm_provider: str = "anthropic"
     llm_model_smart: str = "claude-sonnet-5-5"
     llm_model_fast: str = "claude-haiku-4-5-20251001"
-
+        # paths (relative to the project root)
+    bids_dir: str = "data/bids"
+    processed_dir: str = "data/processed"
     # from config.yaml
     chunking: ChunkingConfig = ChunkingConfig()
     search: SearchConfig = SearchConfig()

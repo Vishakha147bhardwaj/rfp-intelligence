@@ -21,7 +21,8 @@ class IndexReport(BaseModel):
     removed: list[str] = Field(default_factory=list)         # files no longer in the folder
 
 
-def _load_manifest(path: Path) -> dict:
+def load_manifest(path: Path | None = None) -> dict:
+    path = path or PROJECT_ROOT / get_settings().search.manifest_path
     return json.loads(path.read_text()) if path.exists() else {}
 
 
@@ -37,7 +38,7 @@ def index_documents(
     force: bool = False,
 ) -> IndexReport:
     manifest_path = manifest_path or PROJECT_ROOT / get_settings().search.manifest_path
-    manifest = _load_manifest(manifest_path)
+    manifest = load_manifest(manifest_path)
     report = IndexReport()
 
     for doc in docs:

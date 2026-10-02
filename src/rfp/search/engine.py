@@ -10,6 +10,7 @@ from rfp.search.query import plan_query
 from rfp.search.reranker import rerank_scores
 from rfp.search.store import DENSE, SPARSE, ChunkStore, build_filter
 from rfp.settings import SearchConfig, get_settings
+from pydantic import BaseModel, computed_field
 
 Mode = Literal["dense", "sparse", "hybrid", "hybrid_rerank"]
 MODES = ("dense", "sparse", "hybrid", "hybrid_rerank")
@@ -29,6 +30,7 @@ class SearchResult(BaseModel):
     dense_rank: int | None = None     # position in the dense list (None = not retrieved)
     sparse_rank: int | None = None
 
+    @computed_field
     @property
     def citation(self) -> str:
         return f"{self.file_name}, p.{self.page_number}"

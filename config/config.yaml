@@ -1,5 +1,6 @@
 # Tunable settings. Secrets go in .env, never here.
-
+bids_dir: data/bids # /index only accepts folders inside this
+processed_dir: data/processed
 chunking:
   target_tokens: 500 # aim for this many tokens per chunk
   max_tokens: 650 # hard ceiling (tables and overlap may approach it)
