@@ -175,6 +175,7 @@ fields:
     group: product_specs
     format: list
     expand_neighbors: true
+    neighbor_window: 2
     id_patterns:
       - '(?<![\w-])\d{3}-[A-Z0-9]{4}(?![\w-])' # Dell-style SKU: 210-BLYZ, 362-7806
     description: Part / SKU number(s) of the requested product(s).

@@ -137,6 +137,12 @@ def build_graph(deps: Deps):
                     out, usage = agent.run(state["bid_id"], specs, bundle, feedback=feedback)
                     step.add_usage(usage)
                     results.update(out)
+                    for name, new in out.items():          # a failed attempt must not erase an answer
+                        old = state["results"].get(name)
+                        if (new.value is None and new.notes.startswith("Rejected")
+                                and old is not None and old.value is not None):
+                            results[name] = old
+                            log.info("retry_kept_previous", field=name, reason="retry output rejected")
                 sensitive = [deps.specs[n] for n in failed if deps.specs[n].addendum_sensitive]
                 if sensitive:
                     merged = {**state["results"], **results}

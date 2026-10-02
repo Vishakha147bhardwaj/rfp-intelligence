@@ -56,9 +56,9 @@ def score_field(gold: dict, value) -> tuple[float, str]:
     raise ValueError(f"unknown gold entry: {gold}")
 
 
-def evaluate_bid(bid: str) -> list[dict]:
+def evaluate_bid(bid: str, output_file: Path | None = None) -> list[dict]:
     gold = json.loads((GOLD_DIR / f"{bid}.json").read_text())
-    fields = json.loads((OUTPUT_DIR / f"{bid}.json").read_text())["fields"]
+    fields = json.loads((output_file or OUTPUT_DIR / f"{bid}.json").read_text())["fields"]
     rows = []
     for name, g in gold.items():
         result = fields.get(name, {})
