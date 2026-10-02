@@ -1,0 +1,28 @@
+# HTML portal parsing rules. Selectors are CSS. Add a new portal by adding/adjusting selectors.
+
+field_selector: ".mets-field" # one label/value pair
+label_selector: ".mets-field-label"
+value_selector: ".mets-field-body"
+section_selector: ".content-block-sub-title"
+
+title_strip_patterns: # cleanup for the <title> tag
+  - '\s*\|.*$' # " | BidNet Direct"
+  - '\s*-\s*Bid Information.*$'
+
+min_structured_lines: 3 # fewer than this -> use full-text fallback
+
+noise_selectors: # removed only before the full-text fallback
+  - script
+  - style
+  - noscript
+  - svg
+  - nav
+  - '[aria-hidden="true"]'
+  - '[class*="cookie"]'
+  - '[id*="cookie"]'
+  - '[class*="dialog"]'
+
+truncation_markers: # "show more" links = the portal cut the text short
+  - '\s*See more\s*$'
+  - '\s*Read more\s*$'
+  - '\s*Show more\s*$'
