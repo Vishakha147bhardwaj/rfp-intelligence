@@ -17,7 +17,7 @@ class FakeEngine:
     def __init__(self, results: dict[str, list[SearchResult]]):
         self.results = results
 
-    def search(self, query, top_k=5, bid_id=None):
+    def search(self, query, top_k=5, bid_id=None, doc_type=None):
         return self.results.get(query, [])[:top_k]
 
 

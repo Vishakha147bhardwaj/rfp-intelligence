@@ -194,5 +194,48 @@ def extract_group(
         console.print(f"{bundle.queries_run} searches, {len(bundle.evidence)} evidence passages | "
                       f"{usage.model}: {usage.input_tokens} in, {usage.output_tokens} out, "
                       f"{usage.latency_ms} ms", markup=False)
+@app.command()
+def reconcile(bid: str = typer.Argument(..., help="Bid id, e.g. Bid1")) -> None:
+    """Extract the addendum-sensitive fields, then reconcile them against addendums (dev helper)."""
+    from rfp.agents.extraction import ExtractionAgent
+    from rfp.agents.reconciliation import ReconciliationAgent
+    from rfp.agents.registry import extractable_fields
+    from rfp.agents.retrieval import RetrievalAgent
+    from rfp.llm.client import LLMClient
+    from rfp.settings import get_settings
+
+    specs = [s for s in extractable_fields() if s.addendum_sensitive]
+    llm = LLMClient()
+    store = ChunkStore()
+    try:
+        retrieval = RetrievalAgent(SearchEngine(store))
+        bundle = retrieval.gather(bid, specs)
+        extracted, _ = ExtractionAgent(llm, "addendum_sensitive", "fields that addendums may change",
+                                       tier=get_settings().agents.extraction_tier).run(bid, specs, bundle)
+        final, changes, usage = ReconciliationAgent(llm, retrieval).run(bid, specs, extracted)
+    finally:
+        store.close()
+
+    def show(value) -> str:
+        return "\n".join(value) if isinstance(value, list) else (value or "-")
+
+    table = Table(title=f"{bid} - reconciliation", show_lines=True)
+    for column in ("field", "extracted", "final", "notes"):
+        table.add_column(column)
+    for spec in specs:
+        table.add_row(spec.name, Text(show(extracted[spec.name].value)),
+                      Text(show(final[spec.name].value)), Text(final[spec.name].notes[:200]))
+    console.print(table)
+
+    log_table = Table(title="Addendum change log")
+    for column in ("field", "original", "new", "addendum", "source"):
+        log_table.add_column(column)
+    for c in changes:
+        log_table.add_row(c.field, Text(show(c.old_value)), Text(show(c.new_value)),
+                          str(c.addendum_number), Text(f"{c.source.file[:40]} p.{c.source.page}"))
+    console.print(log_table if changes else "No addendum changes.")
+    if usage:
+        console.print(f"reconcile: {usage.model}, {usage.input_tokens} in, {usage.output_tokens} out, "
+                      f"{usage.latency_ms} ms", markup=False)
 if __name__ == "__main__":
     app()

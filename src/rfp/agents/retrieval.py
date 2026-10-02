@@ -40,13 +40,15 @@ class EvidenceBundle(BaseModel):
 class RetrievalAgent:
     def __init__(self, engine, cfg: AgentsConfig | None = None,
                  fetch_chunks: Callable[[str, str, list[int]], list[dict]] | None = None):
-        self.engine = engine            # anything with .search(query, top_k=, bid_id=)
+        self.engine = engine            # anything with .search(query, top_k=, bid_id=, doc_type=)
         self.cfg = cfg or get_settings().agents
         store = getattr(engine, "store", None)
         self.fetch_chunks = fetch_chunks or getattr(store, "get_chunks", None)
 
     def gather(self, bid_id: str, specs: list[FieldSpec],
-               extra_queries: dict[str, list[str]] | None = None) -> EvidenceBundle:
+               extra_queries: dict[str, list[str]] | None = None,
+               doc_type: str | list[str] | None = None,
+               id_prefix: str = "E") -> EvidenceBundle:
         bundle = EvidenceBundle()
         id_for_chunk: dict[str, str] = {}
 
@@ -56,7 +58,8 @@ class RetrievalAgent:
             rankings: list[list[str]] = []
             hits: dict[str, SearchResult] = {}
             for query in queries:
-                results = self.engine.search(query, top_k=max(self.cfg.per_query_k, k), bid_id=bid_id)
+                results = self.engine.search(query, top_k=max(self.cfg.per_query_k, k),
+                                             bid_id=bid_id, doc_type=doc_type)
                 bundle.queries_run += 1
                 rankings.append([r.chunk_id for r in results])
                 for r in results:
@@ -71,7 +74,7 @@ class RetrievalAgent:
             for chunk_id in best:
                 if chunk_id not in id_for_chunk:
                     hit = hits[chunk_id]
-                    evidence_id = f"E{len(bundle.evidence) + 1}"
+                    evidence_id = f"{id_prefix}{len(bundle.evidence) + 1}"
                     id_for_chunk[chunk_id] = evidence_id
                     bundle.evidence.append(Evidence(
                         evidence_id=evidence_id, chunk_id=chunk_id, bid_id=hit.bid_id,
@@ -80,8 +83,9 @@ class RetrievalAgent:
                     ))
             bundle.by_field[spec.name] = [id_for_chunk[c] for c in best]
 
-        log.info("retrieval_done", bid=bid_id, fields=len(specs), queries=bundle.queries_run,
-                 evidence=len(bundle.evidence), neighbors_added=bundle.neighbors_added)
+        log.info("retrieval_done", bid=bid_id, fields=len(specs), doc_type=doc_type,
+                 queries=bundle.queries_run, evidence=len(bundle.evidence),
+                 neighbors_added=bundle.neighbors_added)
         return bundle
 
     def _neighbors(self, bid_id: str, best: list[str], hits: dict[str, SearchResult]) -> list[str]:
