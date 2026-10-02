@@ -16,7 +16,13 @@ class ChunkingConfig(BaseModel):
     max_tokens: int = 650
     min_tokens: int = 80
     overlap_tokens: int = 80
-
+class SearchConfig(BaseModel):
+    dense_model: str = "BAAI/bge-small-en-v1.5"
+    dense_dim: int = 384
+    sparse_model: str = "Qdrant/bm25"
+    qdrant_path: str = "data/index/qdrant"
+    collection: str = "rfp_chunks"
+    manifest_path: str = "data/index/manifest.json"
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
@@ -29,7 +35,7 @@ class Settings(BaseSettings):
 
     # from config.yaml
     chunking: ChunkingConfig = ChunkingConfig()
-
+    search: SearchConfig = SearchConfig()
 
 @lru_cache
 def get_settings() -> Settings:

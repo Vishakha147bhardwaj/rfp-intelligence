@@ -7,6 +7,8 @@ from rich.console import Console
 from rich.table import Table
 from rfp.ingestion.pipeline import ingest_folder, load_processed
 from rfp.search.chunker import chunk_document
+from rfp.search.indexer import index_documents
+from rfp.search.store import ChunkStore
 
 app = typer.Typer(help="RFP Intelligence Platform: search and extract bid documents.")
 console = Console()
@@ -75,5 +77,25 @@ def chunk(
         console.rule(f"{c.file_name[:40]} | p.{c.page_number} | {c.n_tokens} tokens")
         console.print(c.context_header, markup=False)
         console.print(c.text[:700], markup=False)
+
+@app.command()
+def index(
+    folder: Path = typer.Argument(..., exists=True, file_okay=False, help="Bid folder, e.g. data/bids/Bid1"),
+    out: Path = typer.Option(Path("data/processed"), help="Where to write parsed JSON"),
+    force: bool = typer.Option(False, help="Re-index even unchanged files"),
+) -> None:
+    """Ingest a bid folder and add it to the search index (incremental)."""
+    docs, _ = ingest_folder(folder, out)
+    store = ChunkStore()
+    try:
+        report = index_documents(docs, store, force=force)
+        console.print(f"Indexed: {report.indexed}")
+        console.print(f"Skipped (unchanged): {report.skipped}")
+        if report.removed:
+            console.print(f"Removed: {report.removed}")
+        console.print(f"Chunks in index for {folder.name}: {store.count(bid_id=folder.name)} "
+                      f"| total: {store.count()}")
+    finally:
+        store.close()    
 if __name__ == "__main__":
     app()

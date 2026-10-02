@@ -5,3 +5,10 @@ chunking:
   max_tokens: 650 # hard ceiling (tables and overlap may approach it)
   min_tokens: 80 # a chunk smaller than this absorbs the next section instead of ending
   overlap_tokens: 80 # trailing sentences repeated at the start of the next chunk
+search:
+  dense_model: BAAI/bge-small-en-v1.5
+  dense_dim: 384
+  sparse_model: Qdrant/bm25
+  qdrant_path: data/index/qdrant # embedded Qdrant, no server needed
+  collection: rfp_chunks
+  manifest_path: data/index/manifest.json
