@@ -1,0 +1,38 @@
+# Doc-type detection rules. Rules are checked top to bottom; first match wins.
+# Pass 1 checks file_types and filename_patterns; pass 2 checks title_patterns
+# against the opening text of the document. Patterns are regex, case-insensitive.
+
+title_window_chars: 400 # how much of the first page counts as the "title area"
+
+rules:
+  - doc_type: bid_page
+    file_types: [html]
+
+  - doc_type: addendum
+    filename_patterns: ["addendum", "amendment"]
+    title_patterns:
+      ['addendum\s*(no\.?|number|#)?\s*\d+', 'amendment\s*(no\.?|#)?\s*\d+']
+
+  - doc_type: affidavit
+    filename_patterns: ["affidavit"]
+    title_patterns: ["affidavit"]
+
+  - doc_type: specs
+    filename_patterns: ["spec"]
+    title_patterns: ["technical specifications?", "product specifications?"]
+
+  - doc_type: rfp
+    filename_patterns: ["rfp", "rfq", "ifb", "solicitation"]
+    title_patterns:
+      [
+        "request for proposals?",
+        "request for quot",
+        "invitation (for|to) bid",
+        "solicitation",
+      ]
+
+default: other
+
+addendum_number_patterns:
+  - 'addendum\s*(?:no\.?|number|#)?\s*(\d+)'
+  - 'amendment\s*(?:no\.?|number|#)?\s*(\d+)'
