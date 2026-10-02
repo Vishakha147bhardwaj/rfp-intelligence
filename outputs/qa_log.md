@@ -89,3 +89,82 @@ _run qa-20261003-021553-03e1ca | bids: Bid1, Bid2_
 
 ---
 
+## Q: When and how is the pre-proposal meeting for Bid1 held, and is attendance mandatory?
+
+**Answer:** The RFP says the pre-proposal meeting will be held at 2:00 PM CST on June 10, 2024, via a TEAMS video conference [1]. Attendance is not mandatory. The RFP says it is "highly encouraged" that all potential proposers attend [1]. The BidNet page lists attendance as "N/A" [5]. The BidNet page shows the prebid conference at 03:00 PM EDT on 06/10/2024, which is the same time as 2:00 PM Central [3][5].
+
+**Sources:**
+  - [1] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2 (Bid1)
+  - [3] Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1 (Bid1)
+  - [5] Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1 (Bid1)
+
+_run qa-20261003-021849-f8958e | bids: Bid1_
+
+---
+
+## Q: What is the required delivery time for the Dell laptops?
+
+**Answer:** The PORFP requires delivery within 45 days of award [1]. The Master Contractor must also give an estimated ship date/lead time for each item [1]. The scope table lists a 06/10/2024 "Due Date" for the laptops (30 units) and docks, but that is also the proposal due date, so the 45-days-of-award term is the stated delivery requirement [1][2][3].
+
+**Sources:**
+  - [1] PORFP_-_Dell_Laptop_Final.pdf, p.2 (Bid2)
+  - [2] PORFP_-_Dell_Laptop_Final.pdf, p.3 (Bid2)
+  - [3] PORFP_-_Dell_Laptop_Final.pdf, p.1 (Bid2)
+
+_run qa-20261003-021905-9a96ba | bids: Bid2_
+
+---
+
+## Q: Does Bid1 require installation or deployment services? What do they include?
+
+**Answer:** Yes. Bid1 (the Dallas ISD RFP JA-207652) requires deployment services: all deliveries and deployments must use white glove services, including asset decaling, asset reporting, etching, and delivery to varied locations [4]. The pricing table's Device Deployment line must include all costs for asset decaling and reporting, etching, and delivery [1][3]. Vendors must also describe their ability to perform (a) software installation, (b) asset tagging and etching, (c) device deployment and setup, and (d) asset control reporting [2]. Addendum 1 says both etching and asset tagging are required [5]. It also says the required software is Autopilot for Windows devices and enrollment in Google Management for Chromebooks [6]. Deliveries must be scheduled with the Dallas ISD ED TECH department [6].
+
+**Sources:**
+  - [1] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.34 (Bid1)
+  - [2] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.7 (Bid1)
+  - [3] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.38 (Bid1)
+  - [4] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.3 (Bid1)
+  - [5] Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.3 (Bid1)
+  - [6] Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.4 (Bid1)
+
+_run qa-20261003-021922-a72d0b | bids: Bid1_
+
+---
+
+## Q: Which contract vehicle or cooperative applies to each bid?
+
+**Answer:** Bid1 (Dallas ISD JA-207652, Student and Staff Computing Devices) involves two cooperatives. The first is the Educational Purchasing Cooperative of North Texas (EPCNT) interlocal "Rider," which lets EPCNT members use the contract if the vendor answers "Yes" [2]. The second is the Central Texas Purchasing Alliance (CTPA) interlocal agreement, which lets CTPA member districts use it if the vendor agrees [1]. Both are optional, and a "No" has no adverse effect on evaluation [1][2]. Bid2 (Maryland PORFP #E20P4600040, Dell Laptop) is a secondary competition under the Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007. Only Master Contractors awarded under that contract can bid [9].
+
+**Sources:**
+  - [1] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.20 (Bid1)
+  - [2] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.19 (Bid1)
+  - [9] PORFP_-_Dell_Laptop_Final.pdf, p.1 (Bid2)
+
+_run qa-20261003-021938-265cb7 | bids: Bid1, Bid2_
+
+---
+
+## Q: Which bid requires the vendor to be an authorized manufacturer reseller, and for which manufacturer?
+
+**Answer:** Bid2, the Maryland State Treasurer's PORFP for Dell laptops (#E20P4600040), has this requirement. It says the Master Contractor must be an authorized reseller for Dell, and the State may ask for a Letter of Authorization from the manufacturer or distributor [9]. The manufacturer is listed as Dell [10]. Bid1 (Dallas ISD) only asks resellers to submit factory-authorized repair and maintenance certifications. It doesn't name a specific manufacturer [1].
+
+**Sources:**
+  - [1] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.3 (Bid1)
+  - [9] PORFP_-_Dell_Laptop_Final.pdf, p.2 (Bid2)
+  - [10] PORFP_-_Dell_Laptop_Final.pdf, p.1 (Bid2)
+
+_run qa-20261003-022002-5da6b6 | bids: Bid1, Bid2_
+
+---
+
+## Q: What insurance coverage amounts are required for the Dell laptop bid?
+
+**Answer:** Not found in documents.
+
+**Sources:**
+  - none
+
+_run qa-20261003-022026-a0333e | bids: Bid2_
+
+---
+
