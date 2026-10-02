@@ -56,3 +56,26 @@ class ParsedDocument(BaseModel):
     @property
     def page_count(self) -> int:
         return len(self.pages)
+
+
+class FileReport(BaseModel):
+    """What happened to one input file during ingestion."""
+
+    file_name: str
+    status: Literal["ok", "partial", "failed", "skipped"]
+    doc_type: DocType | None = None
+    pages: int = 0
+    empty_pages: list[int] = Field(default_factory=list)
+    removed_boilerplate: list[str] = Field(default_factory=list)
+    errors: list[str] = Field(default_factory=list)
+
+
+class IngestionReport(BaseModel):
+    """Summary of ingesting one bid folder."""
+
+    bid_id: str
+    files: list[FileReport]
+
+    @property
+    def ok(self) -> bool:
+        return all(f.status in ("ok", "partial", "skipped") for f in self.files)
