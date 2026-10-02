@@ -24,3 +24,7 @@ llm:
   max_tokens: 2048 # output limit per call
   temperature: null # extraction should be deterministic
   validation_retries: 2 # re-asks when the model's JSON fails validation
+agents:
+  per_query_k: 5 # results kept from each search query
+  per_field_k: 5 # evidence chunks kept per field after fusing its queries
+  extraction_tier: fast # fast = Haiku, smart = Sonnet

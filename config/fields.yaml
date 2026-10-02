@@ -18,14 +18,7 @@ fields:
     hints: >-
       Prefer the identifier printed on the RFP document itself (e.g. an RFP or PORFP number).
       Put other identifiers (portal reference numbers, project numbers) in notes.
-    queries:
-      [
-        solicitation number,
-        RFP number,
-        bid number,
-        PORFP number,
-        reference number,
-      ]
+    queries: [solicitation number, RFP number, bid number, PORFP number, reference number]
 
   - name: Title
     group: commercial_legal
@@ -42,26 +35,14 @@ fields:
     hints: >-
       Report date AND time AND time zone exactly as written. If several documents state a due
       date, report each in your reasoning; the latest addendum decides the final value later.
-    queries:
-      [
-        submission deadline,
-        proposals due date and time,
-        closing date,
-        solicitation due,
-      ]
+    queries: [submission deadline, proposals due date and time, closing date, solicitation due]
 
   - name: Bid Submission Type
     group: dates_logistics
     format: text
     description: How the bid is submitted (electronic portal, sealed paper, email, etc.).
     hints: Name the channel and portal or address if stated.
-    queries:
-      [
-        how to submit proposal,
-        submission method,
-        submit electronically,
-        sealed bids,
-      ]
+    queries: [how to submit proposal, submission method, submit electronically, sealed bids]
 
   - name: Term of Bid
     group: dates_logistics
@@ -83,6 +64,9 @@ fields:
     format: text
     addendum_sensitive: true
     description: Required delivery date or delivery window after award.
+    hints: >-
+      Only delivery timing (a date, a number of days after award, or a schedule). Do not include
+      warranty, repair or service terms.
     queries: [delivery date, delivery within days of award, shipping lead time]
 
   - name: Bid Bond Requirement
@@ -91,8 +75,7 @@ fields:
     addendum_sensitive: true
     description: Required bid bond or security, amount or percentage, or "Not required".
     hints: Answer "Not required" only if the documents explicitly say so; otherwise null.
-    queries:
-      [bid bond, bid security, bid guarantee, surety bond, performance bond]
+    queries: [bid bond, bid security, bid guarantee, surety bond, performance bond]
 
   - name: Payment Terms
     group: commercial_legal
@@ -105,32 +88,19 @@ fields:
     format: list
     description: Affidavits, forms, certificates, insurance, W-9, etc. that the bidder must provide.
     hints: One list item per document. Include when it is due (with bid / upon award) if stated.
-    queries:
-      [
-        required forms and affidavits,
-        documents to submit with proposal,
-        W9 form,
-        certificate of insurance,
-      ]
+    queries: [required forms and affidavits, documents to submit with proposal, W9 form, certificate of insurance]
 
   - name: MFG for Registration
     group: commercial_legal
     format: list
     description: Manufacturer(s) the bidder must be registered or authorized with.
-    queries:
-      [
-        authorized reseller,
-        manufacturer authorization,
-        letter of authorization,
-        manufacturer name,
-      ]
+    queries: [authorized reseller, manufacturer authorization, letter of authorization, manufacturer name]
 
   - name: Contract or Cooperative to use
     group: commercial_legal
     format: text
     description: Referenced cooperative or state contract vehicle, if any.
-    queries:
-      [master contract, cooperative contract, piggyback, contract vehicle]
+    queries: [master contract, cooperative contract, piggyback, contract vehicle]
 
   - name: contact_info
     group: commercial_legal
@@ -149,13 +119,18 @@ fields:
     group: product_specs
     format: list
     description: Model number(s) of the requested product(s).
+    hints: >-
+      Manufacturer model names or numbers (e.g. "Latitude 5550", "WD22TB4"). Agency catalog codes
+      such as "SI#" numbers belong in reasoning, not in the value.
     queries: [model number, product model, laptop model]
 
   - name: Part_no
     group: product_specs
     format: list
     description: Part / SKU number(s) of the requested product(s).
-    hints: List SKU or part numbers exactly as printed. Do not invent or reformat them.
+    hints: >-
+      List EVERY SKU or part number in the evidence, exactly as printed - do not skip or summarise
+      any. Do not invent or reformat them.
     queries: [part number, SKU, item number]
 
   - name: Product
@@ -163,27 +138,23 @@ fields:
     format: list
     description: Product name(s) and quantity.
     hints: One item per product, formatted "Name - quantity".
-    queries:
-      [products requested quantity, required functionality product name qty]
+    queries: [products requested quantity, required functionality product name qty]
 
   - name: Product Specification
     group: product_specs
     format: list
     description: Key technical specifications (CPU, RAM, storage, display, warranty, etc.).
     hints: One item per spec, e.g. "RAM - 16 GB DDR5". Include warranty requirements.
-    queries:
-      [
-        processor memory storage display specifications,
-        minimum hardware requirements,
-        warranty,
-      ]
+    queries: [processor memory storage display specifications, minimum hardware requirements, warranty]
 
   - name: Installation
     group: product_specs
     format: text
     description: Whether installation, deployment or imaging services are required.
-    queries:
-      [installation services, deployment imaging, white glove services, setup]
+    hints: >-
+      State whether the RFP requires installation, deployment, imaging or setup services. If only a
+      vendor quote lists factory installation items, say exactly that.
+    queries: [installation services, deployment imaging, white glove services, setup, factory install]
 
   - name: Bid Summary
     group: product_specs

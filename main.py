@@ -155,5 +155,44 @@ def llm_check() -> None:
         )
         console.print(f"[{tier}] {result.model_dump()}  |  {usage.input_tokens} in, "
                       f"{usage.output_tokens} out, {usage.latency_ms} ms", markup=False)
+@app.command("extract-group")
+def extract_group(
+    bid: str = typer.Argument(..., help="Bid id, e.g. Bid1"),
+    group: str = typer.Option("dates_logistics", help="dates_logistics | commercial_legal | product_specs"),
+) -> None:
+    """Run retrieval + one extraction agent for one field group (development helper)."""
+    from rfp.agents.extraction import ExtractionAgent
+    from rfp.agents.registry import fields_by_group, load_registry
+    from rfp.agents.retrieval import RetrievalAgent
+    from rfp.llm.client import LLMClient
+    from rfp.settings import get_settings
+
+    groups, _ = load_registry()
+    if group not in groups:
+        console.print(f"Unknown group. Choose one of: {', '.join(groups)}", style="red")
+        raise typer.Exit(1)
+    specs = fields_by_group()[group]
+
+    store = ChunkStore()
+    try:
+        bundle = RetrievalAgent(SearchEngine(store)).gather(bid, specs)
+    finally:
+        store.close()
+
+    agent = ExtractionAgent(LLMClient(), group, groups[group], tier=get_settings().agents.extraction_tier)
+    results, usage = agent.run(bid, specs, bundle)
+
+    table = Table(title=f"{bid} - {group}", show_lines=True)
+    for column in ("field", "value", "conf", "sources", "notes"):
+        table.add_column(column)
+    for name, r in results.items():
+        value = "\n".join(r.value) if isinstance(r.value, list) else (r.value or "-")
+        sources = "\n".join(f"{s.file[:35]} p.{s.page}" for s in r.sources)
+        table.add_row(name, Text(value), f"{r.confidence:.2f}", Text(sources), Text(r.notes[:160]))
+    console.print(table)
+    if usage:
+        console.print(f"{bundle.queries_run} searches, {len(bundle.evidence)} evidence passages | "
+                      f"{usage.model}: {usage.input_tokens} in, {usage.output_tokens} out, "
+                      f"{usage.latency_ms} ms", markup=False)
 if __name__ == "__main__":
     app()
