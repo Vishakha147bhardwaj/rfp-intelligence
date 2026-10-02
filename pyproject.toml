@@ -1,7 +1,7 @@
 [project]
 name = "rfp-intelligence"
 version = "0.1.0"
-description = "Add your description here"
+description = "RFP Intelligence Platform: RAG search engine + multi-agent system for bid documents"
 readme = "README.md"
 authors = [
     { name = "Vishakha Bhardwaj", email = "vishakhabhardwaj147@gmail.com" }
@@ -21,12 +21,12 @@ dependencies = [
     "typer>=0.27.2",
 ]
 
-[project.scripts]
-rfp-intelligence = "rfp_intelligence:main"
-
 [build-system]
 requires = ["uv_build>=0.12.22,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "rfp"
 
 [dependency-groups]
 dev = [
