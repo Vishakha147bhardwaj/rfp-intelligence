@@ -1,0 +1,28 @@
+{"id": "b1-due-final", "bid_id": "Bid1", "question": "What is the submission deadline after all addendums?", "gold": [{"file": "Addendum 2", "page": 1, "contains": "new due date"}, {"file": "BidNet", "page": 1, "contains": "Closing Date"}]}
+{"id": "b1-due-original", "bid_id": "Bid1", "question": "What was the original solicitation due date in the RFP?", "gold": [{"file": "FINAL", "page": 2, "contains": "Solicitation Due"}]}
+{"id": "b1-prebid", "bid_id": "Bid1", "question": "When is the pre-proposal meeting and how is it held?", "gold": [{"file": "FINAL", "page": 2, "contains": "Pre-Proposal Meeting"}, {"file": "BidNet", "page": 1, "contains": "Prebid Conference"}]}
+{"id": "b1-term", "bid_id": "Bid1", "question": "What is the contract term and are there renewal options?", "gold": [{"file": "FINAL", "page": 2, "contains": "LENGTH OF CONTRACT"}]}
+{"id": "b1-buyer", "bid_id": "Bid1", "question": "Who is the buyer and what is their email?", "gold": [{"file": "FINAL", "page": 2, "contains": "JALZATE@dallasisd.org"}, {"file": "BidNet", "page": 1, "contains": "ProcurementCS@dallasisd.org"}]}
+{"id": "b1-org", "bid_id": "Bid1", "question": "Which organization issued this solicitation?", "gold": [{"file": "BidNet", "page": 1, "contains": "Dallas Independent School District"}]}
+{"id": "b1-warranty", "bid_id": "Bid1", "question": "What are the warranty requirements and repair turnaround?", "gold": [{"file": "FINAL", "page": 4, "contains": "All warranties shall become effective"}]}
+{"id": "b1-tier1", "bid_id": "Bid1", "question": "What are the minimum specifications for the Tier 1 small student Chromebook?", "gold": [{"file": "FINAL", "page": 4, "contains": "Tier 1 Small Student Chromebook"}]}
+{"id": "b1-w9", "bid_id": "Bid1", "question": "Is a W9 form required with the submission?", "gold": [{"file": "FINAL", "page": 33, "contains": "W9 Form"}]}
+{"id": "b1-mwbe", "bid_id": "Bid1", "question": "What M/WBE documents must be submitted with the proposal?", "gold": [{"file": "FINAL", "page": 49, "contains": "M/WBE Forms"}]}
+{"id": "b1-adp", "bid_id": "Bid1", "question": "Does the district require accidental damage protection?", "gold": [{"file": "Addendum 1", "page": 1, "contains": "Accidental Damage Protection"}]}
+{"id": "b1-award", "bid_id": "Bid1", "question": "When is the contract expected to be awarded?", "gold": [{"file": "Addendum 1", "page": 1, "contains": "August board meeting"}, {"file": "FINAL", "page": 2, "contains": "Anticipated Approval/Award"}]}
+{"id": "b2-number", "bid_id": "Bid2", "question": "What is the PORFP number?", "gold": [{"file": "PORFP", "page": 1, "contains": "E20P4600040"}]}
+{"id": "b2-due", "bid_id": "Bid2", "question": "When are proposals due?", "gold": [{"file": "PORFP", "page": 1, "contains": "PROPOSAL DUE"}, {"file": "BidNet", "page": 1, "contains": "Closing Date"}]}
+{"id": "b2-questions", "bid_id": "Bid2", "question": "What is the deadline for submitting questions?", "gold": [{"file": "PORFP", "page": 2, "contains": "Questions Due"}]}
+{"id": "b2-reseller", "bid_id": "Bid2", "question": "Must the contractor be an authorized reseller for a manufacturer?", "gold": [{"file": "PORFP", "page": 2, "contains": "authorized reseller for Dell"}]}
+{"id": "b2-mercury", "bid_id": "Bid2", "question": "Which affidavits are required for the Dell laptop bid?", "gold": [{"file": "PORFP", "page": 2, "contains": "Mercury Affidavit"}]}
+{"id": "b2-delivery", "bid_id": "Bid2", "question": "What is the required delivery time after award?", "gold": [{"file": "PORFP", "page": 2, "contains": "Delivery within 45 days"}]}
+{"id": "b2-invoice", "bid_id": "Bid2", "question": "How should invoices be submitted?", "gold": [{"file": "PORFP", "page": 2, "contains": "Email invoices"}]}
+{"id": "b2-contact", "bid_id": "Bid2", "question": "Who is the agency point of contact and their phone number?", "gold": [{"file": "PORFP", "page": 3, "contains": "Tamaira Hawkins"}, {"file": "BidNet", "page": 1, "contains": "Tamaira Hawkins"}]}
+{"id": "b2-dock", "bid_id": "Bid2", "question": "Which docking station model is requested?", "gold": [{"file": "PORFP", "page": 3, "contains": "WD22TB4"}, {"file": "BidNet", "page": 1, "contains": "WD22TB4"}]}
+{"id": "b2-qty", "bid_id": "Bid2", "question": "How many Dell Latitude 5550 laptops are requested?", "gold": [{"file": "PORFP", "page": 3, "contains": "Dell Latitude 5550"}, {"file": "BidNet", "page": 1, "contains": "Dell Latitude 5550"}]}
+{"id": "b2-cpu", "bid_id": "Bid2", "question": "What processor does the Dell laptop have?", "gold": [{"file": "Specs", "page": 1, "contains": "Intel Core Ultra 5 125U"}]}
+{"id": "b2-ram", "bid_id": "Bid2", "question": "How much memory (RAM) is specified?", "gold": [{"file": "Specs", "page": 1, "contains": "16 GB: 2 x 8 GB"}]}
+{"id": "b2-display", "bid_id": "Bid2", "question": "What are the display specifications?", "gold": [{"file": "Specs", "page": 1, "contains": "1920x1080"}]}
+{"id": "b2-eval", "bid_id": "Bid2", "question": "What are the evaluation criteria for award?", "gold": [{"file": "PORFP", "page": 4, "contains": "Accuracy of Bid"}]}
+{"id": "b2-place", "bid_id": "Bid2", "question": "Where is the place of performance?", "gold": [{"file": "PORFP", "page": 1, "contains": "Place of Performance"}]}
+{"id": "x-mercury", "bid_id": null, "question": "Which bid requires a Mercury Affidavit?", "gold": [{"file": "PORFP", "page": 2, "contains": "Mercury Affidavit"}, {"file": "Mercury_Affidavit", "page": 1, "contains": "Mercury"}]}

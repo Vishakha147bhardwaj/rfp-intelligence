@@ -1,16 +1,14 @@
-"""Cross-encoder reranker: scores (query, passage) pairs together. Loads once, on first use."""
+"""Cross-encoder reranker: scores (query, passage) pairs together. One model per name, cached."""
 
 from functools import lru_cache
 
 from fastembed.rerank.cross_encoder import TextCrossEncoder
 
-from rfp.settings import get_settings
-
 
 @lru_cache
-def _model() -> TextCrossEncoder:
-    return TextCrossEncoder(get_settings().search.rerank_model)
+def _model(name: str) -> TextCrossEncoder:
+    return TextCrossEncoder(name)
 
 
-def rerank_scores(query: str, passages: list[str]) -> list[float]:
-    return list(_model().rerank(query, passages))
+def rerank_scores(query: str, passages: list[str], model_name: str) -> list[float]:
+    return list(_model(model_name).rerank(query, passages))

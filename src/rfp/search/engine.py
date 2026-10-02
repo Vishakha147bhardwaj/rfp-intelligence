@@ -90,7 +90,7 @@ class SearchEngine:
                 + payloads[c]["text"]
                 for c in candidates
             ]
-            scores = dict(zip(candidates, rerank_scores(query, passages)))
+            scores = dict(zip(candidates, rerank_scores(query, passages, self.cfg.rerank_model)))
             candidates.sort(key=lambda c: scores[c], reverse=True)
         else:
             scores = fused

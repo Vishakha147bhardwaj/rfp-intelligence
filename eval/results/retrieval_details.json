@@ -1,0 +1,1412 @@
+{
+  "A. BM25 only": [
+    {
+      "id": "b1-due-final",
+      "question": "What is the submission deadline after all addendums?",
+      "first_hit": 3,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b1-due-original",
+      "question": "What was the original solicitation due date in the RFP?",
+      "first_hit": 4,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.9",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b1-prebid",
+      "question": "When is the pre-proposal meeting and how is it held?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.47"
+      ]
+    },
+    {
+      "id": "b1-term",
+      "question": "What is the contract term and are there renewal options?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.26"
+      ]
+    },
+    {
+      "id": "b1-buyer",
+      "question": "Who is the buyer and what is their email?",
+      "first_hit": null,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.61",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.13",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.60"
+      ]
+    },
+    {
+      "id": "b1-org",
+      "question": "Which organization issued this solicitation?",
+      "first_hit": 1,
+      "top3": [
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.24",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31"
+      ]
+    },
+    {
+      "id": "b1-warranty",
+      "question": "What are the warranty requirements and repair turnaround?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.2",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b1-tier1",
+      "question": "What are the minimum specifications for the Tier 1 small student Chromebook?",
+      "first_hit": 3,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.36",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.39",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b1-w9",
+      "question": "Is a W9 form required with the submission?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.33",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.50",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b1-mwbe",
+      "question": "What M/WBE documents must be submitted with the proposal?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.48",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.49",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.51"
+      ]
+    },
+    {
+      "id": "b1-adp",
+      "question": "Does the district require accidental damage protection?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.25"
+      ]
+    },
+    {
+      "id": "b1-award",
+      "question": "When is the contract expected to be awarded?",
+      "first_hit": null,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.28",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b2-number",
+      "question": "What is the PORFP number?",
+      "first_hit": 2,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-due",
+      "question": "When are proposals due?",
+      "first_hit": 2,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-questions",
+      "question": "What is the deadline for submitting questions?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-reseller",
+      "question": "Must the contractor be an authorized reseller for a manufacturer?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-mercury",
+      "question": "Which affidavits are required for the Dell laptop bid?",
+      "first_hit": 2,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-delivery",
+      "question": "What is the required delivery time after award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-invoice",
+      "question": "How should invoices be submitted?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Dell_Laptop_Specs.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-contact",
+      "question": "Who is the agency point of contact and their phone number?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-dock",
+      "question": "Which docking station model is requested?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell_Laptop_Specs.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-qty",
+      "question": "How many Dell Latitude 5550 laptops are requested?",
+      "first_hit": 1,
+      "top3": [
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell_Laptop_Specs.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-cpu",
+      "question": "What processor does the Dell laptop have?",
+      "first_hit": 1,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-ram",
+      "question": "How much memory (RAM) is specified?",
+      "first_hit": null,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.1",
+        "Contract_Affidavit.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-display",
+      "question": "What are the display specifications?",
+      "first_hit": null,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell_Laptop_Specs.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-eval",
+      "question": "What are the evaluation criteria for award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-place",
+      "question": "Where is the place of performance?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Contract_Affidavit.pdf, p.2",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "x-mercury",
+      "question": "Which bid requires a Mercury Affidavit?",
+      "first_hit": 1,
+      "top3": [
+        "Mercury_Affidavit.pdf, p.1",
+        "Mercury_Affidavit.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    }
+  ],
+  "B. Dense only": [
+    {
+      "id": "b1-due-final",
+      "question": "What is the submission deadline after all addendums?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b1-due-original",
+      "question": "What was the original solicitation due date in the RFP?",
+      "first_hit": 4,
+      "top3": [
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.21"
+      ]
+    },
+    {
+      "id": "b1-prebid",
+      "question": "When is the pre-proposal meeting and how is it held?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.30"
+      ]
+    },
+    {
+      "id": "b1-term",
+      "question": "What is the contract term and are there renewal options?",
+      "first_hit": null,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.32",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.10"
+      ]
+    },
+    {
+      "id": "b1-buyer",
+      "question": "Who is the buyer and what is their email?",
+      "first_hit": null,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.61",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.42",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.44"
+      ]
+    },
+    {
+      "id": "b1-org",
+      "question": "Which organization issued this solicitation?",
+      "first_hit": 5,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.26",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.5",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.10"
+      ]
+    },
+    {
+      "id": "b1-warranty",
+      "question": "What are the warranty requirements and repair turnaround?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.38",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b1-tier1",
+      "question": "What are the minimum specifications for the Tier 1 small student Chromebook?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.35",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.39"
+      ]
+    },
+    {
+      "id": "b1-w9",
+      "question": "Is a W9 form required with the submission?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.33",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.41",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.24"
+      ]
+    },
+    {
+      "id": "b1-mwbe",
+      "question": "What M/WBE documents must be submitted with the proposal?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.49",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.49"
+      ]
+    },
+    {
+      "id": "b1-adp",
+      "question": "Does the district require accidental damage protection?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.17",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.16"
+      ]
+    },
+    {
+      "id": "b1-award",
+      "question": "When is the contract expected to be awarded?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31"
+      ]
+    },
+    {
+      "id": "b2-number",
+      "question": "What is the PORFP number?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-due",
+      "question": "When are proposals due?",
+      "first_hit": 10,
+      "top3": [
+        "Contract_Affidavit.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-questions",
+      "question": "What is the deadline for submitting questions?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-reseller",
+      "question": "Must the contractor be an authorized reseller for a manufacturer?",
+      "first_hit": 7,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.3",
+        "Contract_Affidavit.pdf, p.1",
+        "Contract_Affidavit.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-mercury",
+      "question": "Which affidavits are required for the Dell laptop bid?",
+      "first_hit": 3,
+      "top3": [
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-delivery",
+      "question": "What is the required delivery time after award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-invoice",
+      "question": "How should invoices be submitted?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-contact",
+      "question": "Who is the agency point of contact and their phone number?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-dock",
+      "question": "Which docking station model is requested?",
+      "first_hit": 1,
+      "top3": [
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-qty",
+      "question": "How many Dell Latitude 5550 laptops are requested?",
+      "first_hit": 2,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-cpu",
+      "question": "What processor does the Dell laptop have?",
+      "first_hit": 2,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-ram",
+      "question": "How much memory (RAM) is specified?",
+      "first_hit": 8,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-display",
+      "question": "What are the display specifications?",
+      "first_hit": 1,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell_Laptop_Specs.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-eval",
+      "question": "What are the evaluation criteria for award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-place",
+      "question": "Where is the place of performance?",
+      "first_hit": 9,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    },
+    {
+      "id": "x-mercury",
+      "question": "Which bid requires a Mercury Affidavit?",
+      "first_hit": 2,
+      "top3": [
+        "Mercury_Affidavit.pdf, p.1",
+        "Mercury_Affidavit.pdf, p.1",
+        "Contract_Affidavit.pdf, p.1"
+      ]
+    }
+  ],
+  "C. Hybrid (RRF)": [
+    {
+      "id": "b1-due-final",
+      "question": "What is the submission deadline after all addendums?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b1-due-original",
+      "question": "What was the original solicitation due date in the RFP?",
+      "first_hit": 2,
+      "top3": [
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31"
+      ]
+    },
+    {
+      "id": "b1-prebid",
+      "question": "When is the pre-proposal meeting and how is it held?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.30"
+      ]
+    },
+    {
+      "id": "b1-term",
+      "question": "What is the contract term and are there renewal options?",
+      "first_hit": 4,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.20",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.32"
+      ]
+    },
+    {
+      "id": "b1-buyer",
+      "question": "Who is the buyer and what is their email?",
+      "first_hit": null,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.61",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.42",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.44"
+      ]
+    },
+    {
+      "id": "b1-org",
+      "question": "Which organization issued this solicitation?",
+      "first_hit": 1,
+      "top3": [
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.26"
+      ]
+    },
+    {
+      "id": "b1-warranty",
+      "question": "What are the warranty requirements and repair turnaround?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b1-tier1",
+      "question": "What are the minimum specifications for the Tier 1 small student Chromebook?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.36",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.39"
+      ]
+    },
+    {
+      "id": "b1-w9",
+      "question": "Is a W9 form required with the submission?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.33",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.17"
+      ]
+    },
+    {
+      "id": "b1-mwbe",
+      "question": "What M/WBE documents must be submitted with the proposal?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.49",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.49",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.51"
+      ]
+    },
+    {
+      "id": "b1-adp",
+      "question": "Does the district require accidental damage protection?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.16",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.25"
+      ]
+    },
+    {
+      "id": "b1-award",
+      "question": "When is the contract expected to be awarded?",
+      "first_hit": null,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.23",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.24",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31"
+      ]
+    },
+    {
+      "id": "b2-number",
+      "question": "What is the PORFP number?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b2-due",
+      "question": "When are proposals due?",
+      "first_hit": 3,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.3",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-questions",
+      "question": "What is the deadline for submitting questions?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-reseller",
+      "question": "Must the contractor be an authorized reseller for a manufacturer?",
+      "first_hit": 2,
+      "top3": [
+        "Contract_Affidavit.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-mercury",
+      "question": "Which affidavits are required for the Dell laptop bid?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-delivery",
+      "question": "What is the required delivery time after award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Dell_Laptop_Specs.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-invoice",
+      "question": "How should invoices be submitted?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Dell_Laptop_Specs.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-contact",
+      "question": "Who is the agency point of contact and their phone number?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-dock",
+      "question": "Which docking station model is requested?",
+      "first_hit": 1,
+      "top3": [
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-qty",
+      "question": "How many Dell Latitude 5550 laptops are requested?",
+      "first_hit": 1,
+      "top3": [
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-cpu",
+      "question": "What processor does the Dell laptop have?",
+      "first_hit": 1,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-ram",
+      "question": "How much memory (RAM) is specified?",
+      "first_hit": 10,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.1",
+        "Contract_Affidavit.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-display",
+      "question": "What are the display specifications?",
+      "first_hit": 4,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell_Laptop_Specs.pdf, p.3",
+        "Dell_Laptop_Specs.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-eval",
+      "question": "What are the evaluation criteria for award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-place",
+      "question": "Where is the place of performance?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Contract_Affidavit.pdf, p.3",
+        "Contract_Affidavit.pdf, p.2"
+      ]
+    },
+    {
+      "id": "x-mercury",
+      "question": "Which bid requires a Mercury Affidavit?",
+      "first_hit": 2,
+      "top3": [
+        "Mercury_Affidavit.pdf, p.1",
+        "Mercury_Affidavit.pdf, p.1",
+        "Contract_Affidavit.pdf, p.1"
+      ]
+    }
+  ],
+  "D. Hybrid + MiniLM rerank": [
+    {
+      "id": "b1-due-final",
+      "question": "What is the submission deadline after all addendums?",
+      "first_hit": 6,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.32",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.5"
+      ]
+    },
+    {
+      "id": "b1-due-original",
+      "question": "What was the original solicitation due date in the RFP?",
+      "first_hit": 2,
+      "top3": [
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b1-prebid",
+      "question": "When is the pre-proposal meeting and how is it held?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.47",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b1-term",
+      "question": "What is the contract term and are there renewal options?",
+      "first_hit": 4,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.22",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.26"
+      ]
+    },
+    {
+      "id": "b1-buyer",
+      "question": "Who is the buyer and what is their email?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.60"
+      ]
+    },
+    {
+      "id": "b1-org",
+      "question": "Which organization issued this solicitation?",
+      "first_hit": 1,
+      "top3": [
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.24"
+      ]
+    },
+    {
+      "id": "b1-warranty",
+      "question": "What are the warranty requirements and repair turnaround?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b1-tier1",
+      "question": "What are the minimum specifications for the Tier 1 small student Chromebook?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.36",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.35"
+      ]
+    },
+    {
+      "id": "b1-w9",
+      "question": "Is a W9 form required with the submission?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.33",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.4",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.48"
+      ]
+    },
+    {
+      "id": "b1-mwbe",
+      "question": "What M/WBE documents must be submitted with the proposal?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.48",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.49",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.48"
+      ]
+    },
+    {
+      "id": "b1-adp",
+      "question": "Does the district require accidental damage protection?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.25"
+      ]
+    },
+    {
+      "id": "b1-award",
+      "question": "When is the contract expected to be awarded?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b2-number",
+      "question": "What is the PORFP number?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b2-due",
+      "question": "When are proposals due?",
+      "first_hit": 2,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-questions",
+      "question": "What is the deadline for submitting questions?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-reseller",
+      "question": "Must the contractor be an authorized reseller for a manufacturer?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Dell_Laptop_Specs.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-mercury",
+      "question": "Which affidavits are required for the Dell laptop bid?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-delivery",
+      "question": "What is the required delivery time after award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-invoice",
+      "question": "How should invoices be submitted?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Dell_Laptop_Specs.pdf, p.3",
+        "Mercury_Affidavit.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-contact",
+      "question": "Who is the agency point of contact and their phone number?",
+      "first_hit": 3,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-dock",
+      "question": "Which docking station model is requested?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-qty",
+      "question": "How many Dell Latitude 5550 laptops are requested?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell_Laptop_Specs.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-cpu",
+      "question": "What processor does the Dell laptop have?",
+      "first_hit": 1,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell_Laptop_Specs.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-ram",
+      "question": "How much memory (RAM) is specified?",
+      "first_hit": 2,
+      "top3": [
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Contract_Affidavit.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-display",
+      "question": "What are the display specifications?",
+      "first_hit": 3,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Dell_Laptop_Specs.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-eval",
+      "question": "What are the evaluation criteria for award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-place",
+      "question": "Where is the place of performance?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "x-mercury",
+      "question": "Which bid requires a Mercury Affidavit?",
+      "first_hit": 1,
+      "top3": [
+        "Mercury_Affidavit.pdf, p.1",
+        "Mercury_Affidavit.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    }
+  ],
+  "E. Hybrid + bge rerank": [
+    {
+      "id": "b1-due-final",
+      "question": "What is the submission deadline after all addendums?",
+      "first_hit": 4,
+      "top3": [
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.5",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b1-due-original",
+      "question": "What was the original solicitation due date in the RFP?",
+      "first_hit": 3,
+      "top3": [
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b1-prebid",
+      "question": "When is the pre-proposal meeting and how is it held?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.47",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b1-term",
+      "question": "What is the contract term and are there renewal options?",
+      "first_hit": 6,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.29",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.26"
+      ]
+    },
+    {
+      "id": "b1-buyer",
+      "question": "Who is the buyer and what is their email?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.20"
+      ]
+    },
+    {
+      "id": "b1-org",
+      "question": "Which organization issued this solicitation?",
+      "first_hit": 2,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31",
+        "Student and Staff Computing Devices __SOURCING #168884__ - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b1-warranty",
+      "question": "What are the warranty requirements and repair turnaround?",
+      "first_hit": 5,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.3",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.6",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.8"
+      ]
+    },
+    {
+      "id": "b1-tier1",
+      "question": "What are the minimum specifications for the Tier 1 small student Chromebook?",
+      "first_hit": 3,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.38",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.36",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b1-w9",
+      "question": "Is a W9 form required with the submission?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.33",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.10",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.38"
+      ]
+    },
+    {
+      "id": "b1-mwbe",
+      "question": "What M/WBE documents must be submitted with the proposal?",
+      "first_hit": 1,
+      "top3": [
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.49",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.48",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.51"
+      ]
+    },
+    {
+      "id": "b1-adp",
+      "question": "Does the district require accidental damage protection?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.16"
+      ]
+    },
+    {
+      "id": "b1-award",
+      "question": "When is the contract expected to be awarded?",
+      "first_hit": 1,
+      "top3": [
+        "Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1",
+        "JA-207652 Student and Staff Computing Devices FINAL.pdf, p.31"
+      ]
+    },
+    {
+      "id": "b2-number",
+      "question": "What is the PORFP number?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4"
+      ]
+    },
+    {
+      "id": "b2-due",
+      "question": "When are proposals due?",
+      "first_hit": 2,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-questions",
+      "question": "What is the deadline for submitting questions?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.2",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-reseller",
+      "question": "Must the contractor be an authorized reseller for a manufacturer?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1"
+      ]
+    },
+    {
+      "id": "b2-mercury",
+      "question": "Which affidavits are required for the Dell laptop bid?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-delivery",
+      "question": "What is the required delivery time after award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Contract_Affidavit.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-invoice",
+      "question": "How should invoices be submitted?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Contract_Affidavit.pdf, p.2",
+        "Dell_Laptop_Specs.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-contact",
+      "question": "Who is the agency point of contact and their phone number?",
+      "first_hit": 3,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-dock",
+      "question": "Which docking station model is requested?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "Dell_Laptop_Specs.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-qty",
+      "question": "How many Dell Latitude 5550 laptops are requested?",
+      "first_hit": 2,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-cpu",
+      "question": "What processor does the Dell laptop have?",
+      "first_hit": 2,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2"
+      ]
+    },
+    {
+      "id": "b2-ram",
+      "question": "How much memory (RAM) is specified?",
+      "first_hit": 1,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-display",
+      "question": "What are the display specifications?",
+      "first_hit": 2,
+      "top3": [
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell_Laptop_Specs.pdf, p.1",
+        "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html, p.1"
+      ]
+    },
+    {
+      "id": "b2-eval",
+      "question": "What are the evaluation criteria for award?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.4",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3",
+        "Contract_Affidavit.pdf, p.3"
+      ]
+    },
+    {
+      "id": "b2-place",
+      "question": "Where is the place of performance?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.1",
+        "Dell_Laptop_Specs.pdf, p.3",
+        "Mercury_Affidavit.pdf, p.1"
+      ]
+    },
+    {
+      "id": "x-mercury",
+      "question": "Which bid requires a Mercury Affidavit?",
+      "first_hit": 1,
+      "top3": [
+        "PORFP_-_Dell_Laptop_Final.pdf, p.2",
+        "Mercury_Affidavit.pdf, p.1",
+        "PORFP_-_Dell_Laptop_Final.pdf, p.3"
+      ]
+    }
+  ]
+}
