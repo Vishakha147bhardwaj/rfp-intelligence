@@ -19,13 +19,26 @@ from rfp.search.engine import SearchEngine
 from rfp.search.indexer import load_manifest
 from rfp.search.store import ChunkStore
 from rfp.settings import PROJECT_ROOT
+from rfp.agents.reconciliation import BASE_TYPES
 
 log = structlog.get_logger()
 
 NOT_FOUND = "Not found in documents."
 PER_QUERY_K = 4
 PER_BID_EVIDENCE = 8
+QA_CANDIDATES = 15          # rerank depth for Q&A searches (interactive search uses 30)
 CITATION = re.compile(r"\[(\d+)\]")
+
+CHANGE_CUE = re.compile(r"\b(?:new|revised|amended|updated|extend(?:ed|s)?|changed?|replaced?|instead)\b\s*",
+                        re.IGNORECASE)
+SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+
+
+def change_sentences(text: str, limit: int = 3) -> list[str]:
+    """Sentences that describe a change, with the change word removed so they read like the original."""
+    sentences = SENTENCE_END.split(" ".join(text.split()))
+    picked = [CHANGE_CUE.sub("", s).strip() for s in sentences if CHANGE_CUE.search(s)]
+    return [s for s in picked if len(s) > 15][:limit]
 
 PLAN_RULES = """You plan how to answer a question about bid / RFP documents.
 You are given the available bids (id: title). Choose the bid ids the question is about - all of
@@ -155,19 +168,52 @@ def build_qa_graph(store: ChunkStore, llm: LLMClient):
     def retrieve(task: dict) -> dict:
         bid, plan_ = task["bid_id"], task["plan"]
         with trace_step(task["run_id"], "qa_retrieve", bid=bid) as step:
+            if plan_.addendum_only and store.count(bid_id=bid, doc_type="addendum") == 0:
+                step.set(skipped="bid has no addendums")
+                return {"evidence": [], "trace": [step.event]}
+
             best: dict[str, dict] = {}
-            searches = [(q, None) for q in [task["question"], *plan_.queries]]
-            if plan_.addendum_only:
-                searches += [(q, "addendum") for q in [task["question"], *plan_.queries]]
-            for query, doc_type in searches:
-                for r in engine.search(query, top_k=PER_QUERY_K, bid_id=bid, doc_type=doc_type):
+            followups: list[dict] = []
+
+            def search(query: str, k: int, doc_type=None):
+                return engine.search(query, top_k=k, bid_id=bid, doc_type=doc_type, candidates=QA_CANDIDATES)
+
+            def add(results) -> None:
+                for r in results:
                     item = r.model_dump()
                     if r.chunk_id not in best or item["score"] > best[r.chunk_id]["score"]:
                         best[r.chunk_id] = item
-            evidence = sorted(best.values(), key=lambda e: e["score"], reverse=True)[:PER_BID_EVIDENCE]
-            step.set(searches=len(searches), evidence=len(evidence))
-        return {"evidence": evidence, "trace": [step.event]}
 
+            queries = [task["question"], *plan_.queries]
+            searches = 0
+            for q in queries:
+                add(search(q, PER_QUERY_K))
+                searches += 1
+
+            if plan_.addendum_only:
+                addendum_hits = []
+                for q in queries:
+                    hits = search(q, PER_QUERY_K, doc_type="addendum")
+                    searches += 1
+                    add(hits)
+                    addendum_hits += hits
+                # Hop 2: use each top addendum passage AS the query, to find the ORIGINAL text it changes
+                top = sorted({h.chunk_id: h for h in addendum_hits}.values(), key=lambda h: h.score, reverse=True)[:2]
+                for hit in top:
+                    for sentence in change_sentences(hit.text) or [hit.text[:400]]:
+                        for r in search(sentence, 2, doc_type=BASE_TYPES):
+                            followups.append(r.model_dump())
+                        searches += 1
+
+            ranked = sorted(best.values(), key=lambda e: e["score"], reverse=True)
+            evidence, seen = [], set()
+            for item in followups + ranked:                 # follow-ups are guaranteed a place
+                if item["chunk_id"] not in seen:
+                    seen.add(item["chunk_id"])
+                    evidence.append(item)
+            evidence = evidence[: PER_BID_EVIDENCE + len(followups)]
+            step.set(searches=searches, evidence=len(evidence), followups=len(followups))
+        return {"evidence": evidence, "trace": [step.event]}
     def answer(state: QAState) -> dict:
         evidence = sorted(state.get("evidence", []), key=lambda e: (e["bid_id"], -e["score"]))
         with trace_step(state["run_id"], "qa_answer", passages=len(evidence)) as step:

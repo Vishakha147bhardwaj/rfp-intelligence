@@ -66,3 +66,26 @@ _run qa-20261003-015312-df3689 | bids: Bid1, Bid2_
 
 ---
 
+## Q: What changed in Addendum 2 compared to the original RFP?
+
+**Answer:** Addendum 2 only extended the RFP due date; the new due date is July 9, 2024 at 2:00 PM CST [1]. It is incorporated into any contract awarded under the solicitation [1]. The evidence does not include the original due date, so it does not show what the date was before the change.
+
+**Sources:**
+  - [1] Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1 (Bid1)
+
+_run qa-20261003-015903-10f3e6 | bids: Bid1, Bid2_
+
+---
+
+## Q: What changed in Addendum 2 compared to the original RFP?
+
+**Answer:** Addendum 2 only extended the RFP due date. [2] The new due date is July 9, 2024 at 2:00 PM CST. [2] The original RFP listed the solicitation due date as 27-JUN-2024 at 14:00. [1] The addendum doesn't mention any other changes. [2]
+
+**Sources:**
+  - [1] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2 (Bid1)
+  - [2] Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1 (Bid1)
+
+_run qa-20261003-021553-03e1ca | bids: Bid1, Bid2_
+
+---
+
