@@ -23,6 +23,11 @@ class SearchConfig(BaseModel):
     qdrant_path: str = "data/index/qdrant"
     collection: str = "rfp_chunks"
     manifest_path: str = "data/index/manifest.json"
+    rerank_model: str = "Xenova/ms-marco-MiniLM-L-6-v2"
+    retrieve_k: int = 30
+    rrf_k: int = 60
+    sparse_weight: float = 1.0
+    identifier_sparse_weight: float = 2.0
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")

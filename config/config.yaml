@@ -12,3 +12,8 @@ search:
   qdrant_path: data/index/qdrant # embedded Qdrant, no server needed
   collection: rfp_chunks
   manifest_path: data/index/manifest.json
+  rerank_model: Xenova/ms-marco-MiniLM-L-6-v2 # alt: BAAI/bge-reranker-base (bigger, slower)
+  retrieve_k: 30 # candidates from each of dense and sparse
+  rrf_k: 60 # standard RRF constant
+  sparse_weight: 1.0
+  identifier_sparse_weight: 2.0 # when the query contains IDs like JA-207652

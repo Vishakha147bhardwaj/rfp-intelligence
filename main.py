@@ -9,6 +9,8 @@ from rfp.ingestion.pipeline import ingest_folder, load_processed
 from rfp.search.chunker import chunk_document
 from rfp.search.indexer import index_documents
 from rfp.search.store import ChunkStore
+from rich.text import Text
+from rfp.search.engine import SearchEngine
 
 app = typer.Typer(help="RFP Intelligence Platform: search and extract bid documents.")
 console = Console()
@@ -97,5 +99,30 @@ def index(
                       f"| total: {store.count()}")
     finally:
         store.close()    
+@app.command()
+def search(
+    query: str = typer.Argument(..., help="What to search for"),
+    bid: str | None = typer.Option(None, help="Only this bid, e.g. Bid2"),
+    doc_type: str | None = typer.Option(None, help="rfp | addendum | bid_page | specs | affidavit"),
+    top_k: int = typer.Option(5, "--top-k", "-k"),
+    mode: str = typer.Option("hybrid_rerank", help="dense | sparse | hybrid | hybrid_rerank"),
+) -> None:
+    """Search the indexed bids and show cited results."""
+    store = ChunkStore()
+    try:
+        results = SearchEngine(store).search(query, top_k=top_k, mode=mode, bid_id=bid, doc_type=doc_type)
+    finally:
+        store.close()
+
+    table = Table(title=f"{query}  [{mode}]", show_lines=True)
+    for column in ("#", "score", "citation", "d/s rank", "snippet"):
+        table.add_column(column)
+    for i, r in enumerate(results, start=1):
+        ranks = f"{r.dense_rank or '-'}/{r.sparse_rank or '-'}"
+        snippet = " ".join(r.text.split())[:220]
+        table.add_row(str(i), f"{r.score:.3f}", Text(r.citation), ranks, Text(snippet))
+    console.print(table)
+
+
 if __name__ == "__main__":
     app()

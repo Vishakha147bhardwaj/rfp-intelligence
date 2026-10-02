@@ -10,12 +10,14 @@ SPARSE = "sparse"
 
 
 def build_filter(**conditions) -> models.Filter | None:
-    """Exact-match filter from keyword args; None values are ignored. e.g. bid_id='Bid2'."""
-    must = [
-        models.FieldCondition(key=key, match=models.MatchValue(value=value))
-        for key, value in conditions.items()
-        if value is not None
-    ]
+    """Filter from keyword args; None is ignored, a list means 'any of'. e.g. bid_id='Bid2'."""
+    must = []
+    for key, value in conditions.items():
+        if value is None:
+            continue
+        match = (models.MatchAny(any=list(value)) if isinstance(value, (list, tuple))
+                 else models.MatchValue(value=value))
+        must.append(models.FieldCondition(key=key, match=match))
     return models.Filter(must=must) if must else None
 
 

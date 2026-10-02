@@ -1,0 +1,23 @@
+# Synonym groups for keyword search. If any term of a group appears in the query,
+# the group's other terms are added to the BM25 query. Lowercase, whole-word matching.
+synonyms:
+  - [
+      due date,
+      deadline,
+      closing date,
+      submission deadline,
+      proposals due,
+      proposal due,
+      bid opening,
+    ]
+  - [bid bond, bid security, bid guarantee, surety, proposal guaranty]
+  - [pre-bid, prebid, pre-proposal, prebid conference, pre-proposal meeting]
+  - [payment terms, payment, net 30, invoice, invoicing]
+  - [term, contract term, length of contract, renewal, extension]
+  - [delivery, delivery date, shipping, ship date, lead time]
+  - [warranty, warranties, extended warranty]
+  - [affidavit, affidavits, certification, forms]
+  - [contact, buyer, procurement officer, point of contact, poc]
+  - [installation, imaging, deployment, white glove, setup]
+  - [cooperative, piggyback, contract vehicle, master contract]
+  - [manufacturer, authorized reseller, registration, letter of authorization]
