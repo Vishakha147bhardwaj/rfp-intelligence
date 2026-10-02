@@ -1,0 +1,537 @@
+2026-10-02 15:58:54 [warning  ] empty_page                     file='JA-207652 Student and Staff Computing Devices FINAL.pdf' page=55
+2026-10-02 15:58:58 [warning  ] empty_page                     file='JA-207652 Student and Staff Computing Devices FINAL.pdf' page=56
+2026-10-02 15:59:01 [warning  ] empty_page                     file='JA-207652 Student and Staff Computing Devices FINAL.pdf' page=57
+2026-10-02 15:59:04 [warning  ] empty_page                     file='JA-207652 Student and Staff Computing Devices FINAL.pdf' page=58
+2026-10-02 15:59:05 [warning  ] empty_page                     file='JA-207652 Student and Staff Computing Devices FINAL.pdf' page=59
+JA-207652 Student and Staff Computing Devices FINAL.pdf: 62 pages, errors=[]
+
+--- page 1 | 204 chars | 0 tables | empty=False
+headings: ['Dallas ISD rev 1.0', 'PURCHASING DEPARTMENT', '9400 North Central Expressway, Suite 1510, Dallas, TX  75231', 'Request For Proposal 168884', 'JA-207652 Student and Staff Computing Devices']
+text start: PURCHASING DEPARTMENT / 9400 North Central Expressway, Suite 1510, Dallas, TX 75231 / (972)925-4100 / Request For Proposal 168884 / JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 1.0   Page 1 o
+
+--- page 2 | 1608 chars | 1 tables | empty=False
+headings: ['ALZATE, JASMINE', '1 Header Information', '1.1 General Information', '1.2 Terms', '1.3 Requirements']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Buyer ALZATE, JASMINE   Email JALZATE@dallasisd.org / 1 Header Information / 1.1 General Information / First Advertisement Date/Iss
+first table:
+| LENGTH OF CONTRACT |  |
+|---|---|
+| The term of this proposal shall be for a three (3) year agreement with two (2) successive one (1) year extensions based on the long-range needs of the District and mutual consent of both parties not to exceed five (5) years total. |  |
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+| The Dallas Independent School District (Dallas ISD or District) is soliciting offers for the goods and/or services specified in this document. 1. Questions concerning this solicitation document should be addressed in writing to the Buyer's Email. 2. Questions must be submitted by the deadline to allow sufficient time for responses prior to receipt/opening date/time. 3. Responses to questions other than administrative questions will be provided to all potential offerors by means of an addendum to the solicitation. All vendors are encouraged to participate even if vendors are the sole source providers. This proposal is being issued in accordance with Title 2 of the Code of Federal Regulations (2CFR) Part 200 |  |
+
+--- page 3 | 108 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 3 of 40
+first table:
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+|---|---|
+| requirements to procure vendors who provide goods or services purchased by Dallas ISD using federal dollars. This proposal may be used with local, state, federal, and grant-funded programs. |  |
+| PURPOSE OF REQUEST FOR PROPOSAL (RFP) This Request for Proposal (RFP) will be for student and staff computing devices, including laptops, desktops, tablet devices, and display monitors. Vendors participating in this Request for Proposal (RFP) may submit proposals for one, several, or all categories of devices required by the District. Within each category of device, the District reserves the right to award contracts to a single vendor or multiple vendors. The specifications listed in this RFP are the minimum hardware requirements for each tier of device required by Dallas ISD. Vendors responding to this RFP must have the ability to provide the District with significant quantities of devices as requested in the pricing lines in this RFP. Note that quantities requested by Dallas ISD are estimates to be ordered over the five years of the contracts resulting from this RFP. Purchases may also include a variety of device accessories which will be ordered in a bundle along with the devices. Such accessories include, but are not limited to, sleeves, cases, mice, keyboards, and cables that may not necessarily come with the devices. Each submission must include a detailed plan as to how the vendor will track all shipped products and provide deployment services. Processes and procedures are required in the response, which outlines how tracking will be executed and any processes for providing white glove services. The awarded vendors shall provide Dallas ISD with computing devices that meet all current industry standard specifications. The awarded vendors and Dallas ISD EdTech-Enterprise Support Services shall meet every six months or as needed to discuss technology advancements related to computing devices to be selected by Dallas ISD. Note: For each purchase during the term of the contracts resulting from this RFP, the District will seek competitive quotes from one or more of the awarded vendors. |  |
+| PROPOSAL SPECIFICATIONS |  |
+
+--- page 4 | 108 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 4 of 40
+first table:
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+|---|---|
+| All warranties shall become effective on the date the equipment is placed into service, as agreed-upon by Dallas ISD and the awarded vendor. Warranties shall be equal to or exceed those offered to the general public. Dallas ISD expects that all warranty service and repairs or replacements will be performed by the awarded vendors at no cost within five (5) business days of the District reporting the issue to the vendor. Extension of warranty period and/or other adjustments will be expected when constant maintenance is required, or if replacement parts prove unsound. Dallas ISD expects the awarded vendors to maintain an adequate stock of replacement devices and/or parts to service equipment and to ensure repairs are made within the designated five (5) business day period. If the five business (5) day repair period cannot be achieved, the District expects to be provided a temporary replacement device. |  |
+| Student Devices Tier 1 Small Student Chromebook Laptop Minimum Requirements • Enterprise Management Ready • Intel Celeron Processor N100 or equivalent • Display: Minimum 11.6" diagonal • Integrated Camera: 720p minimum • Screen Resolution 1366 x 768 Multi-touch • Memory: Minimum 8GB DDR5 Memory • Wireless: 802.11AX WiFi-6E and Bluetooth 5.1 • Power Supply: Type C, 65W • Battery Life: Minimum 10 hours • Ports: Minimum 2 USB 3.0; type C; 1 headphone/microphone combo • Storage: 64 GB eMMC • Chrome O/S License Required • Warranty: 1-year minimum Tier 2 Large Student Chromebook Laptop Minimum Requirements • Enterprise Management Ready • Intel Celeron Processor N100 or equivalent • Display: Minimum 14" diagonal Non-Touch • Integrated Camera: 720p minimum • Screen Resolution 1920-1080 • Memory: Minimum 8GB DDR5 Memory • Wireless: 802.11AX WiFi-6E and Bluetooth 5.1 • Power Supply: Type C, 65W • Battery Life: Minimum 10 Hours • Ports, Minimum 2 USB 3.0; 1 Type C; 65HDMI; 1 headphone/microphone combo • Storage: 128 GB eMMC • Chrome O/S License Required • Warranty: 1-year minimum Tier 3 Student Windows Laptop Minimum Requirements • Enterprise Management Ready w/ Autopilot Enrollment • Intel i5 13th Gen or equivalent • Display: Minimum 13" diagonal • Integrated Camera: 720p minimum |  |
+
+--- page 5 | 108 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 5 of 40
+first table:
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+|---|---|
+| • Screen Resolution 1920-1080 Non-Touch • Memory: Minimum 16GB RAM DDR5 Memory • Wireless: 802.11AX WiFi-6E and Bluetooth 5.1 • Power Supply: Type C, 65W • Battery Life: Minimum 10 Hours • Ports, Minimum 2 USB 3.0; 1 Type C; 65HDMI; 1 headphone/microphone combo • Storage: 256 GB NVMe SSD • Windows 11 Pro • Warranty: 3-year minimum Student Tablet Minimum Requirements • Enterprise Management Ready • Processor A13 • Display: 10.2" Retina • Integrated Camera: 8MP Wide camera • Screen Resolutions 2160 x 1620 Multi-touch • Wireless: 802.11AC and Bluetooth 4.2 • Power Supply included • Battery Life: Minimum 10 Hours • Ports: 1 headphone or other personal audio connection • Storage: 64 GB • iOS 17 • Warranty: 1-year minimum |  |
+| Staff Devices Tier 1 Staff Windows Basic Desktop Minimum Requirements • Enterprise Management Ready with Autopilot Enrollment • Processor: Intel i5 Processor, 14th Gen or equivalent • Display: Minimum 23.8" diagonal screen Touch Screen • Memory: Minimum 16GB RAM • Wireless: 802.11AX WiFi-6E and Bluetooth 5.1 • Ports: Minimum 3 USB 3.0; 2 USB-C1 HDMI; 1 headphone/microphone combo • Storage: 512 GB NVMe SSD • Windows 11 Pro • Warranty: 3-year minimum Tier 2 Staff Professional Desktop Minimum Requirements • Enterprise Management Ready • Intel i7 Processor, 14th Gen or equivalent. • Display: Minimum 23.8" diagonal screen Touch Screen • Memory: Minimum 32GB DDR5 RAM • Wireless: 802.11AX WiFi-6E and Bluetooth 5.1 • Ports: Minimum 3 USB 3.0; 1 USB-C, 1 HDMI; 1 headphone/microphone combo • Storage: 1 TB NVMe SSD • Windows 11 Pro or Mac O/S |  |
+
+--- page 6 | 108 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 6 of 40
+first table:
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+|---|---|
+| • 4 GB Video card • Touchscreen optional • Warranty: 3-year minimum Tier 1 Staff Basic Laptop Minimum Requirements • Enterprise Management Ready • Intel i5 CPU, 14th Gen or equivalent. • Display: Minimum 13" diagonal screen • Integrated Camera: 1080p • Memory: Minimum 16GB DDR5 RAM • Wireless: 802.11AX WiFi-6E and Bluetooth 5.1 • Power Supply: USB Type C, 65W • Battery Life: Minimum 10 hours • Ports: Minimum 1 USB 3.0;1 USB-C, 1 HDMI; 1 headphone/microphone combo • Storage: 512 GB NVMe SSD • 0/S Windows 11 or Mac OS • Warranty: 3-year minimum Tier 2 Staff Laptop Minimum Requirements • Enterprise Management Ready • Intel i7 CPU, 14th Gen or equivalent. • Display: Minimum 13" diagonal screen • Integrated Camera: 1080p • Resolution: 1920 X 1080 minimum • Memory: Minimum 32GB DDR5 RAM • Wireless: 802.11AX WiFi-6E and Bluetooth 5.1 • Power Supply: USB C, 65W • Battery Life: Minimum 10 hours • Ports: Minimum 2 USB 3.0; 1 HDMI; 1 headphone/microphone combo • Storage: 1 TB NVMe SSD • 0/S: Windows 11 or Mac OS • Warranty: 3-year minimum Display Monitor - Touch • Minimum 24" diagonal screen • Resolution: 1920 X 1080 • Port: USB 3.1 Hub • Aspect Ratio: 16:9 • Contrast: 3000:1 • Warranty: 3-year minimum Display Monitor - Non-Touch • Minimum 24" diagonal screen • Resolution: 1920 X 1080 • Port: USB 3.1 Hub • Warranty: 3-year minimum |  |
+| PROPOSAL SPECIFIC QUESTIONS |  |
+
+--- page 7 | 108 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 7 of 40
+first table:
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+|---|---|
+| 1. Provide examples of previously awarded contracts that demonstrate your company's ability to track and deliver multiple shipments of various computer types to multiple locations in a timely manner. (i.e., process and procedures guide, schedules of past awards, timelines, etc.) ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| 2. Describe your company's ability to perform each of the deployment services described above. These services include (a) software installation, (b) asset tagging and etching, (c) device deployment and setup, and (d) asset control reporting. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| 3. Explain the method by which your company will track inventory shipped throughout the delivery process. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 8 | 108 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 8 of 40
+first table:
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+|---|---|
+| Provide your answer below |  |
+| 6. Purchase deadlines are crucial. How quickly could shipping occur once your company receives a Purchase Order? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| 7. Describe your company's ability to supply Dallas ISD with the quantities of devices requested in this five- year proposal. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 9 | 108 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 9 of 40
+first table:
+| SCOPE AND SPECIFICATIONS OF THE PROPOSAL |  |
+|---|---|
+| Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| 11. Describe your company's process for maintaining an inventory of temporary replacement or "hot swap" devices for use by Dallas ISD while our devices are being repaired. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| INSTRUCTION AND REQUIREMENTS FOR OFFER SUBMITTAL |  |
+
+--- page 10 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 10 of 40
+first table:
+| COMPANY INFORMATION |  |
+|---|---|
+| Name of the firm making the offer. (W9 name and dba if applicable) ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| Company Federal Tax ID Number ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| Company Address, City , State, Zip ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 11 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 11 of 40
+first table:
+| COMPANY INFORMATION |  |
+|---|---|
+| Provide your answer below |  |
+| CONTACT REPRESENTATIVE INFORMATION |  |
+| Contact Representative Name ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 12 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 12 of 40
+first table:
+| SUBCONTRACTOR INFORMATION |  |
+|---|---|
+| Name of subcontractor Address City/State/Zip Telephone E-Mail Address Point of Contact Business Days/Hours No. Years in Business Under this Name No. Years at Location Listed No. Personnel (non-clerical) Employed No. Personnel (clerical) Employed Please indicate if the company is MWBE (Woman (W) or Minority (M) Owned Business Enterprise (BE)) ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| CERTIFICATION OF APPLICABILITY TO SUBCONTRACTORS Vendor agrees that all contracts it awards pursuant to the Contract shall be bound by the foregoing terms and conditions. Does Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| REFERENCES |  |
+
+--- page 13 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 13 of 40
+first table:
+| REFERENCES |  |
+|---|---|
+| Provide your answer below |  |
+| Reference 1 - Email Address ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| Reference Two (2) School District/Company Name Contact Name Contact Phone Number ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 14 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 14 of 40
+first table:
+| REFERENCES |  |
+|---|---|
+| Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| PROPOSAL REQUIREMENT - The following attributes require a response |  |
+| GENERAL TERMS AND CONDITIONS The offeror agrees to the General Terms and Conditions and any Special Terms and Conditions (if applicable) of this solicitation and in case of conflict with other documents provided by the Offeror, these General and/or Special Terms and Conditions take precedence and prevail unless Offeror specifically requests a variance and the District agree to such changes in writing. General Terms and Conditions are posted on the Dallas ISD website at https://www.dallasisd.org/Page/81178. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+
+--- page 15 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 15 of 40
+first table:
+| PROPOSAL REQUIREMENT - The following attributes require a response |  |
+|---|---|
+| REPRESENTATION AND CERTIFICATION By submitting this Offer, the Offeror certifies that he/she is a responsible authorized representative of the company and certifies the accuracy of the following statements. Represents that to the best of its knowledge it is not indebted to the District. Indebtedness to the District shall be a basis for non-award and/or cancellation and/or termination of any award. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| NOTIFICATION OF CRIMINAL HISTORY Texas Education Code, Chapter 44, Subchapter B, Section 44.034, Notification of Criminal History, reads as follows: (a) A person or business entity that enters into a contract with a school district must give advance notice to the district if the person or an owner or operator of the business entity has been convicted of a felony. The notice must include a general description of the conduct resulting in the conviction of a felony. (b) A school district may terminate a contract with a person or business entity if the district determines that the person or business entity failed to give notice as required by Subsection (a) or misrepresented the conduct resulting in the conviction. The district must compensate the person or business entity for services performed before the termination of the contract. (c) This section does not apply to a publicly held corporation. For more information please visit the Dallas ISD website at https://www.dallasisd.org/. Added by Acts 1995, 74th Leg., ch. 260, Sec. 1, eff. May 30, 1995. If applicable: Name of felon and details of the conviction(s) ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: My firm is a publicly held corporation, therefore, this reporting requirement is not applicable. My firm is not owned nor operated by anyone who has been convicted of a felony. My firm is owned or operated by the following individual(s) who has/have been convicted of a felony. |  |
+| CRIMINAL BACKGROUND CHECKS/SEARCHES Texas Education Code (TEC) 22.0834 and 22.08341 states that a contractor that provides services to a school district or charter school must be fingerprinted before beginning work, if the contractor 1) will have continuing duties related to the contracted services, and 2) will have the opportunity for direct contact with students. Additionally, the law requires that a contractor certified to a school district or charter school that it has received all criminal history information for its employees who provide services for the school. Pursuant to 22.08341(c), the requirement does not apply to a contractor that performs construction, alteration, or repair of an instructional facility if the Contractor uses separate sanitary facilities, installs a barrier fence, and has a policy that employees may not interact with students or enter areas used by students. Schools may fingerprint a contractor and/or Contractor's employees using the Local Education Entity (LEE) Fast Pass option. The Contractor shall agree to have individuals printed with the LEE pass, and also create subscriptions in the DPS FACT Clearinghouse under the authority of TGC 411.097/Public Law 92-544. The Contractor, however, will not be able to view the results through the DPS Clearinghouse. The Contractor shall bear the burden and cost of the Contractor obtaining a national, fingerprint-based criminal history check. A contractor or sub-contractor may not work on District property or any location the District deems a place where students are regularly present when: A) They have been convicted of a felony or misdemeanor involving moral turpitude, as defined by Texas law. B) They have charges pending, they have been convicted, received probation, or deferred adjudication of any of the following: 1. Any offense against a child 2. Any sex offense 3. Any felony offense involving controlled substances 4. Any felony offense against property 5. Any other offense the District, in its sole discretion, believes might compromise the safety of |  |
+
+--- page 16 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 16 of 40
+first table:
+| PROPOSAL REQUIREMENT - The following attributes require a response |  |
+|---|---|
+| student, staff, property, or reputation of the District by the employment of the Contractor. A vendor's violation of this section shall constitute substantial failure. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| IDENTIFICATION BADGE(S) Offeror's employees, agents, consultants, and subcontractors, subject to the criminal history record review requirement shall be identified by a photographic identification badge. If the Offeror is the person or owner or operator of the business entity, that individual may not self-certify regarding the criminal history record information and its review and must submit original evidence acceptable to the District with this Agreement showing compliance. All costs associated with criminal history record review requirements and badging are done so at the vendor's and their employee's expense. Pursuant to Dallas ISD's Board Policy CJA (LOCAL) Purchasing and Acquisition: All contracts must comply with the requirements for criminal background checks. All vendors must give advance notice to the District if the person or an owner or operator of the business entity has been convicted of a felony. The notice must include a general description of the conduct resulting in the conviction of a felony. The District may terminate any resulting agreement if the District determines that the person or business entity failed to provide notice as required by this paragraph or misrepresented the conduct resulting in the conviction. The above requirement is required for all suppliers who will provide a service to Dallas ISD and will be on District property. Awarded Suppliers who do not have direct contact with students must have background checks and badges and must be done through the supplier's company or the District's third-party provider, Field Control Analytics at www.fcbackground.com/clientsignup using project code: VENDISD15 or be issued by the supplier's company. (This company may change at the sole discretion of the district.) Vendors who have direct contact with students must meet the laws and requirements of the State of Texas. Direct contact is defined as the potential for any interaction with a student either in person or virtual. Does the vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| CONFLICT OF INTEREST Texas has enacted disclosure requirements if certain school officials or family members receive a gift (other than gifts of food, lodging, transportation, or entertainment accepted as a guest) that had an aggregate value of $250 or more over a twelve-month period that the district is considering or has awarded a contract for the sale or purchase of property, goods, or services. Has your firm, parent firm, subsidiary, and/or an affiliate provided a gift (other than gifts of food, lodging, transportation, or entertainment accepted as a guest) that had an aggregate value of $250 or more over twelve months to any District official, administrator, and/or Board member If yes, explain (the gift, name of the individual receiving gift, date gift was provided, etc.) THE DISTRICT'S CONFLICT OF INTEREST QUESTIONNAIRE FORM MUST BE COMPLETED IN SUCH SCENARIOS) The questionnaire is available on the Procurement Services website at https://www.dallasisd.org/Page/80705. The questionnaire must be updated in case of a conflict. Formal notification must be in writing and sent to the buyer. Does the vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- |  |
+
+--- page 17 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 17 of 40
+first table:
+| PROPOSAL REQUIREMENT - The following attributes require a response |  |
+|---|---|
+| Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| INSURANCE AND/OR BONDS Insurance and/or bond requirements are enumerated elsewhere in Contract documents. Submission of a certificate of insurance/bond by the undersigned (or an agent/broker on behalf of the undersigned) represents that the coverages and perils covered by the insurance/bond meet or exceed the requirements of the solicitation document and/or subsequent contract. The District may reasonably rely on the submitted certificate of insurance/bond. The certificate of insurance/bond must accurately reflect the policy coverages and will become a part of the Contract Documents and incorporated by reference, but the Contract terms/conditions and statement of work take precedence over any and all contents of the certificate of insurance/bond including, but not limited to, disclaimers, qualifications, etc. Failure to provide insurance/bond under the Contract may be cause for termination for default and other remedies allowed by law and/or equity. The offeror must notify the District, in writing, by certified mail or personal delivery, within ten (10) days after the Offeror knew or should have known of any changes that materially affect the insurance/bond coverage. Please acknowledge that you have read and understood that the district can not do business with your company without the submittal of this form. The insurance form must be received within ten (10) days of award. For more information please visit the Dallas ISD's terms and conditions page at https://www.dallasisd.org/Page/81178. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| WORKERS COMPENSATION Offeror acknowledges that the District will NOT provide Workers Compensation coverage to the Offeror and Offeror represents to the District that all employees, subcontractors, agents, representatives, etc. of the Offeror who will provide products, goods, or services to the District will be covered by worker's compensation coverage for the duration of the Contract, that the coverage will be based on proper reporting of classification codes and payroll amounts, and that all coverage agreements will be filed with the appropriate insurance carrier or, in the case of a self-insured, with the Texas Department of Insurance's Self-Insurance Regulation Section. Providing false or misleading information may subject the contractor to administrative penalties, criminal penalties, civil penalties, or other civil actions. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+
+--- page 18 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 18 of 40
+first table:
+| PROPOSAL REQUIREMENT - The following attributes require a response |  |
+|---|---|
+| Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| NO BOYCOTT OF ISRAEL For contracts with companies that have 10 or more full-time employees and when the contract has a value of $100,000 or more, Offeror certifies that it (and any of its affiliates or parent company), does not, and will not, boycott Israel during the term of any contractual arrangement with Dallas ISD. For purposes of any contractual arrangement with Dallas ISD, boycott Israel - means refusing to deal with, terminating business activities with, or otherwise taking any action that is intended to penalize, inflict economic harm on, or limit commercial relations specifically with Israel, or with a person or entity doing business in Israel or an Israeli controlled territory, but does not include an action made for ordinary business purposes. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| TRANSACTIONS WITH AN ABORTION PROVIDER OR AFFILIATE The offeror certifies that it is not an abortion provider nor an affiliate of such a provider as noted in Texas Senate Bill 22, codified in Texas Government Code Chapter 2272, and effective September 1, 2019. If this provision is violated by Offeror, the Agreement and/or taxpayer resource transaction is voidable by Dallas ISD and Offeror agrees to defend and indemnify Dallas ISD against any action brought by the Office of the Attorney General for a violation of Section 2273.003. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No, The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+
+--- page 19 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 19 of 40
+first table:
+| PROPOSAL REQUIREMENT - The following attributes require a response |  |
+|---|---|
+| Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| PROHIBITION OF CONTRACTS ENGAGED IN BUSINESS WITH IRAN, SUDAN, OR FOREIGN TERRORIST ORGANIZATIONS The Offeror certifies that it is not a company identified by the Texas Comptroller as a company known to have contracts with or provide supplies or services to a foreign terrorist organization. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| INTERLOCAL AGREEMENT ("Rider") CONSENT FORM Dallas ISD is a member of the Educational Purchasing Cooperative of North Texas (EPCNT). Members of EPCNT add this possible rider to their solicitation documents. If the Vendor chooses "YES"; to allow EPCNT members to "ride" this Agreement (if any) the following will apply: Governmental entities utilizing Internal Governmental contracts with the Dallas ISD will be eligible, but not obligated, to purchase materials/services under the contract(s) awarded as a result of this solicitation. All purchases by a governmental entity other than Dallas ISD will be billed directly to that governmental entity and paid by that governmental entity. Dallas ISD will not be responsible for another governmental entity's debts. Each governmental entity will order its own material/service as needed. A list of current members is available at http://www.epcnt.com. If "NO" is selected, there is no adverse impact on the evaluation of the Offeror's proposal to Dallas ISD. 1. Interlocal Agreement Clause with a vision of cooperating to improve their procurement power on like products and services, the EPCNT became a reality in 2002 through the coordinated efforts of North Texas public school districts. EPCNT is comprised of public school districts, charter schools, and Region Service Centers located in the Region X and XI Education Service Center areas. 2. Authority EPCNT is based on the authority contained in the Interlocal Cooperation Act, Texas Government Code Section 791 et seq. and in Subchapter F, of Chapter 271 of the Texas Local Government Code. The provisions of Chapter 791 of the Texas Government Code and the provisions of Subchapter F, of Chapter 271 of the Texas Local Government Code are incorporated in this Master Agreement and this Master Agreement shall be interpreted under those laws. 3. Duties of the Members agree to undertake the following, from time to time, as may be appropriate: a. Coordinate and host multi-governmental entity solicitations for purchase of goods and services from third- party vendors, as may be determined from time to time to be cost-effective and provide efficiencies as consolidated purchases. b. Make available specifications, documents, software, procedures, and related items in connection with bidding and purchasing processes. c. Actively participate in and provide support to meetings and other activities conducted by the EPCNT. d. Maintain as confidential, subject to the Texas Public Information Act, the information supplied by Parties to the EPCNT and deemed by the EPCNT to be confidential. |  |
+
+--- page 20 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 20 of 40
+first table:
+| PROPOSAL REQUIREMENT - The following attributes require a response |  |
+|---|---|
+| indicated an interest in being included in this contract. Should these governmental entities decide to participate in this contract, would you, (the vendor) agree that all terms, conditions, specifications, and pricing would apply? Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes No |  |
+| CENTRAL TEXAS PURCHASING ALLIANCE (CTPA) Interlocal Agreement - Cooperative Dallas ISD is a member of the Central Texas Purchasing Alliance (CTPA), an alliance of school districts in the central Texas area that share information, services, and contractual opportunities. In support of this collaborative effort, a response of YES to CTPA indicates that the Respondent is interested in extending services to other CTPA member districts. However, there is no obligation on either party to participate unless both parties agree. Services would be provided under the same contract pricing and purchasing terms established by this request. A negative reply by the Respondent will not adversely affect consideration of the Respondent's response. The information will be provided to CTPA member listing and in the event that this request and subsequent contract may be used by the CTPA districts. If a member district chooses to utilize a contract established by this request and subsequent contract, contracts will be awarded individually by those districts. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes No |  |
+| ORDER REFERENCE NUMBER/INFORMATION Is a reference number or other information that Dallas ISD must include on the Purchase Order to receive contract pricing, please state that information. If none enter N/A (not applicable) below where applicable. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 21 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 21 of 40
+first table:
+| PRICING INFORMATION |  |
+|---|---|
+| shall submit in writing, no later than one hundred twenty (120) days prior to the anniversary of the effective date, any changes in pricing. All fees, costs, and expenses required for the Offeror to provide the goods and/or services (including, but not limited to, contractor staff costs, travel expenses, overhead, hardware/software costs, connecting devices costs, and software customization costs), must be included in the firm fixed price. Details of the fees, costs, and expenses must be disclosed on the LINE TAB. |  |
+| MINIMUM PERCENTAGE DISCOUNT Your proposal shall be a minimum percentage discount from your company's most current catalog, MSRP, price list, or other standard offerings with indefinite quantities. Multiple percentage discount structures will be accepted. Please specify percentage discounts on the Lines Tab. Percentage Discount - Please indicate the discount the District may apply to the vendor's published catalog price or manufacturer's list price. If the discount is 0%, please enter .01. All pricing must be able to be verified; please include a catalog or website to look up items to verify discounts. All discounts % must be shown on quotes. |  |
+| ONLINE CATALOG/PRICE LIST Is your Catalog/Price List available via the internet or catalog? If yes, please indicate the website address. If none, please enter N/A (not applicable). In order to offer a discount of 0% and up, a catalog or price list must be available for Dallas ISD to verify pricing. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 22 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 22 of 40
+first table:
+| DEVIATIONS AND EXCEPTIONS - One of the following options must be chosen. No response will deem response as no deviation. |  |
+|---|---|
+| Offerors who list deviations to the Terms, Conditions, and/or Statement of Work contained in this solicitation may result in an Offer being deemed nonresponsive. The District reserves the right to consider minor deviations. The following provisions are prohibited and are non-negotiable: Indemnification by the District of a vendor or supplier, arbitration, automatic renewals, the venue outside of Dallas County, Texas, and governing state law that is not listed as Texas. If the Offeror desires any exception/deviation from any portion of the solicitation document, those exceptions/deviations must be clearly noted below. The offeror will provide reference to the particular page, paragraph, and sentence and provide the Offeror's proposed changes to the page, paragraph, and sentence. The District reserves the discretion to determine whether the proposed deviations render the Offer nonresponsive. The District reserves the right to reject any use of the Offeror's terms and conditions of any kind, including web links to any online terms and conditions, or use of the Offeror's form of agreement. The offeror requests the following exceptions/deviations to the solicitation's terms, conditions, and/or statement of work. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+| NO DEVIATIONS OR EXCEPTIONS I certify that there are NO deviations or exceptions from the attached specific terms, conditions, specifications, and required forms. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: I certify that there are NO deviations or exceptions from the attached specific terms, conditions, specifications, and required forms |  |
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+
+--- page 23 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 23 of 40
+first table:
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+|---|---|
+| No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| (B) Termination for cause and for convenience by the grantee or subgrantee including the manner by which it will be affected and the basis for settlement. (All contracts in excess of $10,000) Pursuant to Federal Rule (B) above, when DALLAS ISD expends federal funds, DALLAS ISD reserves the right to immediately terminate any agreement in excess of $10,000 resulting from this procurement process in the event of a breach or default of the agreement by the Vendor in the event Vendor fails to: (1) meet schedules, deadlines, and/or delivery dates within the time specified in the procurement solicitation, contract, and/or purchase order; (2) make any payments owed; or (3) otherwise perform in accordance with the contract and/or the procurement solicitation. DALLAS ISD also reserves the right to terminate the contract immediately, with written notice to the vendor, for convenience, if DALLAS ISD believes, in its sole discretion that it is in the best interest of DALLAS ISD to do so. The vendor will be compensated for work performed and accepted and goods accepted by DALLAS ISD as of the termination date if the contract is terminated for convenience of DALLAS ISD. Any award under this procurement process is not exclusive and DALLAS ISD reserves the right to purchase goods and services from other vendors when it is in DALLAS ISD's best interest. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| (C) Equal Employment Opportunity. Except as otherwise provided under 41 CFR Part 60, all contracts that meet the definition of "federally assisted construction contract" in 41 CFR Part 60-1.3 must include the equal opportunity clause provided under 41 CFR 60-1.4(b), in accordance with Executive Order 11246, "Equal Employment Opportunity" (30 FR 12319, 12935, 3 CFR Part, 1964-1965 Comp., p. 339), as amended by Executive Order 11375, "Amending Executive Order 11246 Relating to Equal Employment Opportunity," and implementing regulations at 41 CFR part 60, "Office of Federal Contract Compliance Programs, Equal Employment Opportunity, Department of Labor." Pursuant to Federal Rule (C) above, when DALLAS ISD expends federal funds on any federally assisted construction contract, the equal opportunity clause is incorporated by reference herein. Does Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+
+--- page 24 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 24 of 40
+first table:
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+|---|---|
+| The Act provides that each contractor or subrecipient must be prohibited from inducing, by any means, any person employed in the construction, completion, or repair of public work, to give up any part of the compensation to which he or she is otherwise entitled. The non-Federal entity must report all suspected or reported violations to the Federal awarding agency. Pursuant to Federal Rule (D) above, when DALLAS ISD expends federal funds during the term of an award for all contracts and subgrants for construction or repair, the Vendor will be in compliance with all applicable Davis-Bacon Act provisions. Does Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| (E) Contract Work Hours and Safety Standards Act (40 U.S.C. 3701-3708). Where applicable, all contracts awarded by the non-Federal entity in excess of $100,000 that involve the employment of mechanics or laborers must include a provision for compliance with 40 U.S.C. 3702 and 3704, as supplemented by Department of Labor regulations (29 CFR Part 5). Under 40 U.S.C. 3702 of the Act, each contractor must be required to compute the wages of every mechanic and laborer on the basis of a standard work week of 40 hours. Work in excess of the standard work week is permissible provided that the worker is compensated at a rate of not less than one and a half times the basic rate of pay for all hours worked in excess of 40 hours in the work week. The requirements of 40 U.S.C. 3704 are applicable to construction work and provide that no laborer or mechanic must be required to work in surroundings or under working conditions which are unsanitary, hazardous or dangerous. These requirements do not apply to the purchases of supplies or materials or articles ordinarily available on the open market, or contracts for transportation or transmission of intelligence. Pursuant to Federal Rule (E) above, when DALLAS ISD expends federal funds, Vendor certifies that Vendor will be in compliance with all applicable provisions of the Contract Work Hours and Safety Standards Act during the term of an award for all contracts by DALLAS ISD resulting from this procurement process. Does Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| F) Rights to Inventions Made Under a Contract or Agreement. If the Federal award meets the definition of "funding agreement" under 37 CFR 401.2 (a) and the recipient or sub-recipient wishes to enter into a contract with a small business firm or nonprofit organization regarding the substitution of parties, assignment or performance of experimental, developmental, or research work under that "funding agreement," the recipient or subrecipient must comply with the requirements of 37 CFR Part 401, "Rights to Inventions Made by Nonprofit Organizations and Small Business Firms Under Government Grants, Contracts and Cooperative Agreements," and any implementing regulations issued by the awarding agency. Pursuant to Federal Rule (F) above, when federal funds are expended by DALLAS ISD, the vendor certifies that during the term of an award for all contracts by DALLAS ISD resulting from this procurement process, the vendor agrees to comply with all applicable requirements as referenced in Federal Rule (F) above. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree |  |
+
+--- page 25 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 25 of 40
+first table:
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+|---|---|
+| No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| (G) Clean Air Act (42 U.S.C. 7401-7671q.) and the Federal Water Pollution Control Act (33 U.S.C. 1251- 1387), as amended - Contracts and subgrants of amounts in excess of $150,000 must contain a provision that requires the non-Federal award to agree to comply with all applicable standards, orders or regulations issued pursuant to the Clean Air Act (42 U.S.C. 7401-7671q) and the Federal Water Pollution Control Act as amended (33 U.S.C. 1251- 1387). Violations must be reported to the Federal awarding agency and the Regional Office of the Environmental Protection Agency (EPA). Pursuant to Federal Rule (G) above, when federal funds are expended by DALLAS ISD, the vendor certifies that during the term of an award for all contracts by DALLAS ISD members resulting from this procurement process, the vendor agrees to comply with all applicable requirements as referenced in Federal Rule (G) above. Does Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| (H) Debarment and Suspension (Executive Orders 12549 and 12689) - A contract award (see 2 CFR 180.220) must not be made to parties listed on the government-wide exclusions in the System for Award Management (SAM), in accordance with the OMB guidelines at 2 CFR 180 that implement Executive Orders 12549 (3 CFR part 1986 Comp., p. 189) and 12689 (3 CFR part 1989 Comp., p.235), "Debarment and Suspension." SAM Exclusions contain the names of parties debarred, suspended, or otherwise excluded by agencies, as well as parties declared ineligible under statutory or regulatory authority other than Executive Order 12549. Pursuant to Federal Rule (H) above, when federal funds are expended by DALLAS ISD, the vendor certifies that during the term of an award for all contracts by DALLAS ISD resulting from this procurement process, the vendor certifies that neither it nor its principals are presently debarred, suspended, proposed for debarment, declared ineligible, or voluntarily excluded from participation by any federal department or agency. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+
+--- page 26 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 26 of 40
+first table:
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+|---|---|
+| Congress, an officer or employee of Congress, or an employee of a Member of Congress in connection with the awarding of a Federal contract, the making of a Federal grant, the making of a Federal loan, the entering into a cooperative agreement, and the extension, continuation, renewal, amendment, or modification of a Federal contract, grant, loan, or cooperative agreement. 2. If any funds other than Federally appropriated funds have been paid or will be paid to any person for influencing or attempting to influence an officer or employee of any agency, a Member of Congress, an officer or employee of Congress, or an employee of a Member of Congress in connection with this Federal grant or cooperative agreement, the undersigned shall complete and submit Standard Form- LLL, "Disclosure Form to Report Lobbying", in accordance with its instructions. 3. The undersigned shall require that the language of this certification is included in the award documents for all covered sub-awards exceeding $100,000 in Federal funds at all appropriate tiers and that all subrecipients shall certify and disclose accordingly. Does the Vendor Agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| (J) Procurement of Recovered Materials - When federal funds are expended by Dallas ISD, Dallas ISD and its contractors must comply with section 6002 of the Solid Waste Disposal Act, as amended by the Resource Conservation and Recovery Act. The requirements of Section 6002 include: 1. procuring only items designated in guidelines of the Environmental Protection Agency (EPA) at 40 CFR part 247 that contain the highest percentage of recovered materials practicable, consistent with maintaining a satisfactory level of competition, where the purchase price of the item exceeds $10,000 or the value of the quantity acquired during the preceding fiscal year exceeded $10,000; 2. procuring solid waste management services in a manner that maximizes energy and resource recovery; and 3. establishing an affirmative procurement program for procurement of recovered materials identified in the EPA guidelines. Pursuant to Federal Rule (J) above, when federal funds are expended by Dallas ISD as required by the signing this document, that the percentage of recovered materials content for EPA-designated items to be delivered or used in the performance of the contract will be at least the amount required by the applicable contract specifications or other contractual requirements. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| (K) Required Affirmative Steps for Small, Minority, And Women-Owned Firms for Contracts Paid for with Federal Funds - 2 CFR 200.321 - When federal funds are expended by Dallas ISD, the Vendor is required to take all affirmative steps set forth in 2 CFR 200.321 to solicit and reach out to small, minority and women-owned firms for any subcontracting opportunities on the project, including: 1. Placing qualified small and minority businesses and women's business enterprises on solicitation lists; 2. Assuring that small and minority businesses, and women's business enterprises are solicited whenever they are potential sources; 3. Dividing total requirements, when economically feasible, into smaller tasks or quantities to permit maximum participation by small and minority businesses, and women's business enterprises; 4. Establishing delivery schedules, where the requirement permits, which encourage participation by |  |
+
+--- page 27 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 27 of 40
+first table:
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+|---|---|
+| small and minority businesses, and women's business enterprises; and 5. Using the services and assistance, as appropriate, of such organizations as the Small Business Administration and the Minority Business Development Agency of the Department of Commerce. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| RECORD RETENTION REQUIREMENTS FOR CONTRACTS INVOLVING FEDERAL FUNDS When federal funds are expended by DALLAS ISD for any contract resulting from this procurement process, the Vendor certifies that it will comply with the record retention requirements detailed in 2 CFR 200.333. The Vendor further certifies that Vendor will retain all records as required by 2 CFR 200.333 for a period of three years after grantees or subgrantees submit final expenditure reports or quarterly or annual financial reports, as applicable, and all other pending matters are closed. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| CERTIFICATION OF COMPLIANCE WITH EPA REGULATIONS APPLICABLE TO GRANTS, SUBGRANTS, COOPERATIVE AGREEMENTS, AND CONTRACTS IN EXCESS OF $100,000 OF FEDERAL FUNDS When federal funds are expended by Dallas ISD for any contract resulting from this procurement process in excess of $100,000, the vendor certifies that the vendor is in compliance with all applicable standards, orders, regulations, and/or requirements issued pursuant to the Clean Air Act of 1970, as amended (42 U.S.C. 1857(h)), Section 508 of the Clean Water Act, as amended (33 U.S.C. 1368), Executive Order 117389 and Environmental Protection Agency Regulation, 40 CFR Part 15. Does Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+
+--- page 28 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 28 of 40
+first table:
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+|---|---|
+| and/or termination of any award |  |
+| CERTIFICATION OF COMPLIANCE WITH BUY AMERICA PROVISIONS Vendor certifies that Vendor is in compliance with all applicable provisions of the Buy America Act. Purchases made in accordance with the Buy America Act must still follow the applicable procurement rules calling for free and open competition. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| CERTIFICATION OF NON-COLLUSION STATEMENT The vendor certifies under penalty of perjury that its response to this procurement solicitation is in all respects bona fide, fair, and made without collusion or fraud with any person, joint venture, partnership, corporation, or other business or legal entity. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+
+--- page 29 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 29 of 40
+first table:
+| FEDERAL REQUIREMENTS (EDGAR) |  |
+|---|---|
+| PROHIBITION ON CERTAIN TELECOMMUNICATIONS AND VIDEO SURVEILLANCE SERVICES OR EQUIPMENT - 2 C.F.R 200.216 a. Recipients and subrecipients are prohibited from obligating or expending loan or grant funds to: 1. Procure or obtain; 2. Extend or renew a contract to procure or obtain; or 3. Enter into a contract (or extend or renew a contract) to procure or obtain equipment, services, or systems that uses covered telecommunications equipment or services as a substantial or essential component of any system, or as critical technology as part of any system. As described in Public Law 115-232, section 889, covered telecommunications equipment is telecommunications equipment produced by Huawei Technologies Company or ZTE Corporation (or any subsidiary or affiliate of such entities). i. For the purpose of public safety, security of government facilities, physical security surveillance of critical infrastructure, and other national security purposes, video surveillance and telecommunications equipment produced by Hytera Communications Corporation, Hangzhou Hikvision Digital Technology Company, or Dahua Technology Company (or any subsidiary or affiliate of such entities). ii. Telecommunications or video surveillance services provided by such entities or using such equipment. iii. Telecommunications or video surveillance equipment or services produced or provided by an entity that the Secretary of Defense, in consultation with the Director of the National Intelligence or the Director of the Federal Bureau of Investigation, reasonably believes to be an entity owned or controlled by, or otherwise connected to, the government of a covered foreign country. b. In implementing the prohibition under Public Law 115-232, section 889, subsection (f), paragraph (1), heads of executive agencies administering loan, grant, or subsidy programs shall prioritize available funding and technical support to assist affected businesses, institutions, and organizations as is reasonably necessary for those affected entities to transition from covered communications equipment and services, to procure replacement equipment and services, and to ensure that communications service to users and customers is sustained. Does the Vendor agree? ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| AGREEMENT TO COMPLY The vendor agrees to comply with all federal, state, and local laws, rules, regulations, and ordinances, as applicable. It is further acknowledged that the vendor certifies compliance with all provisions, laws, acts, regulations, etc. as specifically noted above. ----------------------------------------------------------------------------------------------------------------------------------------------- Type …………………………………………………………………………………………………………………………….. Circle one from the response values below: Yes - I agree No - I Do not agree . The District shall consider a NO response a basis for non-award and/or cancellation and/or termination of any award |  |
+| EVALUATION PROCESS |  |
+
+--- page 30 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 30 of 40
+first table:
+| EVALUATION PROCESS |  |
+|---|---|
+| right to establish scoring criteria that comply with applicable law as well as the District's bid protest procedures outlined in the General Terms and Conditions below. b. Even when an award to a single Offeror is envisioned, the District reserves the right, in its sole discretion, to make awards to multiple Offerors (or to make no award at all). c. Non-responsive or disqualified Offers will be not eligible for award consideration. Reasons for being deemed non-responsive or being disqualified include but are not limited to not meeting requirements of the proposal, receipt of Offer after date/time posted; failure to sign the Offer; failure to include one or more Conditions of Service/Term Agreement. d. The District reserves the right to reject any use of Offeror's terms and conditions of any kind, including web links to any online terms and conditions, or requiring the use of Offeror's form of agreement. |  |
+| BEST VALUE INCENTIVES Consideration will be given to Offerors who include best value incentives or value-adds at no additional cost to the District. To be considered, these incentives/value-adds must be clearly disclosed. |  |
+| DISCUSSIONS/NEGOTIATIONS a. During the evaluation of certain Offers, the District may hold discussions/negotiations with Offerors that are in the competitive range to provide the goods and/or services described in this solicitation. Discussions will NOT be conducted for Competitive Sealed Proposals. Discussions may be conducted for responses to Requests for Proposals or Requests for Qualifications; however, the District reserves the right to award (or not award) a Contract without conducting any discussions; therefore, Offerors are encouraged to provide their best Offer initially and not anticipate the opportunity to make a better offer later. b. If conducted, discussions will be held at a place, time, and date as determined by the District. All associated costs incurred by an Offeror in connection with the discussions will be at Offeror's own expense. Additionally, a selected Offeror(s) may be required to attend one or more Board Briefings and/or Board Meetings to address questions about the Offer and any resulting Contract. Such attendance shall be at no additional cost to the District. |  |
+
+--- page 31 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 31 of 40
+first table:
+| EVALUATION PROCESS |  |
+|---|---|
+| by providing a written and detailed M/WBE compliance plan, designating a high ranking individual who will be responsible for M/WBE contract compliance, monitoring, and reporting, ensuring no unauthorized changes to M/WBE subcontractors, adhering to the M/WBE commitment and subcontractor payment terms, executing the M/WBE subcontracting schedule, complying with the district's M/WBE Program guidelines, etc. - 5 Points 7.Total long-term cost to the district - 0 Points 8.Principal place of business or number of employees in the State - 0 Points 9.Other relevant factors specifically listed in this proposal - 0 Points Total Points - 100 |  |
+| PROPOSAL GENERAL INFORMATION |  |
+| BACKGROUND INFORMATION / BASIC REQUIREMENTS 1. In this document, "Offer" refers to a response to any District solicitation (CSP, RFP, or RFQ). "Bid" refers specifically to a response to a solicitation. and" Proposal" refers specifically to a response to an RFP or RFQ. "Offeror" refers to the person or entity submitting an Offer, but may be used synonymously with & "Vendor" "Contractor", "Provider", or similar. Additional terms are defined throughout this document. 2. Although Offeror is required to sign the Offer upon submission, no enforceable contract will be formed unless (i) the District's Executive Director of Procurement formally accepts the Offer in writing; (ii) the Contract is approved as to form by the District's Office of Legal Services; and (iii) the District's Board of Trustees or designee has granted all approvals required by Dallas ISD Board Policy. Once an enforceable Contract has been formed, the District will issue a formal Purchase Order to request the provision of goods and/or services under the Contract. Vendors must not deliver (or incur any costs or expenses preparing to deliver) any goods and/or services prior to the Offeror's receipt of a formal Purchase Order from the District. Oral orders and/or any order requested through any method other than a formal Purchase Order are invalid and the District will have no financial responsibility for same. 3. The Effective Date of any Contract resulting from this solicitation is the date that the award is approved by Dallas ISD's Board of Trustees or designated representative unless otherwise indicated within this document. Once the Board/District approves an Offeror for an award, weeks or months may pass before the District issues a formal Purchase Order requesting the delivery of goods and/or services under the Contract. In some cases, the District may never issue a Purchase Order under the Contract. The District intends to act in good faith and communicate with Offeror about the issuance of Purchase Orders. |  |
+
+--- page 32 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 32 of 40
+first table:
+| PROPOSAL GENERAL INFORMATION |  |
+|---|---|
+| in disqualification. All communication shall go through the Procurement Services Department during this competitive process. All questions received and the corresponding answers will be distributed to all bidders. No verbal responses will be provided. The deadline for questions about this proposal is stated in the Bid Activities and the district will not respond to questions after this time and date. Response to questions will be posted in the form of an addendum to this proposal. The vendors will be responsible for checking the website for any posted addenda. |  |
+| AWARD STATEMENT This Proposal may be awarded to one or multiple vendors by line item, section, or package as determined to be the best value to Dallas Independent School District. Dallas ISD reserves the right to negotiate with any or all respondents and accept or reject any and/or all proposals, waive any formalities and/or irregularities, and award in the best interest of the District. |  |
+| ORAL STATEMENT No oral statement of any person shall modify or otherwise change, or affect the terms, conditions, or specifications stated in the resulting contract. |  |
+
+--- page 33 | 126 chars | 2 tables | empty=False
+headings: ['1.4 Attachments']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / 1.4 Attachments /  / Dallas ISD rev 2.0   Page 33 of 40
+first table:
+| SIGNATURE AND DECLARATION OF COMPLIANCE |  |
+|---|---|
+| Type …………………………………………………………………………………………………………………………….. Provide your answer below |  |
+
+--- page 34 | 148 chars | 1 tables | empty=False
+headings: ['2 Price Schedule', '2.1 Line Information']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / 2 Price Schedule / 2.1 Line Information /  / Dallas ISD rev 2.0   Page 34 of 40
+first table:
+| Line | Item, Rev | Target Quantity | Unit | Unit Price | Amount | Bid Minimum Release Amount |
+|---|---|---|---|---|---|---|
+| 1 Tier 1 Small Student Chromebook Laptop (Touch) |  | 1 | Each |  |  |  |
+| 2 Tier 2 Large Student Chromebook Laptop (Non- Touch) |  | 1 | Each |  |  |  |
+| 3 Tier 3 Student Windows Laptop |  | 1 | Each |  |  |  |
+
+--- page 35 | 109 chars | 1 tables | empty=False
+headings: []
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Dallas ISD rev 2.0   Page 35 of 40
+first table:
+| Line | Item, Rev | Target Quantity | Unit | Unit Price | Amount | Bid Minimum Release Amount |
+|---|---|---|---|---|---|---|
+| 15.01 Tier 1 Small Student Chromebook Laptop (Touch) |  | 50,000 | Each |  |  |  |
+| 15.02 Tier 2 Large Student Chromebook Laptop (Non- Touch) |  | 50,000 | Each |  |  |  |
+| 16 STUDENT LAPTOPS - FOR EVALUATION PURPOSES (Pricing required to be considered for this category) |  |  |  |  |  |  |
+
+--- page 36 | 927 chars | 4 tables | empty=False
+headings: ['2.2 Line Details', '2.2.1 Line 1 Tier 1 Small Student Chromebook Laptop (Touch)', '2.2.3 Line 3 Tier 3 Student Windows Laptop', '2.2.4 Line 4 Student Tablet', '2.2.5 Line 5 Tier 1 Staff Basic Desktop']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / 2.2 Line Details / 2.2.1 Line 1 Tier 1 Small Student Chromebook Laptop (Touch) / Note   All minimum specifications for student an
+first table:
+| Description | Response Value |
+|---|---|
+| Proposed Device Make and Model |  |
+
+--- page 37 | 964 chars | 5 tables | empty=False
+headings: ['2.2.6 Line 6 Tier 2 Staff Professional Desktop', '2.2.7 Line 7 Tier 1 Staff Laptop', '2.2.8 Line 8 Tier 2 Staff Laptop', '2.2.9 Line 9 Display Monitor - Touch']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / Note   All minimum specifications for student and staff devices detailed in this RFP must be met for each / specific device pro
+first table:
+| Description | Response Value |
+|---|---|
+| Proposed Device Make and Model |  |
+
+--- page 38 | 961 chars | 5 tables | empty=False
+headings: ['2.2.10 Line 10 Display Monitor - Non-Touch', 'etching, and delivery', 'submission to ensure the District can verify pricing', '2.2.15 Line 15.01 Tier 1 Small Student Chromebook Laptop (Touch)']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / 2.2.10 Line 10 Display Monitor - Non-Touch / Note   All minimum specifications for student and staff devices detailed in this R
+first table:
+| Description | Response Value |
+|---|---|
+
+--- page 39 | 909 chars | 5 tables | empty=False
+headings: ['2.2.17 Line 16.01 Tier 3 Student Windows Laptop', '2.2.18 Line 17.01 Student Tablet', '2.2.19 Line 18.01 Tier 1 Staff Laptop', '2.2.20 Line 18.02 Tier 2 Staff Laptop']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / General /  / 2.2.16 Line 15.02 Tier 2 Large Student Chromebook Laptop (Non- Touch) / Note   All minimum specifications for student 
+first table:
+| Description | Response Value |
+|---|---|
+| Proposed Device Make and Model |  |
+
+--- page 40 | 858 chars | 5 tables | empty=False
+headings: ['2.2.21 Line 19.01 Tier 1 Staff Basic Desktop', '2.2.22 Line 19.02 Tier 2 Staff Professional Desktop', '2.2.23 Line 20.01 Display Monitor - Touch', '2.2.24 Line 20.02 Display Monitor - Non-Touch']
+text start: Request For Proposal 168884 JA-207652 Student and Staff Computing Devices /  / 2.2.21 Line 19.01 Tier 1 Staff Basic Desktop / Note   All minimum specifications for student and staff devices detailed in this
+first table:
+| Description | Response Value |
+|---|---|
+
+--- page 41 | 536 chars | 3 tables | empty=False
+headings: ['GOODS AND SERVICES', 'M/WBE COMPLIANCE GUIDELINES AND FORMS']
+text start: Goods and Services M/WBE Department |9400 N. Central Expressway, Dallas, TX 75231 |972.925.4140 | www.dallasisd.org/mwbe /  / GOODS AND SERVICES /  / M/WBE COMPLIANCE GUIDELINES AND FORMS /  / The information gat
+first table:
+| Bid/RFP Number: |  |  | Total Proposed Price: | $ |  |
+|---|---|---|---|---|---|
+| Bid/RFP Title: |  |  |  |  |  |
+|  | Description of Work* |  |  |  |  |
+
+--- page 42 | 803 chars | 3 tables | empty=False
+headings: ['Company Name:', 'Bid/RFP No.:', 'Section 1. | Diversity Plans', 'Section 2. | Workforce Composition', 'Section 3. | References', 'Section 4. | Mentor Protégé']
+text start: Company Name:   Bid/RFP No.: /  / Section 1. | Diversity Plans /  / Does your company have an Affirmative Action, Equal Employment Opportunity or Supplier Diversity Plan? /  / Yes   If “Yes,” attach a copy of you
+first table:
+| Employee Category |  |  | African American |  |  |  |  |  | Asian |  |  |  |  |  | Hispanic |  |  |  |  |  | Native American |  |  |  |  |  | Non-Minority |  |  |  |  |  |  |  | Total Employees |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|  |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  |  |  | Male |  |  | Female |  |  |
+| Executive & Managerial |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Technical & Skilled |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+
+--- page 43 | 874 chars | 3 tables | empty=False
+headings: ['Company Name:', 'Bid/RFP No.:', 'Section 5. | Prime-Subcontractor Team', 'Section 6. | Joint Venture (JV)']
+text start: Company Name:   Bid/RFP No.: /  / Section 5. | Prime-Subcontractor Team /  / Is your company bidding as a Prime-Subcontractor Team with a certified M/WBE company? / Refer to Section 16 on Page 11 for additional
+first table:
+| M/WBE Company | M/WBE Certification Agency |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|
+|  |  |  | M/WBE Certification Number |  |  | Ethnicity/Gender |  |
+
+--- page 44 | 931 chars | 3 tables | empty=False
+headings: ['Company Name:', 'Bid/RFP No.:', 'Diversity Plans', 'Workforce Composition', 'M/WBE References', 'Mentor Protégé Program']
+text start: Company Name:   Bid/RFP No.: /  / COMPLETE SECTIONS A THROUGH D FOR EACH JOINT VENTURE PARTNER(S). USE ONE PAGE PER PARTNER /  / Section A.   Diversity Plans / Does your company have an Affirmative Action, Equa
+first table:
+| Employee Category |  |  | African American |  |  |  |  |  | Asian |  |  |  |  |  | Hispanic |  |  |  |  |  | Native American |  |  |  |  |  | Non-Minority |  |  |  |  |  |  |  | Total Employees |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|  |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  | Male |  |  | Female |  |  |  |  | Male |  |  | Female |  |  |
+| Executive & Managerial |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Technical & Skilled |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+
+--- page 45 | 1771 chars | 2 tables | empty=False
+headings: ['Company Name:', 'Bid/RFP No.:', 'Section 7. | Subcontractor and Prime Self-Performance Participation', 'Section 8. | Certified M/WBE Prime Self-Performance', 'Certified M/WBE Prime Self-Performance', 'Section 9. | Subcontractor Utilization']
+text start: Company Name:   Bid/RFP No.: /  / Section 7. | Subcontractor and Prime Self-Performance Participation / Will you use any subcontractors, sub consultants, suppliers (M/WBE and/or Non-M/WBE) as part of this b
+first table:
+|  | Certified M/WBE Prime Self-Performance |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|
+| Certified M/WBE Prime Company’s Name: |  |  |  |  | Contract Amount | M/WBE % |  |
+| Contact Person: |  |  |  |  |  |  |  |
+| Ethnicity: |  |  | Gender: |  |  |  |  |
+
+--- page 46 | 223 chars | 2 tables | empty=False
+headings: ['Company Name:', 'Bid/RFP No.:']
+text start: Company Name:   Bid/RFP No.: /  / If you have additional subcontractors/suppliers please make copies of this form. /  / Last update 8.7.2020   Dallas ISD M/WBE Compliance Guidelines and Forms for Goods and Se
+first table:
+|  | Subcontractor/Supplier Information Continued |  |  |  |  |  |  |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Subcontractor/Supplier Company’s Name: |  |  |  |  |  |  |  | Contract Amount |  |  | M/WBE % |  |  |
+| Address: |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Contact Person: |  |  |  |  |  |  |  |  |  |  |  |  |  |
+
+--- page 47 | 1000 chars | 3 tables | empty=False
+headings: ['Company Name:', 'Bid/RFP No.:', 'Section 10. | Good Faith Effort']
+text start: Company Name:   Bid/RFP No.: /  / Certified M/WBE Subcontractor Performance. The M/WBE subcontractors, suppliers, and/or vendors must be 1st, 2nd or / 3rd tier subcontractors, suppliers, and/or vendors when
+first table:
+|  |  | Type |  |  | M/WBE |  |  | Definition |
+|---|---|---|---|---|---|---|---|---|
+|  |  |  |  |  | Percentage |  |  |  |
+| A. | M/WBE Manufacturer |  |  | 100% |  |  | Operates or maintains a factory or establishment that produces on the premises; the materials, supplies, articles, or equipment required under the contract. |  |
+| B. | M/WBE Regular Dealer |  |  | 60% |  |  | Owns, operates, or maintains a store, warehouse, in which the materials, supplies, articles or equipment are kept in stock, and regularly sold or leased to the public. |  |
+
+--- page 48 | 3535 chars | 2 tables | empty=False
+headings: ['Company Name:', 'Bid/RFP No.:', 'M/WBE Subcontractor’s Information:', 'Prime Vendor’s Information:', 'Declaration of Prime Vendor/Declarant:']
+text start: Company Name:   Bid/RFP No.: /  / Section 11. | Letter of Intent (LOI) [Not required with the initial bid/proposal] /  / To be submitted at the contract negotiation meeting with the district, or as requested 
+first table:
+| M/WBE Subcontractor Signature Required Review the above information for accuracy prior to signing this Letter of Intent. x |
+|---|
+| Print or Type Name and Title of M/WBE Owner, President or Authorized Agent Signature Date |
+
+--- page 49 | 1805 chars | 2 tables | empty=False
+headings: ['General Information regarding the M/WBE Compliance Guidelines and Forms', 'Section 12. | During Bid/Proposal Submission']
+text start: General Information regarding the M/WBE Compliance Guidelines and Forms /  / The district’s aspirational M/WBE goal is 30% for goods, services, and construction contracts. The district’s aspirational / M/WB
+first table:
+|  |  |  | M/WBE Criteria |  |  |  | Maximum |  |
+|---|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  | Point |  |
+|  |  |  |  |  |  |  | Allocation |  |
+| A. |  |  | Proposer demonstrated a commitment to the district’s M/WBE program by providing enhancements to the administration of the proposer’s contracting process for the work to be done by M/WBE firms. Examples of this commitment may include any of the following: expedited payments, Mentor Protégé Programs, early release of retainage, expanding the pool of diverse subcontractors to firms that have not done business with the district, etc. |  |  | 3 |  |  |
+
+--- page 50 | 3213 chars | 0 tables | empty=False
+headings: ['Section 13. | Recognized Certifying Agencies', 'Section 14. | Certified M/WBE Prime Self-Performance', 'Section 15. | After Bid/RFP Submission']
+text start: Section 13. | Recognized Certifying Agencies /  / The district accepts M/WBE certifications issued by: /  / North Central Texas Regional Certification Agency (NCTRCA)   State of Texas’ Historically Underutili
+
+--- page 51 | 3368 chars | 0 tables | empty=False
+headings: ['Section 16. | Prime-Subcontractor Teaming Agreement']
+text start: Changes to the List of Subcontractors. A Request for Approval of Contract Change form must be submitted to the M/WBE / Department for approval prior to any changes to the M/WBE subcontractor utilization
+
+--- page 52 | 1824 chars | 3 tables | empty=False
+headings: ['Section 17. | Joint Venture Program Information']
+text start: Section 17. | Joint Venture Program Information /  / The objective of the district’s Joint Venture (JV) Program is to further the development, growth, and capabilities of / minority and women-owned business
+first table:
+|  |  |  | Teaming Agreement Scoring Analysis |  |  |  | Located |  |  | Available |  |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  | on Page |  |  | Points |  |
+| A. |  |  | The teaming agreement provides the certified M/WBE firm(s) with prime management, control and supervision of a clear and distinct portion of the project scope of work in meaningful and significant roles. |  |  |  |  |  | 2.00 |  |  |
+| B. |  |  | A pre-negotiated subcontract form is an exhibit to the teaming agreement. |  |  |  |  |  | 1.00 |  |  |
+
+--- page 53 | 1275 chars | 2 tables | empty=False
+headings: ['Section 19. | Mentor Protégé Program Information']
+text start: The Joint Venture (JV) Agreement will be evaluated based upon the below referenced criteria. One of the JV partners / must be a certified minority or woman-owned business. There is a maximum of five (5)
+first table:
+| Section 18. \| Goods and Services M/WBE Joint Venture Scoring Analysis |
+|---|
+
+--- page 54 | 4 chars | 0 tables | empty=False
+headings: []
+text start: SIGN
+
+--- page 55 | 0 chars | 0 tables | empty=True
+headings: []
+text start: 
+
+--- page 56 | 0 chars | 0 tables | empty=True
+headings: []
+text start: 
+
+--- page 57 | 0 chars | 0 tables | empty=True
+headings: []
+text start: 
+
+--- page 58 | 0 chars | 0 tables | empty=True
+headings: []
+text start: 
+
+--- page 59 | 0 chars | 0 tables | empty=True
+headings: []
+text start: 
+
+--- page 60 | 1295 chars | 0 tables | empty=False
+headings: ['SUPERINTENDENT OF SCHOOLS', 'Dallas ISD Procurement Punch-Out Process', 'is a buyer’s responsibility)']
+text start: STEPHANIE S. ELIZALDE, ED.D. / SUPERINTENDENT OF SCHOOLS /  / Dallas ISD Procurement Punch-Out Process /  Supplier submits completed form to the Buyer with a copy to the E-Commerce Supervisor /  Buyer meets w
+
+--- page 61 | 839 chars | 1 tables | empty=False
+headings: ['Dallas Independent School District', 'Punch-out Setup Request']
+text start: Dallas Independent School District / Punch-out Setup Request /  / PLEASE COMPLETE THE FORM BELOW AND RETURN TO DGORACLEFDTEAM@DALLASISD.ORG. /  / Dallas ISD Procurement Application: / Oracle Applications, Release
+first table:
+|  | Supplier Details |  |  |  |  |  |  |  |
+|---|---|---|---|---|---|---|---|---|
+|  | Supplier Name |  |  |  |  |  |  |  |
+|  | Supplier Address 1 |  |  |  |  |  |  |  |
+|  | Supplier Address 2 |  |  |  |  |  |  |  |
+
+--- page 62 | 346 chars | 0 tables | empty=False
+headings: ['Dallas Independent School District', 'Punch-out Setup Request']
+text start: Dallas Independent School District / Punch-out Setup Request /  / When delivering the PunchOutOrderMessage, you must use HTML form encoding as described below. /  / Please direct all procurement questions to Sh
+
+Full output saved to data/processed/JA-207652 Student and Staff Computing Devices FINAL.json

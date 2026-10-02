@@ -1,0 +1,19 @@
+PORFP_-_Dell_Laptop_Final.pdf: 4 pages, errors=[]
+
+--- page 1 | 2412 chars | 0 tables | empty=False
+headings: ['Purchase Order Request for Proposals (PORFP)', 'Hardware Master Contract']
+text start: Purchase Order Request for Proposals (PORFP) / Hardware Master Contract /  / 1 /  / Section 1 –General Information /  / PORFP Number: #E20P4600040 eMMA Project Number: BPM044557 /  / PORFP Type: Fixed Price /  / Functional
+
+--- page 2 | 2068 chars | 0 tables | empty=False
+headings: ['Purchase Order Request for Proposals (PORFP)', 'Hardware Master Contract']
+text start: Purchase Order Request for Proposals (PORFP) / Hardware Master Contract /  / 2 /  / Questions Due (Closing) Date and Time: 06/01/2024 at 2:00 PM EDT Questions must be submitted in writing to thawkins@treasurer.
+
+--- page 3 | 2177 chars | 0 tables | empty=False
+headings: ['Purchase Order Request for Proposals (PORFP)', 'Hardware Master Contract']
+text start: Purchase Order Request for Proposals (PORFP) / Hardware Master Contract /  / 3 /  / Agency POC Name: | Tamaira Hawkins | Agency POC | 410-260-7533 /  / Phone Number: /  / Agency POC Email Address: | thawkins@treasurer.
+
+--- page 4 | 726 chars | 0 tables | empty=False
+headings: ['Purchase Order Request for Proposals (PORFP)', 'Hardware Master Contract']
+text start: Purchase Order Request for Proposals (PORFP) / Hardware Master Contract /  / 4 /  / Evaluation Criteria /  / 1. Accuracy of Bid (Meets All Requirements) /  / 2. Price /  / Basis for Award Recommendation Evaluation criteria
+
+Full output saved to data/processed/PORFP_-_Dell_Laptop_Final.json
