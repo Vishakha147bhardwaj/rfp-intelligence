@@ -13,6 +13,9 @@ from rfp.search.engine import MODES, SearchEngine, SearchResult
 from rfp.search.indexer import IndexReport, index_documents, load_manifest
 from rfp.search.store import ChunkStore
 from rfp.settings import PROJECT_ROOT, get_settings
+from rfp.agents.qa import QAAnswer, run_question
+from rfp.llm.client import LLMClient, LLMError
+from rfp.schemas.agents import BidRecord
 
 
 class IndexRequest(BaseModel):
@@ -33,6 +36,19 @@ class SearchResponse(BaseModel):
     count: int
     results: list[SearchResult]
 
+class AskRequest(BaseModel):
+    question: str = Field(..., min_length=3, examples=["What is the submission deadline for Bid1?"])
+
+
+class ExtractRequest(BaseModel):
+    bid_id: str = Field(..., examples=["Bid1"])
+
+
+class ExtractResponse(BaseModel):
+    record: BidRecord
+    trace_dir: str
+    errors: list[str]
+
 
 def _resolve_bid_folder(folder: str) -> Path:
     """Only allow folders inside the configured bids_dir."""
@@ -45,7 +61,7 @@ def _resolve_bid_folder(folder: str) -> Path:
     return path
 
 
-def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore) -> FastAPI:
+def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore,llm_factory: Callable[[], LLMClient] = LLMClient) -> FastAPI:
     """Build the app. Tests pass a factory that opens a temporary store."""
 
     @asynccontextmanager
@@ -110,7 +126,29 @@ def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore) -> FastAPI:
                 doc_type=doc_type, addendum_number=addendum_number,
             )
         return SearchResponse(query=q, mode=mode, count=len(results), results=results)
+    def get_llm(request: Request) -> LLMClient:
+        if getattr(request.app.state, "llm", None) is None:
+            try:
+                request.app.state.llm = llm_factory()
+            except LLMError as exc:
+                raise HTTPException(503, f"LLM unavailable: {exc}") from exc
+        return request.app.state.llm
 
+    @app.post("/ask", response_model=QAAnswer)
+    def ask(req: AskRequest, request: Request) -> QAAnswer:
+        """Q&A mode: cited answer to a question about the indexed bids."""
+        return run_question(req.question, request.app.state.store, get_llm(request))
+
+    @app.post("/extract", response_model=ExtractResponse)
+    def extract(req: ExtractRequest, request: Request) -> ExtractResponse:
+        """Extraction mode: run the multi-agent pipeline for an indexed bid (takes a few minutes)."""
+        from rfp.agents.graph import run_extraction
+
+        store = request.app.state.store
+        if store.count(bid_id=req.bid_id) == 0:
+            raise HTTPException(404, f"Bid {req.bid_id} is not indexed - POST /index first")
+        record, run_dir, errors = run_extraction(req.bid_id, store, get_llm(request))
+        return ExtractResponse(record=record, trace_dir=str(run_dir), errors=errors)
     return app
 
 

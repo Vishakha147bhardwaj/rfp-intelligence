@@ -1,0 +1,68 @@
+## Q: What is the submission deadline for Bid1 after all addendums?
+
+**Answer:** Addendum No. 2 extended the due date for Bid1 (RFP JA-207652) to July 9, 2024 at 2:00 PM CST [2]. This replaces the original Solicitation Due date of 27-JUN-2024 14:00 [4]. Addendum 1 said Dallas ISD did not anticipate extending the deadline [3], and Addendum 2 later changed it [2].
+
+**Sources:**
+  - [2] Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1 (Bid1)
+  - [3] Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1 (Bid1)
+  - [4] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.2 (Bid1)
+
+_run qa-20261003-015055-947137 | bids: Bid1_
+
+---
+
+## Q: Which affidavits are required for the Dell laptop bid?
+
+**Answer:** The PORFP explicitly requires a Mercury Affidavit from the Master Contractor [2]. That affidavit states whether the offered products contain mercury [6]. The extended warranty section also says a "Warranty certificate or Affidavit" must be presented upon award [3]. A Contract Affidavit appears in the bid documents [4][5], but the RFP passages provided don't say it is required for this bid.
+
+**Sources:**
+  - [2] PORFP_-_Dell_Laptop_Final.pdf, p.2 (Bid2)
+  - [3] PORFP_-_Dell_Laptop_Final.pdf, p.3 (Bid2)
+  - [4] Contract_Affidavit.pdf, p.3 (Bid2)
+  - [5] Contract_Affidavit.pdf, p.1 (Bid2)
+  - [6] Mercury_Affidavit.pdf, p.1 (Bid2)
+
+_run qa-20261003-015120-2824be | bids: Bid2_
+
+---
+
+## Q: Compare the warranty requirements of both bids.
+
+**Answer:** Bid1 (Dallas ISD RFP JA-207652): Warranties start when equipment is placed into service and must equal or exceed those offered to the general public [1]. Repairs or replacements must be done at no cost within 5 business days of the District reporting the issue, and a temporary replacement device is expected if that deadline can't be met [1]. Minimum terms are 1 year for student Chromebooks and the student tablet, and 3 years for Windows laptops, desktops and monitors [2][4][6][7]. Warranties must be made by the OEM [6][8], and the awarded vendor can't transfer responsibility for materials and accessories without Dallas ISD's written approval [3]. Bid2 (Maryland Treasurer's Office PORFP, Dell laptops): It requires the Dell Limited Hardware Warranty extended to 3 years for all machines purchased [9]. A warranty certificate or affidavit is to be presented upon award [9]. The warranty starts on the date of delivery and ends 3 years after delivery [9]. Comparison: Both bids involve OEM warranties of at least 3 years for laptops. Bid1 adds service-time, replacement-device and tiered requirements, and starts the warranty at in-service date [1][2][6]. Bid2 specifies only the 3-year extended Dell warranty, starting at delivery [9]. The evidence for Bid2 doesn't mention a repair turnaround time.
+
+**Sources:**
+  - [1] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4 (Bid1)
+  - [2] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.6 (Bid1)
+  - [3] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.3 (Bid1)
+  - [4] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.5 (Bid1)
+  - [6] Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.3 (Bid1)
+  - [7] JA-207652 Student and Staff Computing Devices FINAL.pdf, p.4 (Bid1)
+  - [8] Addendum 1 RFP JA-207652 Student and Staff Computing Devices.pdf, p.2 (Bid1)
+  - [9] PORFP_-_Dell_Laptop_Final.pdf, p.3 (Bid2)
+
+_run qa-20261003-015142-267cd7 | bids: Bid1, Bid2_
+
+---
+
+## Q: Is a bid bond required, and if so, how much?
+
+**Answer:** Not found in documents.
+
+**Sources:**
+  - none
+
+_run qa-20261003-015232-75d273 | bids: Bid1, Bid2_
+
+---
+
+## Q: What changed in Addendum 2 compared to the original RFP?
+
+**Answer:** Addendum 2 extended the RFP's due date. The new due date is July 9, 2024 at 2:00 PM CST [1]. The evidence doesn't give the original due date, so I can't say how far it moved. The addendum is incorporated into any contract awarded under the solicitation [1].
+
+**Sources:**
+  - [1] Addendum 2 RFP JA-207652 Student and Staff Computing Devices.pdf, p.1 (Bid1)
+
+_run qa-20261003-015312-df3689 | bids: Bid1, Bid2_
+
+---
+

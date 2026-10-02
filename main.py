@@ -309,5 +309,25 @@ def extract(
     for e in errors:
         console.print(f"error: {e}", style="red", markup=False)
     console.print(f"JSON: outputs/{record.bid_id}.json | Trace: {run_dir}", markup=False)
+
+@app.command()
+def ask(
+    question: str = typer.Argument(..., help="A question about the bids"),
+    log: bool = typer.Option(True, help="Append the answer to outputs/qa_log.md"),
+) -> None:
+    """Answer a question about the indexed bids, with citations (Q&A mode)."""
+    from rfp.agents.qa import run_question
+
+    store = ChunkStore()
+    try:
+        result = run_question(question, store, log_answer=log)
+    finally:
+        store.close()
+
+    console.rule(f"Q: {question}")
+    console.print(result.answer, markup=False)
+    for c in result.citations:
+        console.print(f"  [{c.n}] {c.file}, p.{c.page} ({c.bid_id})", markup=False, style="dim")
+    console.print(f"bids: {', '.join(result.bid_ids)} | run: {result.run_id}", style="dim", markup=False)
 if __name__ == "__main__":
     app()
