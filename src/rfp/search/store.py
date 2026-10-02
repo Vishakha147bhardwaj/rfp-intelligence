@@ -59,5 +59,18 @@ class ChunkStore:
     def count(self, **conditions) -> int:
         return self.client.count(self.collection, count_filter=build_filter(**conditions), exact=True).count
 
+    def get_chunks(self, bid_id: str, file_name: str, chunk_indexes: list[int]) -> list[dict]:
+        """Payloads of specific chunks of one file, by chunk_index (for neighbour expansion)."""
+        if not chunk_indexes:
+            return []
+        points, _ = self.client.scroll(
+            self.collection,
+            scroll_filter=build_filter(bid_id=bid_id, file_name=file_name, chunk_index=list(chunk_indexes)),
+            limit=len(chunk_indexes),
+            with_payload=True,
+            with_vectors=False,
+        )
+        return [p.payload for p in points]
+
     def close(self) -> None:
         self.client.close()

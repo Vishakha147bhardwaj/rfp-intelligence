@@ -24,6 +24,7 @@ class SearchResult(BaseModel):
     doc_type: str
     addendum_number: int | None = None
     section: str | None = None
+    chunk_index: int | None = None
     text: str
     context_header: str
     score: float
@@ -104,7 +105,8 @@ class SearchEngine:
                 dense_rank=dense_ids.index(c) + 1 if c in dense_ids else None,
                 sparse_rank=sparse_ids.index(c) + 1 if c in sparse_ids else None,
                 **{k: payloads[c][k] for k in ("bid_id", "file_name", "page_number", "doc_type",
-                                                "addendum_number", "section", "text", "context_header")},
+                                                "addendum_number", "section", "text", "context_header",
+                                                "chunk_index")},
             )
             for c in candidates[:top_k]
         ]

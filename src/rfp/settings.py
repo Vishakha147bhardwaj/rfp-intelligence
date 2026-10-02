@@ -39,6 +39,8 @@ class AgentsConfig(BaseModel):
     per_query_k: int = 5
     per_field_k: int = 5
     extraction_tier: str = "fast"
+    neighbor_seeds: int = 2     # expand around this many top hits
+    neighbor_window: int = 1    # how many chunks before/after each seed
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 

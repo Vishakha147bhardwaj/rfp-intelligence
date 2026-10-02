@@ -63,3 +63,46 @@ def test_placeholders_and_shapes_are_normalized():
     assert normalize_value("W9 form", DOCS) == ["W9 form"]
     assert normalize_value(["W9", "  ", "Not specified"], DOCS) == ["W9"]
     assert normalize_value(["a", "b"], DUE) == "a; b"
+
+def test_neighbor_expansion_adds_adjacent_chunk():
+    seed = SearchResult(chunk_id="c0", bid_id="B1", file_name="specs.pdf", page_number=1,
+                        doc_type="specs", text="SKU table part 1", context_header="[h]",
+                        score=1.0, chunk_index=0)
+    tail = {"chunk_id": "c1", "bid_id": "B1", "file_name": "specs.pdf", "page_number": 1,
+            "doc_type": "specs", "addendum_number": None, "section": None,
+            "text": "340-DMMK table part 2", "context_header": "[h]", "chunk_index": 1}
+    fetched = []
+
+    def fake_fetch(bid_id, file_name, indexes):
+        fetched.append((file_name, indexes))
+        return [tail] if 1 in indexes else []
+
+    spec = FieldSpec(name="Part_no", group="g", format="list", description="d",
+                     queries=["sku"], expand_neighbors=True)
+    agent = RetrievalAgent(FakeEngine({"sku": [seed]}), AgentsConfig(), fetch_chunks=fake_fetch)
+    bundle = agent.gather("B1", [spec])
+
+    assert fetched == [("specs.pdf", [1])]                       # asked for the next chunk
+    assert [e.chunk_id for e in bundle.evidence] == ["c0", "c1"]
+    assert "340-DMMK" in bundle.evidence[1].text and bundle.neighbors_added == 1
+
+def test_id_patterns_add_missing_skus_but_not_phone_fragments():
+    spec = FieldSpec(name="Part_no", group="g", format="list", description="d", queries=["sku"],
+                     id_patterns=[r"(?<![\w-])\d{3}-[A-Z0-9]{4}(?![\w-])"])
+    head = SearchResult(chunk_id="c0", bid_id="B1", file_name="specs.pdf", page_number=1,
+                        doc_type="specs", text="Base   210-BLYZ\nCPU   379-BFNZ",
+                        context_header="[h]", score=1.0)
+    tail = SearchResult(chunk_id="c1", bid_id="B1", file_name="specs.pdf", page_number=1,
+                        doc_type="specs", text="Software   340-DMMK\nCall 410-260-7533",
+                        context_header="[h]", score=0.5)
+    agent = RetrievalAgent(FakeEngine({"sku": [head, tail]}), AgentsConfig())
+    bundle = agent.gather("B1", [spec])
+
+    drafts = [FieldDraft(field="Part_no", value=["210-BLYZ", "210-BLYZ"], evidence_ids=["E1"],
+                         confidence=0.9, reasoning="from the table")]
+    result = finalize_drafts([spec], drafts, bundle)["Part_no"]
+
+    assert result.value == ["210-BLYZ", "379-BFNZ", "340-DMMK"]   # deduped, completed, in order
+    assert "260-7533" not in result.value                           # phone fragment not a SKU
+    assert len(result.sources) == 2                                  # tail chunk is now cited
+    assert "Pattern check added 2" in result.notes

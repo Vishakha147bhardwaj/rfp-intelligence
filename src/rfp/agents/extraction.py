@@ -1,11 +1,13 @@
 """Extraction agent: fills one group of fields using ONLY the retrieved evidence."""
 
+import re
+
 import structlog
 from pydantic import BaseModel
 
 from rfp.agents.retrieval import EvidenceBundle
 from rfp.llm.client import LLMClient, LLMUsage
-from rfp.schemas.agents import FieldDraft, FieldResult, FieldSpec, FieldValueT, Source
+from rfp.schemas.agents import Evidence, FieldDraft, FieldResult, FieldSpec, FieldValueT, Source
 
 log = structlog.get_logger()
 
@@ -53,11 +55,12 @@ def _evidence_block(bundle: EvidenceBundle, names: list[str]) -> str:
 
 
 def normalize_value(value: FieldValueT, spec: FieldSpec) -> FieldValueT:
-    """Turn empty/placeholder answers into None and make list/text shapes consistent."""
+    """Turn empty/placeholder answers into None; consistent list/text shapes; no duplicate items."""
     if value is None:
         return None
     if isinstance(value, list):
         items = [v.strip() for v in value if v and v.strip().lower() not in EMPTY_VALUES]
+        items = list(dict.fromkeys(items))                      # dedupe, keep order
         if not items:
             return None
         return items if spec.format == "list" else "; ".join(items)
@@ -65,6 +68,30 @@ def normalize_value(value: FieldValueT, spec: FieldSpec) -> FieldValueT:
     if text.lower() in EMPTY_VALUES:
         return None
     return [text] if spec.format == "list" else text
+
+
+def complete_ids(value: list[str], spec: FieldSpec, cited: list[Evidence],
+                 bundle: EvidenceBundle) -> tuple[list[str], list[Evidence], list[str]]:
+    """Add identifiers matching spec.id_patterns that appear in the cited files' evidence.
+
+    The LLM locates the list (its citations tell us which files); code copies it exactly.
+    Returns (completed value, evidence used, identifiers added).
+    """
+    cited_files = {e.file_name for e in cited}
+    pool = [e for eid in bundle.by_field.get(spec.name, [])
+            if (e := bundle.get(eid)) and e.file_name in cited_files]
+    pool += [e for e in cited if e not in pool]
+
+    result, used, added = list(value), list(cited), []
+    for evidence in pool:
+        for pattern in spec.id_patterns:
+            for token in re.findall(pattern, evidence.text):
+                if token not in result:
+                    result.append(token)
+                    added.append(token)
+                    if evidence not in used:
+                        used.append(evidence)
+    return result, used, added
 
 
 def finalize_drafts(specs: list[FieldSpec], drafts: list[FieldDraft],
@@ -82,6 +109,7 @@ def finalize_drafts(specs: list[FieldSpec], drafts: list[FieldDraft],
 
         evidence = [e for eid in dict.fromkeys(draft.evidence_ids) if (e := bundle.get(eid))]
         value = normalize_value(draft.value, spec)
+        notes = draft.reasoning
 
         if value is not None and not evidence:
             log.warning("guardrail_no_citation", field=spec.name, value=str(draft.value)[:100])
@@ -89,16 +117,24 @@ def finalize_drafts(specs: list[FieldSpec], drafts: list[FieldDraft],
                 value=None, confidence=0.0,
                 notes=f"Rejected: value had no valid citation (model proposed {draft.value!r})",
             )
-        elif value is None:
+            continue
+        if value is None:
             results[spec.name] = FieldResult(value=None, confidence=round(draft.confidence, 2),
                                              notes=f"{NOT_FOUND}. {draft.reasoning}".strip())
-        else:
-            results[spec.name] = FieldResult(
-                value=value,
-                sources=[Source(file=e.file_name, page=e.page_number, chunk_id=e.chunk_id) for e in evidence],
-                confidence=round(draft.confidence, 2),
-                notes=draft.reasoning,
-            )
+            continue
+
+        if spec.id_patterns and isinstance(value, list):
+            value, evidence, added = complete_ids(value, spec, evidence, bundle)
+            if added:
+                log.info("id_pattern_completion", field=spec.name, added=len(added))
+                notes += f" [Pattern check added {len(added)} item(s) from cited evidence: {', '.join(added)}]"
+
+        results[spec.name] = FieldResult(
+            value=value,
+            sources=[Source(file=e.file_name, page=e.page_number, chunk_id=e.chunk_id) for e in evidence],
+            confidence=round(draft.confidence, 2),
+            notes=notes,
+        )
     return results
 
 
