@@ -3,11 +3,13 @@
 import json
 import sys
 from pathlib import Path
-
+from rfp.ingestion.cleaner import clean_pages
 from rfp.ingestion.pdf_parser import parse_pdf
 
 path = Path(sys.argv[1])
 pages, errors = parse_pdf(path)
+pages, removed = clean_pages(pages)
+print("removed boilerplate:", removed)
 
 print(f"{path.name}: {len(pages)} pages, errors={errors}")
 for p in pages:
