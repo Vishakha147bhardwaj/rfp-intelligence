@@ -12,6 +12,7 @@ Built on Python 3.11, LangGraph, Qdrant (embedded), FastEmbed (dense + BM25 + cr
 ## Contents
 1. [Quick start](#quick-start)
 2. [How to run each mode](#how-to-run-each-mode)
+3. [Bonus features](#bonus-features)
 3. [Architecture](#architecture)
 4. [Design decisions](#design-decisions)
 5. [Evaluation results](#evaluation-results)
@@ -45,6 +46,24 @@ It writes `outputs/Bid1.json` and a full agent trace in `runs/<run_id>/`. On fir
 A **new, unseen bid** needs no code changes: put its files in `data/bids/<BidName>/` and run the same command.
 
 ---
+
+### Run everything with Docker
+
+```bash
+cp .env.example .env        # then add your ANTHROPIC_API_KEY
+docker compose up --build   # REST API on http://localhost:8000, web UI on http://localhost:8501
+```
+
+Bids, the search index, outputs and run traces are shared with your machine through volumes, and the
+embedding / reranker / OCR models are downloaded once into a named volume. The index is embedded Qdrant
+(one process at a time), so stop local `serve` / CLI commands while the containers run.
+
+### Web UI without Docker
+
+```bash
+uv run python main.py serve   # terminal 1: REST API
+uv run python main.py ui      # terminal 2: web UI on http://localhost:8501
+```
 
 ## How to run each mode
 
@@ -84,6 +103,36 @@ uv run python eval/run_stability.py 3 Bid1 Bid2    # N full runs per bid; per-fi
 ```
 
 ---
+
+## Bonus features
+
+| Feature | What it does | Where |
+|---|---|---|
+| **Cost & latency tracking** | Cost of every LLM call from configured prices (incl. prompt-cache reads/writes); per-run totals plus latency and cost **per agent node** | `src/rfp/llm/pricing.py`, `runs/<id>/summary.json`, `python main.py runs` |
+| **Semantic cache** | A question with the same meaning (cosine ≥ 0.95) returns the stored cited answer instantly | `src/rfp/agents/semantic_cache.py`, `ask --no-cache`, `cache-clear` |
+| **Bid comparison agent** | Side-by-side table of validated fields (each cell cites its source) + an LLM analysis that sees only those values | `src/rfp/agents/comparison.py`, `compare`, `POST /compare` |
+| **Go / no-go recommendation** | Checks a bid against a company profile; returns GO / NO-GO / REVIEW with a reason per criterion | `config/capabilities.yaml`, `src/rfp/agents/go_no_go.py`, `go-no-go`, `POST /go-no-go` |
+| **OCR** | Pages with no extractable text are rendered and OCR'd (RapidOCR) | `src/rfp/ingestion/ocr.py` |
+| **Docker + CI** | One-command deployment; GitHub Actions runs lint, tests and a **retrieval quality gate** on every push and PR | `Dockerfile`, `docker-compose.yml`, `.github/workflows/ci.yml` |
+| **Web UI** | Multipage Streamlit app (top navbar, mobile-first cards) for every feature | `ui/`, `python main.py ui` |
+
+**Measured results**
+
+- **Cost tracking:** one cited Q&A answer costs about **$0.012**; the breakdown shows retrieval is where the
+  *time* goes (about 9 s of 15 s, local models) and the Sonnet answer is where the *money* goes (about 90 %).
+- **Semantic cache:** a paraphrased question was answered in **0.1 s for $0** instead of 14 s / $0.012. Two
+  safeguards prevent wrong hits: tokens containing digits (`bid1`, addendum numbers, identifiers) must match
+  exactly, so "due date for Bid1" never reuses the Bid2 answer; and entries are invalidated automatically when the
+  indexed documents change (index fingerprint).
+- **Comparison:** found decision-relevant points such as Bid1's pre-bid meeting falling on Bid2's due date.
+- **Go / no-go** (sample profile, evaluated as of 2024-06-01): **Bid2 = GO** (Dell-authorized, holds the Maryland
+  master contract, 30-day delivery within 45 days, no bond); **Bid1 = NO-GO** (requires etching / decaling services
+  the profile does not offer; quantities also exceed capacity). Evaluated as of today, both are NO-GO because the
+  deadlines passed - checked by code, with no LLM call.
+- **OCR:** Bid1 pp.55-59 (IRS Form W-9 pages drawn as vector shapes, previously empty) now yield about 23k characters;
+  Bid1 went from 179 to 194 chunks, and W-9 queries return those pages.
+- **CI:** both jobs pass in about 4 minutes; the gate fails the build if R@5 < 0.90 or MRR < 0.75 for the production
+  search configuration. No API key is needed in CI.
 
 ## Architecture
 
@@ -194,6 +243,24 @@ Every graph node writes a trace event: node, latency, searches, every LLM call (
 
 ---
 
+### Bonus features
+
+- **The LLM never decides the go / no-go verdict.** The deadline is date arithmetic in code; the LLM only assesses
+  each criterion (pass / fail / unknown + reason) from the profile and the validated fields; the decision is a fixed
+  rule (any must-have fail = NO-GO, any must-have unknown = REVIEW, otherwise GO). Criterion ids the LLM invents are
+  ignored; criteria it skips become "unknown", which can only push towards REVIEW, never GO.
+- **Comparison reuses the validated extraction** instead of re-reading documents: one LLM call, consistent with
+  `outputs/*.json`, and every fact traces back to a cited, validated field.
+- **A wrong cache hit is worse than no cache,** so the semantic cache requires exact matches on digit-bearing tokens
+  on top of embedding similarity, and keys every entry to the current index.
+- **OCR is a fallback only** - it runs on pages with no text and no tables, so normal pages never pay for it; an OCR
+  failure leaves the page empty and logged, never crashes ingestion.
+- **The UI is a thin client of the REST API**: it never opens the index itself (no lock conflicts), and the CLI,
+  API and UI all share one tested implementation.
+- **LLM client hardening found while building the comparison agent:** in `auto` tool mode a model may split its
+  answer across many `submit` calls. More than one call now counts as invalid output and is re-asked, and the
+  re-ask answers *every* `tool_use` with a `tool_result`, as the API requires. Covered by a unit test.
+
 ## Evaluation results
 
 ### Retrieval (28 hand-verified question → gold passage pairs, both bids)
@@ -240,6 +307,18 @@ A full extraction uses about **42k input tokens (Bid2)** and **74k input tokens 
 
 ---
 
+### Cost per run (measured with the prices in `config/config.yaml`)
+
+| Run | Time | Cost (USD) |
+|---|---|---|
+| Q&A question | ~15 s | ~0.012 |
+| Same question reworded (semantic cache hit) | 0.1 s | 0 |
+| Go / no-go, one bid | ~7 s | ~0.01 |
+| Comparison, Bid1 vs Bid2 | ~25 s | ~0.06 |
+| Extraction, one bid | 2-3.5 min | ~0.11-0.23 (estimated from token counts; Haiku / Sonnet mix) |
+
+`python main.py runs` (or the **Costs** page in the UI) lists every run with its duration, LLM calls, tokens and cost.
+
 ## Project structure
 
 ```
@@ -269,6 +348,19 @@ rfp-intelligence/
 ```
 
 ---
+
+Added with the bonus features:
+
+```text
+ui/                         Streamlit web UI: app.py (navbar), theme.py, assets.py, common.py, views/ (one file per page)
+.streamlit/config.toml      UI theme
+config/capabilities.yaml    company profile + criteria for go / no-go
+src/rfp/agents/             comparison.py, go_no_go.py, semantic_cache.py
+src/rfp/llm/pricing.py      cost per call
+src/rfp/ingestion/ocr.py    OCR fallback
+eval/check_retrieval_gate.py  CI quality gate
+Dockerfile, docker-compose.yml, .dockerignore, .github/workflows/ci.yml
+```
 
 ## Configuration
 
@@ -319,6 +411,20 @@ rfp-intelligence/
 
 ---
 
+### Bonus features
+
+- **OCR quality:** the multilingual RapidOCR model sometimes drops spaces between English words, and two-column pages
+  are read across both columns. An English-only model and a column-aware layout pass would improve this. About
+  12 s per page on CPU, which is why it only runs on pages with no extractable text.
+- **Semantic cache:** the 0.95 threshold was set by hand on a few paraphrases; a larger set of paraphrase pairs would
+  let it be tuned properly. Guard tokens are deliberately conservative ("Bid 1" vs "Bid1" will miss).
+- **Go / no-go** is only as good as `config/capabilities.yaml` (a sample profile); for criteria the bid does not mention
+  the LLM sometimes answers "unknown" rather than "pass".
+- **UI:** the Home page cards are plain links, so clicking one reloads the app (the navbar keeps the session).
+- **CI evaluates retrieval only.** The extraction evaluation needs an API key; it could run nightly with a repository
+  secret.
+- **Embedded Qdrant allows one process at a time**; a Qdrant server would let the CLI, API and UI run concurrently.
+
 ## Deliverables index
 
 | Deliverable | Location |
@@ -335,3 +441,6 @@ rfp-intelligence/
 ---
 
 *Author: Vishakha Bhardwaj. AI coding assistance was used during development, as permitted by the assignment; every component was built and verified step by step and can be explained in review.*
+
+**Bonus outputs:** `outputs/comparison_Bid1_vs_Bid2.md`, `outputs/go_no_go_Bid1.md`, `outputs/go_no_go_Bid2.md`;
+CI runs on GitHub Actions (`.github/workflows/ci.yml`).
