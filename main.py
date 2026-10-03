@@ -408,6 +408,15 @@ def extract(
         f"JSON: outputs/{record.bid_id}.json | Trace: {run_dir}", markup=False
     )
 
+    import json
+
+    summary = json.loads((run_dir / "summary.json").read_text())
+    console.print(
+        f"Cost: ${summary['cost_usd']:.4f} | {summary['llm_calls']} LLM calls | "
+        f"{summary['input_tokens']:,} in / {summary['output_tokens']:,} out tokens",
+        markup=False,
+    )
+
 
 @app.command()
 def ask(
@@ -435,6 +444,25 @@ def ask(
         markup=False,
     )
 
+@app.command()
+def runs(limit: int = typer.Option(15, help="How many recent runs to show")) -> None:
+    """List recent runs with duration, tokens and estimated cost (cost/latency tracking)."""
+    import json
 
+    paths = sorted(Path("runs").glob("*/summary.json"), key=lambda p: p.stat().st_mtime)[-limit:]
+    table = Table(title="Recent runs")
+    for column in ("run", "what", "duration", "LLM calls", "tokens in/out", "cost (USD)"):
+        table.add_column(column)
+    total = 0.0
+    for p in paths:
+        s = json.loads(p.read_text())
+        what = s.get("bid_id") or (s.get("question", "")[:40] + "...")
+        cost = s.get("cost_usd")
+        total += cost or 0
+        table.add_row(s["run_id"], Text(what), f"{s.get('duration_s', 0)}s", str(s.get("llm_calls", 0)),
+                      f"{s.get('input_tokens', 0):,}/{s.get('output_tokens', 0):,}",
+                      f"{cost:.4f}" if cost is not None else "-")
+    console.print(table)
+    console.print(f"Total for these runs: ${total:.4f}")
 if __name__ == "__main__":
     app()
