@@ -111,3 +111,39 @@ def test_falls_back_to_auto_when_forced_tool_unsupported(monkeypatch):
 
     assert first.value == second.value == "ok"
     assert forced_flags == [True, False, False]  # fallback is remembered for this model
+
+
+def test_multiple_submit_calls_get_a_tool_result_each(monkeypatch):
+    client = make_client()
+    usage = SimpleNamespace(
+        input_tokens=10,
+        output_tokens=1,
+        cache_read_input_tokens=0,
+        cache_creation_input_tokens=0,
+    )
+    split = SimpleNamespace(
+        content=[
+            SimpleNamespace(type="tool_use", id="t1", input={"value": "part 1"}),
+            SimpleNamespace(type="tool_use", id="t2", input={"value": "part 2"}),
+        ],
+        usage=usage,
+    )
+    responses = iter([split, fake_response({"value": "complete"})])
+    last_messages = []
+
+    def fake_call(model, system, messages, tool, max_tokens, force=True):
+        last_messages.append(messages[-1])
+        return next(responses)
+
+    monkeypatch.setattr(client, "_call", fake_call)
+    result, used = client.structured(
+        agent="t", system="s", user="u", response_model=Out
+    )
+
+    assert result.value == "complete"  # the split answer was NOT accepted
+    re_ask = last_messages[1]["content"]
+    assert [r["tool_use_id"] for r in re_ask] == [
+        "t1",
+        "t2",
+    ]  # one tool_result per tool_use
+    assert used.attempts == 2

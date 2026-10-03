@@ -90,7 +90,7 @@ class LLMClient:
         model = self.models[tier]
         tool = {
             "name": TOOL_NAME,
-            "description": f"Submit the result as {response_model.__name__}.",
+            "description": f"Submit the complete result as {response_model.__name__}, in ONE call.",
             "input_schema": response_model.model_json_schema(),
         }
         messages: list[dict] = [{"role": "user", "content": user}]
@@ -104,14 +104,16 @@ class LLMClient:
                     model, system, messages, tool, max_tokens or self.cfg.max_tokens
                 )
                 usage.add(response.usage)
-                block = next(
-                    (b for b in response.content if b.type == "tool_use"), None
-                )
-                if block is None:
+                calls = [b for b in response.content if b.type == "tool_use"]
+
+                if not calls:
                     error = "The response did not call the submit tool."
+                elif len(calls) > 1:
+                    # A split answer may validate piece by piece but be incomplete - ask for one call.
+                    error = f"submit was called {len(calls)} times; call it exactly once with the complete result."
                 else:
                     try:
-                        result = response_model.model_validate(block.input)
+                        result = response_model.model_validate(calls[0].input)
                         usage.latency_ms = int((time.perf_counter() - start) * 1000)
                         log.info("llm_call", **usage.model_dump())
                         return result, usage
@@ -125,7 +127,7 @@ class LLMClient:
                     error=error[:300],
                 )
                 messages.append({"role": "assistant", "content": response.content})
-                if block is None:
+                if not calls:
                     messages.append(
                         {
                             "role": "user",
@@ -133,16 +135,18 @@ class LLMClient:
                         }
                     )
                 else:
+                    # The API requires a tool_result for EVERY tool_use block in the previous message.
                     messages.append(
                         {
                             "role": "user",
                             "content": [
                                 {
                                     "type": "tool_result",
-                                    "tool_use_id": block.id,
+                                    "tool_use_id": call.id,
                                     "is_error": True,
-                                    "content": f"Invalid input: {error}\nCall {TOOL_NAME} again with corrected input.",
+                                    "content": f"Invalid: {error}\nCall {TOOL_NAME} once with the complete, corrected result.",
                                 }
+                                for call in calls
                             ],
                         }
                     )
