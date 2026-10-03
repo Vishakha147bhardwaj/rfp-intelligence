@@ -2,6 +2,7 @@
 
 import json
 import math
+import sys
 from pathlib import Path
 
 from rfp.search.engine import SearchEngine, SearchResult
@@ -84,7 +85,10 @@ def main() -> None:
     ]
     details = {}
     try:
-        for name, mode, overrides in CONFIGS:
+        selected = sys.argv[1].split(",") if len(sys.argv) > 1 else None
+        for name, mode, overrides in [
+            c for c in CONFIGS if not selected or c[0][0] in selected
+        ]:
             engine = SearchEngine(store, base.model_copy(update=overrides))
             metrics, rows = evaluate(engine, questions, mode)
             table.append(
