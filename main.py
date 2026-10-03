@@ -531,5 +531,36 @@ def compare(
         )
 
 
+@app.command("go-no-go")
+def go_no_go(
+    bid: str = typer.Argument(..., help="Bid id, e.g. Bid2 (must be extracted first)"),
+    as_of: str = typer.Option(
+        "", help="Evaluate as of this date (YYYY-MM-DD); default: today"
+    ),
+    no_llm: bool = typer.Option(False, "--no-llm", help="Deadline check only, no LLM"),
+) -> None:
+    """Go / no-go recommendation for a bid against config/capabilities.yaml."""
+    from datetime import UTC, date, datetime
+
+    from rfp.agents.go_no_go import GoNoGoAgent, save_report
+    from rfp.llm.client import LLMClient
+
+    when = date.fromisoformat(as_of) if as_of else datetime.now(UTC).date()
+    report, _usage = GoNoGoAgent(None if no_llm else LLMClient()).run(bid, when)
+    path = save_report(report)
+
+    style = {"GO": "bold green", "NO-GO": "bold red", "REVIEW": "bold yellow"}[
+        report.decision
+    ]
+    console.print(f"{bid}: {report.decision} (as of {report.as_of})", style=style)
+    for r in report.criteria:
+        mark = {"pass": "PASS", "fail": "FAIL", "unknown": "  ? "}[r.status]
+        must = "must" if r.must_have else "    "
+        console.print(f"  [{mark}] {must} {r.id}: {r.reason}", markup=False)
+    if report.summary:
+        console.print(report.summary, markup=False)
+    console.print(f"Report: {path}", markup=False)
+
+
 if __name__ == "__main__":
     app()
