@@ -562,5 +562,25 @@ def go_no_go(
     console.print(f"Report: {path}", markup=False)
 
 
+@app.command()
+def ui(port: int = typer.Option(8501, help="Port for the web UI")) -> None:
+    """Start the web UI (start the API first in another terminal: python main.py serve)."""
+    import subprocess
+    import sys
+
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "streamlit",
+            "run",
+            "ui/app.py",
+            "--server.port",
+            str(port),
+        ],
+        check=False,
+    )
+
+
 if __name__ == "__main__":
     app()

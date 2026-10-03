@@ -21,6 +21,8 @@ COPY src ./src
 RUN uv sync --frozen --no-dev
 COPY config ./config
 COPY eval ./eval
+COPY ui ./ui
+COPY .streamlit ./.streamlit
 COPY main.py ./
 
 EXPOSE 8000
