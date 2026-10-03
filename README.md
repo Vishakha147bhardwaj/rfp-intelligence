@@ -315,7 +315,7 @@ A full extraction uses about **42k input tokens (Bid2)** and **74k input tokens 
 | Same question reworded (semantic cache hit) | 0.1 s | 0 |
 | Go / no-go, one bid | ~7 s | ~0.01 |
 | Comparison, Bid1 vs Bid2 | ~25 s | ~0.06 |
-| Extraction, one bid | 2-3.5 min | ~0.11-0.23 (estimated from token counts; Haiku / Sonnet mix) |
+| Extraction, Bid2 (measured) | 133 s | 0.10 (7 LLM calls, 47k input / 5k output tokens) |
 
 `python main.py runs` (or the **Costs** page in the UI) lists every run with its duration, LLM calls, tokens and cost.
 
