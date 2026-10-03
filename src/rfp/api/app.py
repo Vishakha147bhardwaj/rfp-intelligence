@@ -8,6 +8,7 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Query, Request
 from pydantic import BaseModel, Field
 
+from rfp.agents.comparison import ComparisonAgent, ComparisonReport, available_bids
 from rfp.agents.qa import QAAnswer, run_question
 from rfp.ingestion.pipeline import ingest_folder
 from rfp.llm.client import LLMClient, LLMError
@@ -21,6 +22,10 @@ from rfp.settings import PROJECT_ROOT, get_settings
 class IndexRequest(BaseModel):
     folder: str = Field(..., examples=["data/bids/Bid1"])
     force: bool = False
+
+
+class CompareRequest(BaseModel):
+    bid_ids: list[str] | None = Field(None, examples=[["Bid1", "Bid2"]])
 
 
 class IndexResponse(BaseModel):
@@ -170,6 +175,18 @@ def create_app(
             )
         record, run_dir, errors = run_extraction(req.bid_id, store, get_llm(request))
         return ExtractResponse(record=record, trace_dir=str(run_dir), errors=errors)
+
+    @app.post("/compare", response_model=ComparisonReport)
+    def compare(req: CompareRequest, request: Request) -> ComparisonReport:
+        """Side-by-side comparison of extracted bids, with an LLM-written analysis."""
+        bids = req.bid_ids or available_bids()
+        if len(bids) < 2:
+            raise HTTPException(400, "Need at least two extracted bids to compare")
+        try:
+            report, _ = ComparisonAgent(get_llm(request)).run(bids)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, str(exc)) from exc
+        return report
 
     return app
 

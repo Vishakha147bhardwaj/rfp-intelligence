@@ -497,5 +497,39 @@ def cache_clear() -> None:
     console.print("Semantic cache cleared.")
 
 
+@app.command()
+def compare(
+    bids: list[str] | None = typer.Argument(
+        None, help="Bid ids to compare (default: all extracted bids)"
+    ),
+    no_llm: bool = typer.Option(
+        False, "--no-llm", help="Side-by-side table only, no LLM analysis"
+    ),
+) -> None:
+    """Compare bids side by side (from outputs/<bid>.json) with an LLM-written analysis."""
+    from rfp.agents.comparison import ComparisonAgent, available_bids, save_report
+    from rfp.llm.client import LLMClient
+
+    bids = bids or available_bids()
+    if len(bids) < 2:
+        console.print("Need at least two extracted bids to compare.", style="red")
+        raise typer.Exit(1)
+    report, usage = ComparisonAgent(None if no_llm else LLMClient()).run(bids)
+    path = save_report(report)
+
+    if report.analysis:
+        console.rule("Summary")
+        console.print(report.analysis.summary, markup=False)
+        console.rule("Key differences")
+        for d in report.analysis.differences:
+            console.print(f"- {d.topic}: {d.detail}", markup=False)
+    console.print(f"Report: {path}", markup=False)
+    if usage:
+        console.print(
+            f"compare: {usage.input_tokens} in, {usage.output_tokens} out, {usage.latency_ms} ms",
+            markup=False,
+        )
+
+
 if __name__ == "__main__":
     app()
