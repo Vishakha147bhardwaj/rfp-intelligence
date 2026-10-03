@@ -11,16 +11,11 @@
         }
       ],
       "confidence": 0.95,
-      "notes": "PORFP Number explicitly stated on the RFP document cover page (E1). This is the official solicitation identifier for this bid."
+      "notes": "The PORFP Number is explicitly stated in the RFP header as the official solicitation identifier."
     },
     "Title": {
       "value": "Dell Laptops w/Extended Warranty",
       "sources": [
-        {
-          "file": "PORFP_-_Dell_Laptop_Final.pdf",
-          "page": 1,
-          "chunk_id": "64593492-3810-5e0e-8b33-2a5f6cdce7fe"
-        },
         {
           "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
           "page": 1,
@@ -28,7 +23,7 @@
         }
       ],
       "confidence": 0.95,
-      "notes": "Title is explicitly stated on both the RFP document and the bid portal page as the solicitation title."
+      "notes": "The title is stated on the bid portal page and confirmed in the RFP document."
     },
     "Due Date": {
       "value": "06/10/2024 at 2:00 PM EDT",
@@ -45,10 +40,10 @@
         }
       ],
       "confidence": 0.95,
-      "notes": "E2 and E4 both explicitly state the PROPOSAL DUE DATE and TIME as 06/10/2024 and Closing Date as 06/10/2024 02:00 PM EDT respectively. E1 mentions 06/01/2024 for questions closing, but that is specifically for questions, not bid submission. The bid due date is 06/10/2024 at 2:00 PM EDT."
+      "notes": "E2 states 'PROPOSAL DUE DATE and TIME: 06/10/2024' and E4 specifies 'Closing Date: 06/10/2024 02:00 PM EDT'. E1 mentions a separate Questions Due date of 06/01/2024 at 2:00 PM EDT, but that is for questions, not bid submission."
     },
     "Bid Submission Type": {
-      "value": "Electronic portal (State's eMaryland Marketplace Advantage (eMMA) e-Procurement system)",
+      "value": "Electronic submission through State's eMaryland Marketplace Advantage (eMMA) e-Procurement system",
       "sources": [
         {
           "file": "PORFP_-_Dell_Laptop_Final.pdf",
@@ -63,7 +58,7 @@
       "value": null,
       "sources": [],
       "confidence": 0.9,
-      "notes": "Not found in documents. No contract duration or term is stated in the evidence. E1 mentions that 'proposals/quotes provided in response to this PORFP to be valid for at least 90 days after the set due date' but this is the validity period of the proposal itself, not the contract term. No contract term, renewal options, or service period is specified in the documents."
+      "notes": "Not found in documents. The documents contain information about proposal validity (E1 states proposals must be valid for 90 days after the due date) and warranty term (3 years per E13), but do not specify the contract term or duration. No contract duration or renewal options are stated."
     },
     "Pre Bid Meeting": {
       "value": null,
@@ -72,7 +67,7 @@
       "notes": "Rejected: value had no valid citation (model proposed 'None')"
     },
     "Delivery Date": {
-      "value": "Within 45 days of Award",
+      "value": "Delivery within 45 days of Award",
       "sources": [
         {
           "file": "PORFP_-_Dell_Laptop_Final.pdf",
@@ -81,16 +76,16 @@
         }
       ],
       "confidence": 0.95,
-      "notes": "E1 explicitly states 'Delivery within 45 days of Award' under the Security Requirements section of the RFP."
+      "notes": "E1 explicitly states under Security Requirements: '9. Delivery within 45 days of Award.'"
     },
     "Bid Bond Requirement": {
       "value": null,
       "sources": [],
       "confidence": 0.8,
-      "notes": "Not found in documents. No bid bond requirement is explicitly stated in the evidence provided. The documents do not mention a bid bond or security requirement."
+      "notes": "Not found in documents. No bid bond requirement is mentioned in the RFP. The document does not explicitly state 'Not required', so the value is null per instructions."
     },
     "Payment Terms": {
-      "value": "Invoices shall be submitted within 10 days of delivering the equipment.",
+      "value": "Invoices shall be submitted within 10 days of delivering the equipment",
       "sources": [
         {
           "file": "PORFP_-_Dell_Laptop_Final.pdf",
@@ -99,13 +94,12 @@
         }
       ],
       "confidence": 0.85,
-      "notes": "Invoicing instructions are stated in E3, specifying that invoices must be submitted within 10 days of equipment delivery. No standard payment terms (e.g., Net 30) are explicitly stated in the evidence."
+      "notes": "The invoicing instructions specify that invoices must be submitted within 10 days of delivery. No explicit Net 30 or similar payment terms are stated."
     },
     "Any Additional Documentation Required": {
       "value": [
-        "Mercury Affidavit (with bid)",
-        "Contract Affidavit (with bid)",
-        "Letter of Authorization from Manufacturer or Distributor (may be requested)"
+        "Mercury Affidavit",
+        "Warranty certificate or Affidavit upon award"
       ],
       "sources": [
         {
@@ -114,18 +108,13 @@
           "chunk_id": "298303d1-951a-5c3f-ac18-e8746f2003aa"
         },
         {
-          "file": "Contract_Affidavit.pdf",
-          "page": 2,
-          "chunk_id": "02143911-00ab-59e5-a7c1-1ff3269fc35b"
-        },
-        {
-          "file": "Mercury_Affidavit.pdf",
-          "page": 1,
-          "chunk_id": "72dd8d68-6e26-5b71-a9e7-cbdfbfb2e523"
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 3,
+          "chunk_id": "39620a72-774e-58b7-871a-70adaa901495"
         }
       ],
-      "confidence": 0.4,
-      "notes": "The Mercury Affidavit is explicitly required per E3. The Contract Affidavit (Drug and Alcohol-free workplace certification) is required as evidenced by the affidavit documents included in the procurement package. The Letter of Authorization from Dell is mentioned as something the state may request in E3. [Validation failed: fact-check: The passages do not state that the Mercury Affidavit is due with the bid, and they do not explicitly state a submission requirement or due time for the Contract Affidavit.]"
+      "confidence": 0.75,
+      "notes": "E3 explicitly requires 'The Master Contractor must provide a Mercury Affidavit' with a link provided, indicating it must be submitted. E6 states 'Warranty certificate or Affidavit to be presented upon award' for the 3-year extended warranty. The Contract Affidavit template is shown but the RFP does not explicitly state it is required for this bid."
     },
     "MFG for Registration": {
       "value": [
@@ -134,12 +123,17 @@
       "sources": [
         {
           "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "64593492-3810-5e0e-8b33-2a5f6cdce7fe"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
           "page": 2,
           "chunk_id": "298303d1-951a-5c3f-ac18-e8746f2003aa"
         }
       ],
       "confidence": 0.95,
-      "notes": "E3 explicitly states 'The Master Contractor must be an authorized reseller for Dell,' making Dell the required manufacturer registration/authorization."
+      "notes": "The RFP states 'The Master Contractor must be an authorized reseller for Dell' and the PORFP is specifically for Dell laptops and warranty."
     },
     "Contract or Cooperative to use": {
       "value": "Desktop, Laptop and Tablet 2015 Master Contract, 060B5400007",
@@ -151,7 +145,7 @@
         }
       ],
       "confidence": 0.95,
-      "notes": "E1 clearly identifies that only Master Contractors awarded under this master contract are eligible to submit bids. The contract number is explicitly stated as 060B5400007."
+      "notes": "The RFP explicitly states that only Master Contractors awarded under this contract are eligible to submit bids."
     },
     "contact_info": {
       "value": "Tamaira Hawkins | thawkins@treasurer.state.md.us | 410-260-7533",
@@ -160,32 +154,27 @@
           "file": "PORFP_-_Dell_Laptop_Final.pdf",
           "page": 3,
           "chunk_id": "273bbe25-d2d3-5944-bf10-396a9ffca253"
-        },
-        {
-          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
-          "page": 1,
-          "chunk_id": "118fbeb5-9747-5fd8-9916-49b062fe12ab"
         }
       ],
       "confidence": 0.95,
-      "notes": "Agency POC (Procurement Officer) identified as Tamaira Hawkins on E4 and E20, with email and phone explicitly stated. This is the primary procurement contact for the solicitation."
+      "notes": "Tamaira Hawkins is identified as the Agency POC in the RFP with email and phone number provided."
     },
     "company_name": {
-      "value": "State Treasurer's Office",
+      "value": "State of Maryland Treasurer's Office",
       "sources": [
-        {
-          "file": "PORFP_-_Dell_Laptop_Final.pdf",
-          "page": 1,
-          "chunk_id": "64593492-3810-5e0e-8b33-2a5f6cdce7fe"
-        },
         {
           "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
           "page": 1,
           "chunk_id": "b159b711-a6f2-5ec0-af9e-16b40ef67ca9"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 1,
+          "chunk_id": "64593492-3810-5e0e-8b33-2a5f6cdce7fe"
         }
       ],
       "confidence": 0.95,
-      "notes": "The issuing organization is identified as 'State Treasurer's Office' on E1 and E2, under which the RFP/PORFP is issued."
+      "notes": "The issuing organization is identified on the bid portal page and confirmed in the RFP as the State Treasurer's Office."
     },
     "Model_no": {
       "value": [
@@ -199,13 +188,18 @@
           "chunk_id": "39620a72-774e-58b7-871a-70adaa901495"
         },
         {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "chunk_id": "118fbeb5-9747-5fd8-9916-49b062fe12ab"
+        },
+        {
           "file": "Dell_Laptop_Specs.pdf",
           "page": 1,
           "chunk_id": "c44b30e7-a005-5d9d-bfd2-3210bbc8985a"
         }
       ],
       "confidence": 0.95,
-      "notes": "E1 explicitly lists model numbers in the table: 'Dell Latitude 5550' with model # 'SI# CC7802' and 'Dell Thunderbolt 4 Dock – WD22TB4' with model # 'WD22TB4'. E5 confirms 'Dell Latitude 5550' as the model. SI# CC7802 is an agency catalog code, not a manufacturer model number, so it belongs in reasoning only."
+      "notes": "E1 and E4 explicitly list the model numbers in the product table: 'Dell Latitude 5550' under Model # column and 'WD22TB4' for the Dell Thunderbolt 4 Dock. E5 confirms Dell Latitude 5550 specifications."
     },
     "Part_no": {
       "value": [
@@ -237,7 +231,16 @@
         "389-FGSN",
         "319-BBKK",
         "634-BRWG",
-        "379-BDZB"
+        "379-BDZB",
+        "362-7806",
+        "364-1846",
+        "364-4107",
+        "365-0257",
+        "366-0135",
+        "366-0141",
+        "371-0941",
+        "375-3088",
+        "383-0464"
       ],
       "sources": [
         {
@@ -249,10 +252,15 @@
           "file": "Dell_Laptop_Specs.pdf",
           "page": 1,
           "chunk_id": "66e38f4b-7763-5c39-b12c-34f85f94100b"
+        },
+        {
+          "file": "Dell_Laptop_Specs.pdf",
+          "page": 2,
+          "chunk_id": "3bf8b560-725d-5a77-ac79-87ec2dc766c4"
         }
       ],
       "confidence": 0.92,
-      "notes": "E5 provides a comprehensive list of all SKU part numbers for the Dell Latitude 5550 laptop components, listed in the 'SKU' column. E2 provides additional SKU numbers for software and accessories. All SKUs are listed exactly as printed, including duplicates (658-BFQB appears twice). No part numbers are provided for the WD22TB4 dock in the evidence."
+      "notes": "E5 provides a detailed list of all SKUs for the Dell Latitude 5550 configuration with their corresponding descriptions. E2 and E8 provide additional SKU numbers for accessories, software, and factory installation options. These are listed exactly as they appear in the evidence."
     },
     "Product": {
       "value": [
@@ -272,24 +280,22 @@
         }
       ],
       "confidence": 0.95,
-      "notes": "E1 and E4 both show a table with Product Name and Qty columns. Dell Latitude 5550 quantity is 30, and Dell Thunderbolt 4 Dock – WD22TB4 quantity is 30, both with due date 06/10/2024."
+      "notes": "E1 lists two products in the RFP table with quantities: 'Dell Latitude 5550' with quantity 30 and 'Dell Thunderbolt 4 Dock – WD22TB4' with quantity 30. E4 confirms these same quantities."
     },
     "Product Specification": {
       "value": [
-        "CPU - Intel Core Ultra 5 125U processor (12 MB cache, 12 cores, 14 threads, up to 4.3 GHz Turbo)",
-        "RAM - 16 GB: 2 x 8 GB, DDR5, 5600 MT/s",
-        "Storage - 256 GB, M.2 2230, TLC, Gen 4 PCIe NVMe, SSD",
-        "Display - 15.6\", FHD 1920x1080, 60Hz, IPS, Non-Touch, AG, 250 nit, 45% NTSC, FHD Cam",
-        "Operating System - Windows 11 Pro",
-        "Wireless - Intel Wi-Fi 6E (6 where 6E unavailable) AX211, 2x2, 802.11ax, Bluetooth 5.3",
-        "Battery - 3-cell, 54 Wh, ExpressCharge Capable, ExpressCharge Boost Capable",
-        "Power Adapter - 65W AC adapter, USB Type-C, EcoDesign",
-        "Keyboard - English US backlit AI hotkey keyboard with numeric keypad, 99-key",
-        "Graphics - Integrated Intel graphics for Intel Core Ultra 5 125U processor",
-        "Microsoft Copilot Ready - Required",
-        "Warranty - Dell Limited Hardware Warranty Extended for all machines purchased - 3 Years (Date of Delivery to 3 years following the date of delivery)",
+        "Intel Core Ultra 5 125U processor (12 MB cache, 12 cores, 14 threads, up to 4.3 GHz Turbo)",
+        "16 GB DDR5 (2 x 8 GB, 5600 MT/s)",
+        "256 GB M.2 2230 TLC Gen 4 PCIe NVMe SSD",
+        "15.6\" FHD 1920x1080 60Hz IPS Non-Touch AG 250 nit Display",
+        "Windows 11 Pro",
+        "Intel Wi-Fi 6E AX211 802.11ax with Bluetooth 5.3",
+        "65W USB Type-C AC adapter",
+        "54 Wh 3-cell Battery",
+        "Microsoft Copilot ready",
         "ENERGY STAR Qualified",
-        "EPEAT 2018 Registered (Gold)"
+        "EPEAT 2018 Registered (Gold)",
+        "Dell Limited Hardware Warranty Extended for 3 Years from date of delivery"
       ],
       "sources": [
         {
@@ -306,20 +312,30 @@
           "file": "Dell_Laptop_Specs.pdf",
           "page": 1,
           "chunk_id": "66e38f4b-7763-5c39-b12c-34f85f94100b"
+        },
+        {
+          "file": "PORFP_-_Dell_Laptop_Final.pdf",
+          "page": 2,
+          "chunk_id": "298303d1-951a-5c3f-ac18-e8746f2003aa"
         }
       ],
       "confidence": 0.9,
-      "notes": "E5 provides detailed specifications for the Dell Latitude 5550 laptop. E1 specifies warranty requirements (3 Years extended warranty) and requirement that laptops must be 'Microsoft Copilot ready'. E2 and E5 list EPEAT and ENERGY STAR certifications. Specifications are extracted from the detailed component list in E5."
+      "notes": "E5 provides detailed Dell Latitude 5550 specifications including processor, RAM, storage, display, OS, wireless, power, and battery. E1 adds warranty requirement (3 Years from delivery). E1 specifies 'Laptops must be Microsoft Copilot ready'. E2 lists EPEAT 2018 Gold and ENERGY STAR certifications. E11 requires ENERGY STAR certification."
     },
     "Installation": {
       "value": null,
       "sources": [],
-      "confidence": 0.85,
-      "notes": "Not found in documents. The evidence does not explicitly state that installation, deployment, imaging or setup services are required. E8 lists security requirements and delivery requirements (45 days of Award, ENERGY STAR certified product, new and unused equipment), but does not mention installation or deployment services. E17 shows some factory install SKU codes exist in the specs document, but the RFP scope of work (E1, E3) does not require installation services."
+      "confidence": 0.6,
+      "notes": "Not found in documents. The RFP and specification documents do not explicitly state whether installation, deployment, imaging, or setup services are required. While E3 references 'Factory Install' options in Dell's product specifications (SKU codes like '362-7806', '375-3088', '383-0464'), these appear to be available optional services from the vendor, not stated requirements of the RFP itself. E5 specifies delivery within 45 days but does not mention installation requirements."
     },
     "Bid Summary": {
-      "value": "The State Treasurer's Office (contact: Tamaira Hawkins, thawkins@treasurer.state.md.us, 410-260-7533) is issuing Bid #E20P4600040 for Dell Laptops with Extended Warranty, specifically 30 Dell Latitude 5550 laptops configured with Intel Core Ultra 5 125U, 16GB RAM, 256GB SSD, 15.6\" FHD display, Windows 11 Pro, and 3-year extended warranty, plus 30 Dell Thunderbolt 4 Docks (WD22TB4). Bids must be submitted electronically via the State's eMaryland Marketplace Advantage (eMMA) e-Procurement system by June 10, 2024 at 2:00 PM EDT, with delivery required within 45 days of award. This bid must utilize the Desktop, Laptop and Tablet 2015 Master Contract (060B5400007) and requires submission of Mercury Affidavit, Contract Affidavit, and Letter of Authorization from Dell or authorized distributor.",
+      "value": "The State of Maryland Treasurer's Office is seeking Dell Latitude 5550 laptops (quantity 30) and Dell Thunderbolt 4 Docks WD22TB4 (quantity 30) with 3-year extended warranty. Bids are due June 10, 2024 at 2:00 PM EDT and must be submitted electronically through Maryland's eMMA e-Procurement system, with delivery required within 45 days of award. Invoices shall be submitted within 10 days of equipment delivery. Bidders must provide a Mercury Affidavit and warranty certificate or affidavit upon award, register Dell as the manufacturer, and use the Desktop, Laptop and Tablet 2015 Master Contract (060B5400007). Contact Tamaira Hawkins at thawkins@treasurer.state.md.us or 410-260-7533 for questions.",
       "sources": [
+        {
+          "file": "Dell Laptops w_Extended Warranty - Bid Information - {3} _ BidNet Direct.html",
+          "page": 1,
+          "chunk_id": "b159b711-a6f2-5ec0-af9e-16b40ef67ca9"
+        },
         {
           "file": "PORFP_-_Dell_Laptop_Final.pdf",
           "page": 1,
@@ -337,8 +353,8 @@
   },
   "addendum_changes": [],
   "validation": {
-    "passed": 14,
-    "failed": 1,
+    "passed": 15,
+    "failed": 0,
     "not_found": 4
   }
 }
