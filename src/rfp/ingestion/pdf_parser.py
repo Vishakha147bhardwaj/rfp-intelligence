@@ -9,7 +9,9 @@ import pdfplumber
 import pymupdf
 import structlog
 
+from rfp.ingestion.ocr import ocr_page
 from rfp.schemas.documents import Page, Table
+from rfp.settings import get_settings
 
 log = structlog.get_logger()
 
@@ -259,6 +261,12 @@ def parse_pdf(path: Path) -> tuple[list[Page], list[str]]:
                 text, headings = "", []
                 errors.append(f"page {number}: text extraction failed: {exc}")
 
+            ocr_used = False
+            if not text.strip() and not tables and get_settings().ocr.enabled:
+                text = ocr_page(page, get_settings().ocr.dpi)
+                ocr_used = bool(text.strip())
+                if ocr_used:
+                    log.info("ocr_page", file=path.name, page=number, chars=len(text))
             is_empty = not text.strip() and not tables
             if is_empty:
                 log.warning(
@@ -272,6 +280,7 @@ def parse_pdf(path: Path) -> tuple[list[Page], list[str]]:
                     tables=tables,
                     headings=headings,
                     is_empty=is_empty,
+                    ocr_used=ocr_used,
                 )
             )
     return pages, errors
