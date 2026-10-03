@@ -1,0 +1,37 @@
+# Company profile used by the go / no-go agent. Edit it to describe your company.
+company:
+  name: Example Technology Reseller
+  authorized_manufacturers: [Dell, HP, Lenovo]
+  contract_vehicles: ["Maryland Desktop, Laptop and Tablet 2015 Master Contract (060B5400007)"]
+  max_units_per_order: 20000
+  standard_delivery_days: 30
+  services: [delivery, asset tagging, imaging, device enrollment]
+  bonding_capacity_usd: 250000
+  min_days_to_prepare: 7
+
+# must_have: a "fail" means NO-GO; an "unknown" means REVIEW.
+criteria:
+  - id: deadline
+    must_have: true
+    question: Is there enough time left to prepare the response? (checked by code, not the LLM)
+  - id: manufacturer_authorization
+    must_have: true
+    question: If the bid requires authorization or registration with a manufacturer, is it one of our authorized manufacturers?
+  - id: contract_vehicle
+    must_have: true
+    question: If only holders of a specific contract vehicle may bid, do we hold it? An optional cooperative rider does not restrict who may bid.
+  - id: delivery
+    must_have: true
+    question: Can we meet the required delivery timing with our standard delivery days?
+  - id: services
+    must_have: true
+    question: Are all required services (installation, deployment, imaging, white glove, etching, etc.) among the services we offer?
+  - id: bonding
+    must_have: true
+    question: If a bid, performance or payment bond is required, is it within our bonding capacity?
+  - id: quantity
+    must_have: false
+    question: Are the requested quantities within our maximum units per order?
+  - id: documents
+    must_have: false
+    question: Are the required documents and affidavits ones a typical reseller can provide? Name any unusual ones.

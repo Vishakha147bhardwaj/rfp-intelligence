@@ -9,6 +9,7 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from pydantic import BaseModel, Field
 
 from rfp.agents.comparison import ComparisonAgent, ComparisonReport, available_bids
+from rfp.agents.go_no_go import GoNoGoAgent, GoNoGoReport
 from rfp.agents.qa import QAAnswer, run_question
 from rfp.ingestion.pipeline import ingest_folder
 from rfp.llm.client import LLMClient, LLMError
@@ -26,6 +27,13 @@ class IndexRequest(BaseModel):
 
 class CompareRequest(BaseModel):
     bid_ids: list[str] | None = Field(None, examples=[["Bid1", "Bid2"]])
+
+
+class GoNoGoRequest(BaseModel):
+    bid_id: str = Field(..., examples=["Bid2"])
+    as_of: str | None = Field(
+        None, examples=["2024-06-01"], description="YYYY-MM-DD; default today"
+    )
 
 
 class IndexResponse(BaseModel):
@@ -184,6 +192,18 @@ def create_app(
             raise HTTPException(400, "Need at least two extracted bids to compare")
         try:
             report, _ = ComparisonAgent(get_llm(request)).run(bids)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, str(exc)) from exc
+        return report
+
+    @app.post("/go-no-go", response_model=GoNoGoReport)
+    def go_no_go(req: GoNoGoRequest, request: Request) -> GoNoGoReport:
+        """Go / no-go recommendation against config/capabilities.yaml."""
+        from datetime import UTC, date, datetime
+
+        when = date.fromisoformat(req.as_of) if req.as_of else datetime.now(UTC).date()
+        try:
+            report, _ = GoNoGoAgent(get_llm(request)).run(req.bid_id, when)
         except FileNotFoundError as exc:
             raise HTTPException(404, str(exc)) from exc
         return report
