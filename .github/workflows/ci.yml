@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install uv
+      - run: uv sync --frozen
+      - name: Lint
+        run: uv run ruff check .
+      - name: Unit tests
+        run: uv run pytest -q
+
+  retrieval-eval:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    env:
+      FASTEMBED_CACHE_PATH: ${{ github.workspace }}/.model-cache
+      HF_HUB_DISABLE_PROGRESS_BARS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install uv
+      - run: sudo apt-get update && sudo apt-get install -y libgl1 libglib2.0-0
+      - run: uv sync --frozen
+      - name: Cache models
+        uses: actions/cache@v4
+        with:
+          path: .model-cache
+          key: models-v1
+      - name: Index both bids (no API key needed)
+        run: |
+          uv run python main.py index data/bids/Bid1
+          uv run python main.py index data/bids/Bid2
+      - name: Retrieval evaluation (configs A, B, C, D, F)
+        run: uv run python eval/run_retrieval_eval.py A,B,C,D,F
+      - name: Quality gate
+        run: uv run python eval/check_retrieval_gate.py
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-results
+          path: eval/results/

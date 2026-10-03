@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    image: rfp-intelligence
+    ports:
+      - "8000:8000"
+    env_file: .env              # ANTHROPIC_API_KEY etc. (copy .env.example to .env first)
+    volumes:
+      - ./data:/app/data        # bids + search index, kept on your machine
+      - ./outputs:/app/outputs
+      - ./runs:/app/runs
+      - models:/models          # embedding / reranker / OCR models, downloaded once
+
+volumes:
+  models:
