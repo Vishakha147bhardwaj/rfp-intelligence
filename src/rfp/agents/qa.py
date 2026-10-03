@@ -14,12 +14,13 @@ from langgraph.types import Send
 from pydantic import BaseModel, Field
 
 from rfp.agents.reconciliation import BASE_TYPES
+from rfp.agents.semantic_cache import SemanticCache, index_fingerprint
 from rfp.agents.tracing import trace_step, write_trace
 from rfp.llm.client import LLMClient
 from rfp.search.engine import SearchEngine
 from rfp.search.indexer import load_manifest
 from rfp.search.store import ChunkStore
-from rfp.settings import PROJECT_ROOT
+from rfp.settings import PROJECT_ROOT, get_settings
 
 log = structlog.get_logger()
 
@@ -87,6 +88,7 @@ class QAAnswer(BaseModel):
     found: bool
     bid_ids: list[str]
     citations: list[Citation] = Field(default_factory=list)
+    cached: bool = False
 
 
 class QAState(TypedDict, total=False):
@@ -327,9 +329,39 @@ def run_question(
     store: ChunkStore,
     llm: LLMClient | None = None,
     log_answer: bool = True,
+    use_cache: bool = True,
 ) -> QAAnswer:
     run_id = f"qa-{datetime.now(UTC):%Y%m%d-%H%M%S}-{uuid.uuid4().hex[:6]}"
     started = datetime.now(UTC)
+    cache = SemanticCache() if use_cache and get_settings().cache.enabled else None
+    fingerprint = index_fingerprint()
+
+    if cache is not None:
+        hit, similarity = cache.lookup(question, fingerprint)
+        if hit is not None:
+            result = QAAnswer(
+                **{**hit, "run_id": run_id, "question": question, "cached": True}
+            )
+            write_trace(
+                PROJECT_ROOT / "runs" / run_id,
+                [],
+                meta={
+                    "run_id": run_id,
+                    "mode": "qa",
+                    "question": question,
+                    "started": started.isoformat(),
+                    "duration_s": round(
+                        (datetime.now(UTC) - started).total_seconds(), 1
+                    ),
+                    "found": result.found,
+                    "cache_hit": True,
+                    "cache_similarity": round(similarity, 4),
+                },
+            )
+            if log_answer:
+                append_qa_log(result)
+            return result
+
     graph = build_qa_graph(store, llm or LLMClient())
     final = graph.invoke({"run_id": run_id, "question": question})
     result: QAAnswer = final["result"]
@@ -343,8 +375,15 @@ def run_question(
             "started": started.isoformat(),
             "duration_s": round((datetime.now(UTC) - started).total_seconds(), 1),
             "found": result.found,
+            "cache_hit": False,
         },
     )
+    if cache is not None:
+        cache.store(
+            question,
+            result.model_dump(exclude={"run_id", "question", "cached"}),
+            fingerprint,
+        )
     if log_answer:
         append_qa_log(result)
     return result

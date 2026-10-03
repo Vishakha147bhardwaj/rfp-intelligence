@@ -16,20 +16,35 @@ log = structlog.get_logger()
 
 class Step:
     def __init__(self, run_id: str, node: str, detail: dict[str, Any]):
-        self.event: dict[str, Any] = {"run_id": run_id, "node": node, **detail,
-                                      "llm_calls": [], "error": None}
+        self.event: dict[str, Any] = {
+            "run_id": run_id,
+            "node": node,
+            **detail,
+            "llm_calls": [],
+            "error": None,
+        }
 
     def set(self, **values: Any) -> None:
         self.event.update(values)
 
     def add_usage(self, usage) -> None:
         if usage is not None:
-            self.event["llm_calls"].append(usage.model_dump() if hasattr(usage, "model_dump") else dict(usage))
+            self.event["llm_calls"].append(
+                usage.model_dump() if hasattr(usage, "model_dump") else dict(usage)
+            )
 
 
 def _cost(calls: list[dict]) -> float | None:
-    costs = [call_cost(c.get("model", ""), c.get("input_tokens", 0), c.get("output_tokens", 0),
-                       c.get("cache_read_tokens", 0), c.get("cache_write_tokens", 0)) for c in calls]
+    costs = [
+        call_cost(
+            c.get("model", ""),
+            c.get("input_tokens", 0),
+            c.get("output_tokens", 0),
+            c.get("cache_read_tokens", 0),
+            c.get("cache_write_tokens", 0),
+        )
+        for c in calls
+    ]
     known = [c for c in costs if c is not None]
     return round(sum(known), 6) if known else None
 
@@ -47,7 +62,9 @@ def trace_step(run_id: str, node: str, **detail: Any):
         step.event["input_tokens"] = sum(c.get("input_tokens", 0) for c in calls)
         step.event["output_tokens"] = sum(c.get("output_tokens", 0) for c in calls)
         step.event["cost_usd"] = _cost(calls)
-        log.info("agent_step", **{k: v for k, v in step.event.items() if k != "llm_calls"})
+        log.info(
+            "agent_step", **{k: v for k, v in step.event.items() if k != "llm_calls"}
+        )
 
 
 def summarize_events(events: list[dict[str, Any]]) -> dict[str, Any]:
@@ -60,7 +77,12 @@ def summarize_events(events: list[dict[str, Any]]) -> dict[str, Any]:
         for c in e.get("llm_calls", []):
             m = by_model[c.get("model", "?")]
             m["calls"] += 1
-            for key in ("input_tokens", "output_tokens", "cache_read_tokens", "cache_write_tokens"):
+            for key in (
+                "input_tokens",
+                "output_tokens",
+                "cache_read_tokens",
+                "cache_write_tokens",
+            ):
                 m[key] += c.get(key, 0)
     return {
         "steps": len(events),
@@ -75,7 +97,9 @@ def summarize_events(events: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def write_trace(run_dir: Path, events: list[dict[str, Any]], meta: dict[str, Any]) -> None:
+def write_trace(
+    run_dir: Path, events: list[dict[str, Any]], meta: dict[str, Any]
+) -> None:
     """runs/<run_id>/trace.jsonl (one event per line) + summary.json (totals and breakdowns)."""
     run_dir.mkdir(parents=True, exist_ok=True)
     with (run_dir / "trace.jsonl").open("w") as f:
