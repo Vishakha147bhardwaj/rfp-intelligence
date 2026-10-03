@@ -2,7 +2,7 @@
 
 from rfp.settings import ModelPrice, get_settings
 
-CACHE_READ_MULTIPLIER = 0.1     # used when no explicit cache price is configured
+CACHE_READ_MULTIPLIER = 0.1  # used when no explicit cache price is configured
 CACHE_WRITE_MULTIPLIER = 1.25
 
 
@@ -22,10 +22,20 @@ def call_cost(
     price = prices.get(model)
     if price is None:
         return None
-    read = (price.cache_read_per_mtok if price.cache_read_per_mtok is not None
-            else price.input_per_mtok * CACHE_READ_MULTIPLIER)
-    write = (price.cache_write_per_mtok if price.cache_write_per_mtok is not None
-             else price.input_per_mtok * CACHE_WRITE_MULTIPLIER)
-    total = (input_tokens * price.input_per_mtok + output_tokens * price.output_per_mtok
-             + cache_read_tokens * read + cache_write_tokens * write)
+    read = (
+        price.cache_read_per_mtok
+        if price.cache_read_per_mtok is not None
+        else price.input_per_mtok * CACHE_READ_MULTIPLIER
+    )
+    write = (
+        price.cache_write_per_mtok
+        if price.cache_write_per_mtok is not None
+        else price.input_per_mtok * CACHE_WRITE_MULTIPLIER
+    )
+    total = (
+        input_tokens * price.input_per_mtok
+        + output_tokens * price.output_per_mtok
+        + cache_read_tokens * read
+        + cache_write_tokens * write
+    )
     return total / 1_000_000

@@ -1,3 +1,9 @@
+cache:
+  enabled: true
+  path: data/cache/qa_cache.json
+  similarity_threshold: 0.95 # cosine similarity needed for a cache hit
+  max_entries: 500
+
 # Tunable settings. Secrets go in .env, never here.
 bids_dir: data/bids # /index only accepts folders inside this
 processed_dir: data/processed
@@ -25,8 +31,20 @@ llm:
   temperature: null # extraction should be deterministic
   validation_retries: 2 # re-asks when the model's JSON fails validation
   prices: # USD per million tokens - from Anthropic's pricing page (checked 2026-10-03)
-    claude-haiku-4-5-20251001: {input_per_mtok: 1.0, output_per_mtok: 5.0, cache_write_per_mtok: 1.25, cache_read_per_mtok: 0.10}
-    claude-sonnet-5-5: {input_per_mtok: 2.0, output_per_mtok: 10.0, cache_write_per_mtok: 2.50, cache_read_per_mtok: 0.20}
+    claude-haiku-4-5-20251001:
+      {
+        input_per_mtok: 1.0,
+        output_per_mtok: 5.0,
+        cache_write_per_mtok: 1.25,
+        cache_read_per_mtok: 0.10,
+      }
+    claude-sonnet-5-5:
+      {
+        input_per_mtok: 2.0,
+        output_per_mtok: 10.0,
+        cache_write_per_mtok: 2.50,
+        cache_read_per_mtok: 0.20,
+      }
 agents:
   per_query_k: 5 # results kept from each search query
   per_field_k: 5 # evidence chunks kept per field after fusing its queries

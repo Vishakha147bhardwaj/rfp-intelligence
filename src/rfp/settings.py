@@ -36,15 +36,16 @@ class SearchConfig(BaseModel):
 class ModelPrice(BaseModel):
     input_per_mtok: float
     output_per_mtok: float
-    cache_read_per_mtok: float | None = None   # default: 0.1 x input
+    cache_read_per_mtok: float | None = None  # default: 0.1 x input
     cache_write_per_mtok: float | None = None  # default: 1.25 x input
+
+
 class LLMConfig(BaseModel):
     timeout_s: float = 60
     max_tokens: int = 2048
     temperature: float | None = None
     validation_retries: int = 2
     prices: dict[str, ModelPrice] = {}
-
 
 
 class AgentsConfig(BaseModel):
@@ -56,6 +57,13 @@ class AgentsConfig(BaseModel):
     validator_tier: str = "smart"
     max_field_retries: int = 2
     rerank_candidates: int = 12
+
+
+class CacheConfig(BaseModel):
+    enabled: bool = True
+    path: str = "data/cache/qa_cache.json"
+    similarity_threshold: float = 0.95
+    max_entries: int = 500
 
 
 class Settings(BaseSettings):
@@ -74,6 +82,7 @@ class Settings(BaseSettings):
     search: SearchConfig = SearchConfig()
     llm: LLMConfig = LLMConfig()
     agents: AgentsConfig = AgentsConfig()
+    cache: CacheConfig = CacheConfig()
 
 
 @lru_cache

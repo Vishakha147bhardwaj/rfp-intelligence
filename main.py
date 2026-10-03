@@ -422,13 +422,16 @@ def extract(
 def ask(
     question: str = typer.Argument(..., help="A question about the bids"),
     log: bool = typer.Option(True, help="Append the answer to outputs/qa_log.md"),
+    cache: bool = typer.Option(
+        True, help="Reuse answers to semantically identical questions"
+    ),
 ) -> None:
     """Answer a question about the indexed bids, with citations (Q&A mode)."""
     from rfp.agents.qa import run_question
 
     store = ChunkStore()
     try:
-        result = run_question(question, store, log_answer=log)
+        result = run_question(question, store, log_answer=log, use_cache=cache)
     finally:
         store.close()
 
@@ -443,15 +446,29 @@ def ask(
         style="dim",
         markup=False,
     )
+    if result.cached:
+        console.print(
+            "(answered from the semantic cache - no LLM calls)", style="green"
+        )
+
 
 @app.command()
 def runs(limit: int = typer.Option(15, help="How many recent runs to show")) -> None:
     """List recent runs with duration, tokens and estimated cost (cost/latency tracking)."""
     import json
 
-    paths = sorted(Path("runs").glob("*/summary.json"), key=lambda p: p.stat().st_mtime)[-limit:]
+    paths = sorted(
+        Path("runs").glob("*/summary.json"), key=lambda p: p.stat().st_mtime
+    )[-limit:]
     table = Table(title="Recent runs")
-    for column in ("run", "what", "duration", "LLM calls", "tokens in/out", "cost (USD)"):
+    for column in (
+        "run",
+        "what",
+        "duration",
+        "LLM calls",
+        "tokens in/out",
+        "cost (USD)",
+    ):
         table.add_column(column)
     total = 0.0
     for p in paths:
@@ -459,10 +476,26 @@ def runs(limit: int = typer.Option(15, help="How many recent runs to show")) -> 
         what = s.get("bid_id") or (s.get("question", "")[:40] + "...")
         cost = s.get("cost_usd")
         total += cost or 0
-        table.add_row(s["run_id"], Text(what), f"{s.get('duration_s', 0)}s", str(s.get("llm_calls", 0)),
-                      f"{s.get('input_tokens', 0):,}/{s.get('output_tokens', 0):,}",
-                      f"{cost:.4f}" if cost is not None else "-")
+        table.add_row(
+            s["run_id"],
+            Text(what),
+            f"{s.get('duration_s', 0)}s",
+            str(s.get("llm_calls", 0)),
+            f"{s.get('input_tokens', 0):,}/{s.get('output_tokens', 0):,}",
+            f"{cost:.4f}" if cost is not None else "-",
+        )
     console.print(table)
     console.print(f"Total for these runs: ${total:.4f}")
+
+
+@app.command("cache-clear")
+def cache_clear() -> None:
+    """Delete all cached Q&A answers."""
+    from rfp.agents.semantic_cache import SemanticCache
+
+    SemanticCache(embed=lambda _: []).clear()
+    console.print("Semantic cache cleared.")
+
+
 if __name__ == "__main__":
     app()
