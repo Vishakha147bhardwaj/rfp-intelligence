@@ -33,11 +33,18 @@ class SearchConfig(BaseModel):
     rerank_include_header: bool = False
 
 
+class ModelPrice(BaseModel):
+    input_per_mtok: float
+    output_per_mtok: float
+    cache_read_per_mtok: float | None = None   # default: 0.1 x input
+    cache_write_per_mtok: float | None = None  # default: 1.25 x input
 class LLMConfig(BaseModel):
     timeout_s: float = 60
     max_tokens: int = 2048
     temperature: float | None = None
     validation_retries: int = 2
+    prices: dict[str, ModelPrice] = {}
+
 
 
 class AgentsConfig(BaseModel):
