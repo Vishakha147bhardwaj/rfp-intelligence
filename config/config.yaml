@@ -3,7 +3,9 @@ cache:
   path: data/cache/qa_cache.json
   similarity_threshold: 0.95 # cosine similarity needed for a cache hit
   max_entries: 500
-
+ocr:
+  enabled: true
+  dpi: 200 # render resolution for OCR; higher = slower but more accurate
 # Tunable settings. Secrets go in .env, never here.
 bids_dir: data/bids # /index only accepts folders inside this
 processed_dir: data/processed

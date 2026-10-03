@@ -66,6 +66,11 @@ class CacheConfig(BaseModel):
     max_entries: int = 500
 
 
+class OCRConfig(BaseModel):
+    enabled: bool = True
+    dpi: int = 200
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 
@@ -83,6 +88,7 @@ class Settings(BaseSettings):
     llm: LLMConfig = LLMConfig()
     agents: AgentsConfig = AgentsConfig()
     cache: CacheConfig = CacheConfig()
+    ocr: OCRConfig = OCRConfig()
 
 
 @lru_cache
