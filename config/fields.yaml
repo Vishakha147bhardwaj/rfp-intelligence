@@ -142,17 +142,20 @@ fields:
   - name: contact_info
     group: commercial_legal
     format: contact
+    rerank_candidates: 30
     description: Procurement contact - name, email, phone.
     hints: >-
-      The person named as Buyer or Procurement Officer for THIS solicitation (usually on the cover
-      or first pages). NOT M/WBE, HUB, compliance, insurance or legal department contacts. Format
+      The person named as Buyer or Procurement Officer for THIS solicitation (usually in the RFP
+      header, cover or first pages). If no buyer is named in the evidence, use the solicitation
+      contact listed on the bid portal page. NOT contacts for appendix processes such as catalog /
+      punch-out setup, and NOT M/WBE, HUB, compliance, insurance or legal contacts. Format
       "Name | email | phone". Never combine one person's name with another office's phone or
       email - if the buyer's phone is not given, write "not stated".
     queries:
       [
         buyer name email,
+        contact information email phone,
         procurement officer contact,
-        buyer contact phone,
         point of contact for questions,
       ]
 
@@ -176,6 +179,7 @@ fields:
     format: list
     expand_neighbors: true
     neighbor_window: 2
+    rerank_candidates: 30
     id_patterns:
       - '(?<![\w-])\d{3}-[A-Z0-9]{4}(?![\w-])' # Dell-style SKU: 210-BLYZ, 362-7806
     description: Part / SKU number(s) of the requested product(s).

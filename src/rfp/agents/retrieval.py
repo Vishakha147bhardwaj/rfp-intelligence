@@ -46,16 +46,17 @@ class RetrievalAgent:
         self.fetch_chunks = fetch_chunks or getattr(store, "get_chunks", None)
         self._cache: dict[tuple, list[SearchResult]] = {}   # (query, bid, doc_type, k) -> results
 
-    def _search(self, query: str, top_k: int, bid_id: str, doc_type) -> list[SearchResult]:
-        """Search with a per-run cache; agent searches rerank fewer candidates (faster)."""
-        key = (query, bid_id, str(doc_type), top_k)
+    def _search(self, query: str, top_k: int, bid_id: str, doc_type,
+                candidates: int | None = None) -> list[SearchResult]:
+        """Search with a per-run cache; agent searches rerank fewer candidates unless a field overrides."""
+        depth = candidates or self.cfg.rerank_candidates
+        key = (query, bid_id, str(doc_type), top_k, depth)
         if key not in self._cache:
             kwargs = {"top_k": top_k, "bid_id": bid_id, "doc_type": doc_type}
             if hasattr(self.engine, "store"):                 # real engine (fakes in tests don't need it)
-                kwargs["candidates"] = self.cfg.rerank_candidates
+                kwargs["candidates"] = depth
             self._cache[key] = self.engine.search(query, **kwargs)
         return self._cache[key]
-
     def gather(self, bid_id: str, specs: list[FieldSpec],
                extra_queries: dict[str, list[str]] | None = None,
                doc_type: str | list[str] | None = None,
@@ -69,7 +70,7 @@ class RetrievalAgent:
             rankings: list[list[str]] = []
             hits: dict[str, SearchResult] = {}
             for query in queries:
-                results = self._search(query, max(self.cfg.per_query_k, k), bid_id, doc_type)
+                results = self._search(query, max(self.cfg.per_query_k, k), bid_id, doc_type,spec.rerank_candidates)
                 bundle.queries_run += 1
                 rankings.append([r.chunk_id for r in results])
                 for r in results:

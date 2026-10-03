@@ -1,21 +1,102 @@
 {
-  "Bid Number": {"keywords": ["JA-207652"]},
-  "Title": {"keywords": ["Student and Staff Computing Devices"]},
-  "Due Date": {"datetime": "July 9, 2024 2:00 PM", "source": "Addendum 2"},
-  "Bid Submission Type": {"keywords": ["iSupplier|electronic", "sealed|paper"]},
-  "Term of Bid": {"keywords": ["three|3", "renew|extension", "five|5"]},
-  "Pre Bid Meeting": {"datetime": "June 10, 2024 2:00 PM", "source": "FINAL|BidNet"},
-  "Delivery Date": {"keywords": ["September", "2024"], "accept_null": true},
-  "Bid Bond Requirement": {"null": true},
-  "Payment Terms": {"null": true},
-  "Any Additional Documentation Required": {"list": ["Form 1295", "W-9|W9", "M/WBE|MWBE", "Certificate of Insurance"]},
-  "MFG for Registration": {"null": true},
-  "Contract or Cooperative to use": {"keywords": ["CTPA|Central Texas Purchasing Alliance|EPCNT|Educational Purchasing Cooperative"]},
-  "contact_info": {"keywords": ["Alzate", "jalzate@dallasisd.org"]},
-  "company_name": {"text": "Dallas Independent School District"},
-  "Model_no": {"null": true},
-  "Part_no": {"null": true},
-  "Product": {"list": ["Chromebook", "Windows Laptop", "Tablet", "Desktop", "Monitor"]},
-  "Product Specification": {"keywords": ["N100", "8GB|8 GB", "16GB|16 GB", "802.11AX|WiFi-6E|Wi-Fi 6E"]},
-  "Installation": {"keywords": ["white glove|deployment", "etching", "Autopilot"]}
+  "Bid Number": {
+    "keywords": [
+      "JA-207652"
+    ]
+  },
+  "Title": {
+    "keywords": [
+      "Student and Staff Computing Devices"
+    ]
+  },
+  "Due Date": {
+    "datetime": "July 9, 2024 2:00 PM",
+    "source": "Addendum 2"
+  },
+  "Bid Submission Type": {
+    "keywords": [
+      "iSupplier|electronic",
+      "sealed|paper"
+    ]
+  },
+  "Term of Bid": {
+    "keywords": [
+      "three|3",
+      "renew|extension",
+      "five|5"
+    ]
+  },
+  "Pre Bid Meeting": {
+    "datetime": "June 10, 2024 2:00 PM",
+    "source": "FINAL|BidNet"
+  },
+  "Delivery Date": {
+    "keywords": [
+      "September",
+      "2024"
+    ],
+    "accept_null": true
+  },
+  "Bid Bond Requirement": {
+    "null": true
+  },
+  "Payment Terms": {
+    "null": true
+  },
+  "Any Additional Documentation Required": {
+    "list": [
+      "Form 1295",
+      "W-9|W9",
+      "M/WBE|MWBE",
+      "Certificate of Insurance"
+    ]
+  },
+  "MFG for Registration": {
+    "null": true
+  },
+  "Contract or Cooperative to use": {
+    "keywords": [
+      "CTPA|Central Texas Purchasing Alliance|EPCNT|Educational Purchasing Cooperative"
+    ],
+    "accept_null": true
+  },
+  "contact_info": {
+    "keywords": [
+      "Alzate|Procurement Services",
+      "jalzate@dallasisd.org|procurementcs@dallasisd.org"
+    ]
+  },
+  "company_name": {
+    "text": "Dallas Independent School District"
+  },
+  "Model_no": {
+    "null": true
+  },
+  "Part_no": {
+    "null": true
+  },
+  "Product": {
+    "list": [
+      "Chromebook",
+      "Windows Laptop",
+      "Tablet",
+      "Desktop",
+      "Monitor"
+    ]
+  },
+  "Product Specification": {
+    "keywords": [
+      "N100",
+      "8GB|8 GB",
+      "16GB|16 GB",
+      "802.11AX|WiFi-6E|Wi-Fi 6E"
+    ]
+  },
+  "Installation": {
+    "keywords": [
+      "white glove|deployment",
+      "etching",
+      "Autopilot"
+    ]
+  }
 }
