@@ -1,0 +1,14 @@
+[theme]
+base = "light"
+primaryColor = "#1E2235"             # royal navy
+backgroundColor = "#FAF9F6"          # warm white
+secondaryBackgroundColor = "#F2F1EC" # pearl
+textColor = "#1E2235"                # navy ink
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"
+showSidebarNavigation = false
+
+[server]
+headless = true

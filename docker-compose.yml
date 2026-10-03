@@ -11,5 +11,19 @@ services:
       - ./runs:/app/runs
       - models:/models          # embedding / reranker / OCR models, downloaded once
 
+  ui:
+    image: rfp-intelligence
+    command: ["uv", "run", "--no-sync", "streamlit", "run", "ui/app.py",
+              "--server.port", "8501", "--server.address", "0.0.0.0"]
+    environment:
+      - RFP_API_URL=http://api:8000   # the API container, by its service name
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./runs:/app/runs
+    depends_on:
+      - api
+
 volumes:
   models:
