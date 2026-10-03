@@ -19,16 +19,21 @@ class FieldSpec(BaseModel):
     queries: list[str] = Field(default_factory=list)
     addendum_sensitive: bool = False
     generated: bool = False
-    evidence_k: int | None = None   # override agents.per_field_k for this field
+    evidence_k: int | None = None  # override agents.per_field_k for this field
     expand_neighbors: bool = False
-    id_patterns: list[str] = Field(default_factory=list)  # regexes for IDs that code copies exactly 
+    id_patterns: list[str] = Field(
+        default_factory=list
+    )  # regexes for IDs that code copies exactly
     neighbor_window: int | None = None  # override agents.neighbor_window for this field
-    rerank_candidates: int | None = None  # override agents.rerank_candidates for hard fields
+    rerank_candidates: int | None = (
+        None  # override agents.rerank_candidates for hard fields
+    )
+
 
 class Evidence(BaseModel):
     """A retrieved passage given to an agent. Agents cite it only by evidence_id."""
 
-    evidence_id: str               # "E1", "E2", ... (unique within one agent call)
+    evidence_id: str  # "E1", "E2", ... (unique within one agent call)
     chunk_id: str
     bid_id: str
     file_name: str
@@ -56,10 +61,20 @@ class FieldDraft(BaseModel):
     """One field as returned by an extraction agent (this exact shape goes to the LLM)."""
 
     field: str
-    value: FieldValueT = Field(description='The value, or null if not found. "None"/"Not required" only if stated.')
-    evidence_ids: list[str] = Field(default_factory=list, description="IDs of the passages that support the value")
-    confidence: float = Field(ge=0, le=1, description="0-1, how sure you are the value is correct and complete")
-    reasoning: str = Field(description="One or two sentences: where the value came from")
+    value: FieldValueT = Field(
+        description='The value, or null if not found. "None"/"Not required" only if stated.'
+    )
+    evidence_ids: list[str] = Field(
+        default_factory=list, description="IDs of the passages that support the value"
+    )
+    confidence: float = Field(
+        ge=0,
+        le=1,
+        description="0-1, how sure you are the value is correct and complete",
+    )
+    reasoning: str = Field(
+        description="One or two sentences: where the value came from"
+    )
 
 
 class AddendumChange(BaseModel):
@@ -68,12 +83,6 @@ class AddendumChange(BaseModel):
     new_value: FieldValueT
     addendum_number: int | None
     source: Source
-
-
-class FieldValidation(BaseModel):
-    field: str
-    status: Literal["passed", "failed", "not_found"]
-    reasons: list[str] = Field(default_factory=list)
 
 
 class FieldResult(BaseModel):
@@ -99,9 +108,12 @@ class BidRecord(BaseModel):
     addendum_changes: list[AddendumChange] = Field(default_factory=list)
     validation: ValidationSummary = Field(default_factory=ValidationSummary)
 
+
 class FieldValidation(BaseModel):
     field: str
     status: Literal["passed", "failed", "not_found"]
-    reasons: list[str] = Field(default_factory=list)        # why it failed
-    warnings: list[str] = Field(default_factory=list)       # passed, but worth noting
-    retry_queries: list[str] = Field(default_factory=list)  # validator's suggestions for a retry
+    reasons: list[str] = Field(default_factory=list)  # why it failed
+    warnings: list[str] = Field(default_factory=list)  # passed, but worth noting
+    retry_queries: list[str] = Field(
+        default_factory=list
+    )  # validator's suggestions for a retry

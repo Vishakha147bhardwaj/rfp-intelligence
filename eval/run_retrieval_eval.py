@@ -17,9 +17,21 @@ CONFIGS = [
     ("A. BM25 only", "sparse", {}),
     ("B. Dense only", "dense", {}),
     ("C. Hybrid (RRF)", "hybrid", {}),
-    ("D. Hybrid + MiniLM rerank", "hybrid_rerank", {"rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2"}),
-    ("E. Hybrid + bge rerank", "hybrid_rerank", {"rerank_model": "BAAI/bge-reranker-base"}),
-    ("F. Hybrid + MiniLM, 12 candidates", "hybrid_rerank",{"rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2", "retrieve_k": 12}),
+    (
+        "D. Hybrid + MiniLM rerank",
+        "hybrid_rerank",
+        {"rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2"},
+    ),
+    (
+        "E. Hybrid + bge rerank",
+        "hybrid_rerank",
+        {"rerank_model": "BAAI/bge-reranker-base"},
+    ),
+    (
+        "F. Hybrid + MiniLM, 12 candidates",
+        "hybrid_rerank",
+        {"rerank_model": "Xenova/ms-marco-MiniLM-L-6-v2", "retrieve_k": 12},
+    ),
 ]
 
 
@@ -32,13 +44,25 @@ def is_hit(result: SearchResult, gold: list[dict]) -> bool:
     )
 
 
-def evaluate(engine: SearchEngine, questions: list[dict], mode: str) -> tuple[dict, list[dict]]:
+def evaluate(
+    engine: SearchEngine, questions: list[dict], mode: str
+) -> tuple[dict, list[dict]]:
     rows = []
     for q in questions:
-        results = engine.search(q["question"], top_k=10, mode=mode, bid_id=q.get("bid_id"))
-        first = next((i for i, r in enumerate(results, start=1) if is_hit(r, q["gold"])), None)
-        rows.append({"id": q["id"], "question": q["question"], "first_hit": first,
-                     "top3": [r.citation for r in results[:3]]})
+        results = engine.search(
+            q["question"], top_k=10, mode=mode, bid_id=q.get("bid_id")
+        )
+        first = next(
+            (i for i, r in enumerate(results, start=1) if is_hit(r, q["gold"])), None
+        )
+        rows.append(
+            {
+                "id": q["id"],
+                "question": q["question"],
+                "first_hit": first,
+                "top3": [r.citation for r in results[:3]],
+            }
+        )
     n = len(rows)
     hits = [r["first_hit"] for r in rows if r["first_hit"]]
     metrics = {f"R@{k}": sum(1 for h in hits if h <= k) / n for k in KS}
@@ -48,18 +72,24 @@ def evaluate(engine: SearchEngine, questions: list[dict], mode: str) -> tuple[di
 
 
 def main() -> None:
-    questions = [json.loads(line) for line in EVAL_SET.read_text().splitlines() if line.strip()]
+    questions = [
+        json.loads(line) for line in EVAL_SET.read_text().splitlines() if line.strip()
+    ]
     base = get_settings().search
     store = ChunkStore()
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    table = ["| Config | " + " | ".join([f"R@{k}" for k in KS] + ["MRR", "nDCG@10"]) + " |",
-             "|---|" + "---|" * (len(KS) + 2)]
+    table = [
+        "| Config | " + " | ".join([f"R@{k}" for k in KS] + ["MRR", "nDCG@10"]) + " |",
+        "|---|" + "---|" * (len(KS) + 2),
+    ]
     details = {}
     try:
         for name, mode, overrides in CONFIGS:
             engine = SearchEngine(store, base.model_copy(update=overrides))
             metrics, rows = evaluate(engine, questions, mode)
-            table.append(f"| {name} | " + " | ".join(f"{v:.2f}" for v in metrics.values()) + " |")
+            table.append(
+                f"| {name} | " + " | ".join(f"{v:.2f}" for v in metrics.values()) + " |"
+            )
             details[name] = rows
             print(table[-1], flush=True)
     finally:
@@ -69,7 +99,9 @@ def main() -> None:
     (RESULTS_DIR / "retrieval_results.md").write_text(report)
     (RESULTS_DIR / "retrieval_details.json").write_text(json.dumps(details, indent=2))
     print("\n" + report)
-    print(f"Per-question details (misses = first_hit null): {RESULTS_DIR / 'retrieval_details.json'}")
+    print(
+        f"Per-question details (misses = first_hit null): {RESULTS_DIR / 'retrieval_details.json'}"
+    )
 
 
 if __name__ == "__main__":

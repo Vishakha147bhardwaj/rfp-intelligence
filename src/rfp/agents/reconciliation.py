@@ -8,8 +8,14 @@ from pydantic import BaseModel, Field
 from rfp.agents.extraction import normalize_value
 from rfp.agents.retrieval import EvidenceBundle, RetrievalAgent
 from rfp.llm.client import LLMClient, LLMUsage
-from rfp.schemas.agents import (AddendumChange, Evidence, FieldResult, FieldSpec, FieldValueT,
-                                Source)
+from rfp.schemas.agents import (
+    AddendumChange,
+    Evidence,
+    FieldResult,
+    FieldSpec,
+    FieldValueT,
+    Source,
+)
 from rfp.schemas.documents import DocType
 
 log = structlog.get_logger()
@@ -72,31 +78,59 @@ def apply_reconciliation(
             continue
         if not finding.changed_by_addendum:
             updated[spec.name] = current.model_copy(
-                update={"notes": f"{current.notes} [Reconciliation: no addendum change.]".strip()})
+                update={
+                    "notes": f"{current.notes} [Reconciliation: no addendum change.]".strip()
+                }
+            )
             continue
 
         new_value = normalize_value(finding.new_value, spec)
-        evidence = [e for eid in finding.new_evidence_ids
-                    if (e := lookup(eid)) and e.doc_type == DocType.ADDENDUM.value]
+        evidence = [
+            e
+            for eid in finding.new_evidence_ids
+            if (e := lookup(eid)) and e.doc_type == DocType.ADDENDUM.value
+        ]
         if new_value is None or not evidence:
-            log.warning("reconciliation_rejected", field=spec.name,
-                        reason="change claimed without addendum evidence")
-            updated[spec.name] = current.model_copy(update={"notes": (
-                f"{current.notes} [Reconciliation claimed an addendum change without addendum "
-                f"evidence - ignored.]").strip()})
+            log.warning(
+                "reconciliation_rejected",
+                field=spec.name,
+                reason="change claimed without addendum evidence",
+            )
+            updated[spec.name] = current.model_copy(
+                update={
+                    "notes": (
+                        f"{current.notes} [Reconciliation claimed an addendum change without addendum "
+                        f"evidence - ignored.]"
+                    ).strip()
+                }
+            )
             continue
 
-        number = finding.addendum_number or max((e.addendum_number or 0) for e in evidence) or None
+        number = (
+            finding.addendum_number
+            or max((e.addendum_number or 0) for e in evidence)
+            or None
+        )
         original = normalize_value(finding.original_value, spec)
-        sources = [Source(file=e.file_name, page=e.page_number, chunk_id=e.chunk_id) for e in evidence]
+        sources = [
+            Source(file=e.file_name, page=e.page_number, chunk_id=e.chunk_id)
+            for e in evidence
+        ]
         updated[spec.name] = FieldResult(
             value=new_value,
             sources=sources,
             confidence=max(current.confidence, 0.9),
             notes=f"Updated by Addendum {number} (original: {_fmt(original)}). {finding.explanation}",
         )
-        changes.append(AddendumChange(field=spec.name, old_value=original, new_value=new_value,
-                                      addendum_number=number, source=sources[0]))
+        changes.append(
+            AddendumChange(
+                field=spec.name,
+                old_value=original,
+                new_value=new_value,
+                addendum_number=number,
+                source=sources[0],
+            )
+        )
         log.info("addendum_change", field=spec.name, addendum=number)
     return updated, changes
 
@@ -105,7 +139,9 @@ def _evidence_text(bundle: EvidenceBundle) -> str:
     parts = []
     for e in bundle.evidence:
         label = f"addendum #{e.addendum_number}" if e.addendum_number else e.doc_type
-        parts.append(f"[{e.evidence_id}] {e.file_name} | page {e.page_number} | {label}\n{e.text}")
+        parts.append(
+            f"[{e.evidence_id}] {e.file_name} | page {e.page_number} | {label}\n{e.text}"
+        )
     return "\n\n".join(parts)
 
 
@@ -115,30 +151,44 @@ class ReconciliationAgent:
         self.retrieval = retrieval
         self.tier = tier
 
-    def run(self, bid_id: str, specs: list[FieldSpec], results: dict[str, FieldResult]
-            ) -> tuple[dict[str, FieldResult], list[AddendumChange], LLMUsage | None]:
+    def run(
+        self, bid_id: str, specs: list[FieldSpec], results: dict[str, FieldResult]
+    ) -> tuple[dict[str, FieldResult], list[AddendumChange], LLMUsage | None]:
         sensitive = [s for s in specs if s.addendum_sensitive and s.name in results]
         if not sensitive:
             return results, [], None
 
-        addenda = self.retrieval.gather(bid_id, sensitive, doc_type=DocType.ADDENDUM.value, id_prefix="A")
+        addenda = self.retrieval.gather(
+            bid_id, sensitive, doc_type=DocType.ADDENDUM.value, id_prefix="A"
+        )
         if not addenda.evidence:
-            log.info("reconciliation_skipped", bid=bid_id, reason="no addendum evidence")
+            log.info(
+                "reconciliation_skipped", bid=bid_id, reason="no addendum evidence"
+            )
             return results, [], None
-        base = self.retrieval.gather(bid_id, sensitive, doc_type=BASE_TYPES, id_prefix="B")
+        base = self.retrieval.gather(
+            bid_id, sensitive, doc_type=BASE_TYPES, id_prefix="B"
+        )
 
         fields_text = "\n".join(
             f"- {s.name}: {s.description} Currently extracted: {_fmt(results[s.name].value)}"
             for s in sensitive
         )
-        user = (f"Bid: {bid_id}\n\nFields to reconcile:\n{fields_text}\n\n"
-                f"BASE evidence:\n\n{_evidence_text(base)}\n\n"
-                f"ADDENDUM evidence:\n\n{_evidence_text(addenda)}\n\n"
-                "Return exactly one entry per field.")
-        output, usage = self.llm.structured(
-            agent="reconcile", system=RECONCILIATION_RULES, user=user,
-            response_model=ReconciliationOutput, tier=self.tier, max_tokens=4096,
+        user = (
+            f"Bid: {bid_id}\n\nFields to reconcile:\n{fields_text}\n\n"
+            f"BASE evidence:\n\n{_evidence_text(base)}\n\n"
+            f"ADDENDUM evidence:\n\n{_evidence_text(addenda)}\n\n"
+            "Return exactly one entry per field."
         )
-        updated, changes = apply_reconciliation(sensitive, results, output,
-                                                lambda eid: base.get(eid) or addenda.get(eid))
+        output, usage = self.llm.structured(
+            agent="reconcile",
+            system=RECONCILIATION_RULES,
+            user=user,
+            response_model=ReconciliationOutput,
+            tier=self.tier,
+            max_tokens=4096,
+        )
+        updated, changes = apply_reconciliation(
+            sensitive, results, output, lambda eid: base.get(eid) or addenda.get(eid)
+        )
         return updated, changes, usage

@@ -13,8 +13,11 @@ log = structlog.get_logger()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_RULES_PATH = PROJECT_ROOT / "config" / "html_rules.yaml"
-NUMBERED_ITEM = re.compile(r"\s+(?=\d{1,2}\.\s+[A-Z])")  # split "... 1. Foo 2. Bar" into lines
+NUMBERED_ITEM = re.compile(
+    r"\s+(?=\d{1,2}\.\s+[A-Z])"
+)  # split "... 1. Foo 2. Bar" into lines
 TRUNCATION_NOTE = " [truncated on portal page]"
+
 
 def load_rules(path: Path = DEFAULT_RULES_PATH) -> dict:
     with path.open() as f:
@@ -52,7 +55,9 @@ def _field_lines(soup: BeautifulSoup, rules: dict) -> tuple[list[str], list[str]
             sections.append(section)
             lines += ["", f"## {section}"]
             continue
-        if el.select_one(field_sel):          # a container of other fields: skip, keep innermost
+        if el.select_one(
+            field_sel
+        ):  # a container of other fields: skip, keep innermost
             continue
         label = _text(el.select_one(rules["label_selector"])).rstrip(":")
         value = _text(el.select_one(rules["value_selector"]))

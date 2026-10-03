@@ -16,9 +16,9 @@ log = structlog.get_logger()
 
 
 class IndexReport(BaseModel):
-    indexed: dict[str, int] = Field(default_factory=dict)   # file -> chunks written
-    skipped: list[str] = Field(default_factory=list)         # unchanged files
-    removed: list[str] = Field(default_factory=list)         # files no longer in the folder
+    indexed: dict[str, int] = Field(default_factory=dict)  # file -> chunks written
+    skipped: list[str] = Field(default_factory=list)  # unchanged files
+    removed: list[str] = Field(default_factory=list)  # files no longer in the folder
 
 
 def load_manifest(path: Path | None = None) -> dict:
@@ -47,7 +47,7 @@ def index_documents(
             report.skipped.append(doc.file_name)
             continue
         chunks = chunk_document(doc)
-        store.delete_file(doc.bid_id, doc.file_name)          # clear any old version
+        store.delete_file(doc.bid_id, doc.file_name)  # clear any old version
         if chunks:
             texts = [c.embed_text for c in chunks]
             store.upsert(chunks, embed_dense(texts), embed_sparse(texts))
@@ -55,7 +55,7 @@ def index_documents(
         report.indexed[doc.file_name] = len(chunks)
         log.info("file_indexed", bid=doc.bid_id, file=doc.file_name, chunks=len(chunks))
 
-    for bid_id in {d.bid_id for d in docs}:                    # files deleted from the folder
+    for bid_id in {d.bid_id for d in docs}:  # files deleted from the folder
         current = {d.file_name for d in docs if d.bid_id == bid_id}
         for file_name in list(manifest.get(bid_id, {})):
             if file_name not in current:

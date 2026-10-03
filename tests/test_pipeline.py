@@ -8,11 +8,18 @@ def test_doc_date_from_publication_line():
 
 
 def test_doc_date_from_issue_line():
-    assert find_doc_date("First Advertisement Date/Issue Date   26-MAY-2024 08:00:00") == date(2024, 5, 26)
+    assert find_doc_date(
+        "First Advertisement Date/Issue Date   26-MAY-2024 08:00:00"
+    ) == date(2024, 5, 26)
 
 
 def test_due_date_is_never_the_doc_date():
-    assert find_doc_date("The new due date for this RFP will be July 9, 2024 at 2:00 PM CST.") is None
+    assert (
+        find_doc_date(
+            "The new due date for this RFP will be July 9, 2024 at 2:00 PM CST."
+        )
+        is None
+    )
 
 
 def test_bad_and_unsupported_files_do_not_crash(tmp_path):
@@ -26,7 +33,11 @@ def test_bad_and_unsupported_files_do_not_crash(tmp_path):
 
     statuses = {f.file_name: f.status for f in report.files}
     assert docs == []
-    assert statuses == {"broken.pdf": "failed", "notes.docx": "skipped"}  # .DS_Store ignored
+    assert statuses == {
+        "broken.pdf": "failed",
+        "notes.docx": "skipped",
+    }  # .DS_Store ignored
+
 
 def test_issue_date_on_line_that_also_has_due_date():
     line = "PORFP Issue Date: | 05/24/2024 | PROPOSAL DUE | 06/10/2024"

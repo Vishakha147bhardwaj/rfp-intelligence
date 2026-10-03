@@ -8,14 +8,14 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Query, Request
 from pydantic import BaseModel, Field
 
+from rfp.agents.qa import QAAnswer, run_question
 from rfp.ingestion.pipeline import ingest_folder
+from rfp.llm.client import LLMClient, LLMError
+from rfp.schemas.agents import BidRecord
 from rfp.search.engine import MODES, SearchEngine, SearchResult
 from rfp.search.indexer import IndexReport, index_documents, load_manifest
 from rfp.search.store import ChunkStore
 from rfp.settings import PROJECT_ROOT, get_settings
-from rfp.agents.qa import QAAnswer, run_question
-from rfp.llm.client import LLMClient, LLMError
-from rfp.schemas.agents import BidRecord
 
 
 class IndexRequest(BaseModel):
@@ -36,8 +36,11 @@ class SearchResponse(BaseModel):
     count: int
     results: list[SearchResult]
 
+
 class AskRequest(BaseModel):
-    question: str = Field(..., min_length=3, examples=["What is the submission deadline for Bid1?"])
+    question: str = Field(
+        ..., min_length=3, examples=["What is the submission deadline for Bid1?"]
+    )
 
 
 class ExtractRequest(BaseModel):
@@ -61,13 +64,16 @@ def _resolve_bid_folder(folder: str) -> Path:
     return path
 
 
-def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore,llm_factory: Callable[[], LLMClient] = LLMClient) -> FastAPI:
+def create_app(
+    store_factory: Callable[[], ChunkStore] = ChunkStore,
+    llm_factory: Callable[[], LLMClient] = LLMClient,
+) -> FastAPI:
     """Build the app. Tests pass a factory that opens a temporary store."""
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         app.state.store = store_factory()
-        app.state.lock = threading.Lock()   # embedded Qdrant: one operation at a time
+        app.state.lock = threading.Lock()  # embedded Qdrant: one operation at a time
         yield
         app.state.store.close()
 
@@ -89,14 +95,20 @@ def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore,llm_factory:
         store, lock = request.app.state.store, request.app.state.lock
         with lock:
             return [
-                {"bid_id": bid, "files": sorted(files), "chunks": store.count(bid_id=bid)}
+                {
+                    "bid_id": bid,
+                    "files": sorted(files),
+                    "chunks": store.count(bid_id=bid),
+                }
                 for bid, files in load_manifest().items()
             ]
 
     @app.post("/index", response_model=IndexResponse)
     def index(req: IndexRequest, request: Request) -> IndexResponse:
         folder = _resolve_bid_folder(req.folder)
-        docs, ingestion = ingest_folder(folder, PROJECT_ROOT / get_settings().processed_dir)
+        docs, ingestion = ingest_folder(
+            folder, PROJECT_ROOT / get_settings().processed_dir
+        )
         store, lock = request.app.state.store, request.app.state.lock
         with lock:
             report = index_documents(docs, store, force=req.force)
@@ -113,7 +125,9 @@ def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore,llm_factory:
         request: Request,
         q: str = Query(..., min_length=2, description="Search query"),
         bid_id: str | None = None,
-        doc_type: str | None = Query(None, description="rfp | addendum | bid_page | specs | affidavit"),
+        doc_type: str | None = Query(
+            None, description="rfp | addendum | bid_page | specs | affidavit"
+        ),
         addendum_number: int | None = None,
         top_k: int = Query(5, ge=1, le=50),
         mode: str = Query("hybrid_rerank", description=" | ".join(MODES)),
@@ -122,10 +136,15 @@ def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore,llm_factory:
             raise HTTPException(422, f"mode must be one of {MODES}")
         with request.app.state.lock:
             results = SearchEngine(request.app.state.store).search(
-                q, top_k=top_k, mode=mode, bid_id=bid_id,
-                doc_type=doc_type, addendum_number=addendum_number,
+                q,
+                top_k=top_k,
+                mode=mode,
+                bid_id=bid_id,
+                doc_type=doc_type,
+                addendum_number=addendum_number,
             )
         return SearchResponse(query=q, mode=mode, count=len(results), results=results)
+
     def get_llm(request: Request) -> LLMClient:
         if getattr(request.app.state, "llm", None) is None:
             try:
@@ -146,9 +165,12 @@ def create_app(store_factory: Callable[[], ChunkStore] = ChunkStore,llm_factory:
 
         store = request.app.state.store
         if store.count(bid_id=req.bid_id) == 0:
-            raise HTTPException(404, f"Bid {req.bid_id} is not indexed - POST /index first")
+            raise HTTPException(
+                404, f"Bid {req.bid_id} is not indexed - POST /index first"
+            )
         record, run_dir, errors = run_extraction(req.bid_id, store, get_llm(request))
         return ExtractResponse(record=record, trace_dir=str(run_dir), errors=errors)
+
     return app
 
 

@@ -10,12 +10,12 @@ from pydantic import BaseModel, Field
 class DocType(str, Enum):
     """What role a file plays in a bid. Drives metadata filtering in search."""
 
-    BID_PAGE = "bid_page"      # portal web page (HTML)
-    RFP = "rfp"                # main solicitation document
-    ADDENDUM = "addendum"      # changes to the RFP, numbered
-    SPECS = "specs"            # product specification sheet
-    AFFIDAVIT = "affidavit"    # forms the bidder must sign
-    OTHER = "other"            # anything we can't classify
+    BID_PAGE = "bid_page"  # portal web page (HTML)
+    RFP = "rfp"  # main solicitation document
+    ADDENDUM = "addendum"  # changes to the RFP, numbered
+    SPECS = "specs"  # product specification sheet
+    AFFIDAVIT = "affidavit"  # forms the bidder must sign
+    OTHER = "other"  # anything we can't classify
 
 
 class Table(BaseModel):
@@ -30,8 +30,8 @@ class Table(BaseModel):
 class Page(BaseModel):
     """One page of a document (an HTML file counts as a single page)."""
 
-    page_number: int                                   # 1-based, used in citations
-    text: str                                          # cleaned text, tables removed
+    page_number: int  # 1-based, used in citations
+    text: str  # cleaned text, tables removed
     tables: list[Table] = Field(default_factory=list)
     headings: list[str] = Field(default_factory=list)  # detected section titles
     ocr_used: bool = False
@@ -41,10 +41,10 @@ class Page(BaseModel):
 class ParsedDocument(BaseModel):
     """One input file after parsing, with all metadata attached."""
 
-    bid_id: str                                 # folder name, e.g. "Bid1"
+    bid_id: str  # folder name, e.g. "Bid1"
     file_name: str
     file_path: str
-    file_hash: str                              # sha256, for incremental indexing
+    file_hash: str  # sha256, for incremental indexing
     file_type: Literal["pdf", "html"]
     doc_type: DocType
     addendum_number: int | None = None

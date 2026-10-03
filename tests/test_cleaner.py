@@ -13,7 +13,11 @@ def test_repeated_header_and_footer_removed():
         "Request For Proposal 168884 JA-207652\nDallas ISD rev 2.0 Page 4 of 40\nNet 30 payment",
     )
     cleaned, removed = clean_pages(pages)
-    assert [p.text for p in cleaned] == ["Warranty: 1 year", "Delivery in 30 days", "Net 30 payment"]
+    assert [p.text for p in cleaned] == [
+        "Warranty: 1 year",
+        "Delivery in 30 days",
+        "Net 30 payment",
+    ]
     assert len(removed) == 2
 
 
@@ -23,11 +27,17 @@ def test_page_label_line_removed():
 
 
 def test_hyphen_break_keeps_hyphen():
-    assert clean_text("attend the pre-\nproposal meeting") == "attend the pre-proposal meeting"
+    assert (
+        clean_text("attend the pre-\nproposal meeting")
+        == "attend the pre-proposal meeting"
+    )
 
 
 def test_wrapped_sentence_is_joined():
-    assert clean_text("The term shall be three\nyears with renewals.") == "The term shall be three years with renewals."
+    assert (
+        clean_text("The term shall be three\nyears with renewals.")
+        == "The term shall be three years with renewals."
+    )
 
 
 def test_column_rows_are_not_joined():
@@ -36,7 +46,11 @@ def test_column_rows_are_not_joined():
 
 
 def test_list_items_are_not_joined():
-    assert clean_text("Requirements\n- warranty 3 years") == "Requirements\n- warranty 3 years"
+    assert (
+        clean_text("Requirements\n- warranty 3 years")
+        == "Requirements\n- warranty 3 years"
+    )
+
 
 def test_inline_bullets_split_onto_lines():
     text = "Requirements • Memory: 16GB • Storage: 256GB SSD"

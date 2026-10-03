@@ -9,20 +9,33 @@ from rfp.schemas.agents import FieldResult, FieldValidation
 
 def test_record_has_all_20_fields_in_registry_order():
     results = {"Title": FieldResult(value="Laptops", confidence=0.9)}
-    validations = {"Title": FieldValidation(field="Title", status="passed"),
-                   "Bid Bond Requirement": FieldValidation(field="Bid Bond Requirement", status="not_found")}
+    validations = {
+        "Title": FieldValidation(field="Title", status="passed"),
+        "Bid Bond Requirement": FieldValidation(
+            field="Bid Bond Requirement", status="not_found"
+        ),
+    }
     record = build_record("B1", results, None, [], validations)
 
     assert list(record.fields) == field_names()
     assert record.fields["Title"].value == "Laptops"
-    assert record.fields["Due Date"].value is None and "Not found" in record.fields["Due Date"].notes
+    assert (
+        record.fields["Due Date"].value is None
+        and "Not found" in record.fields["Due Date"].notes
+    )
     assert (record.validation.passed, record.validation.not_found) == (1, 1)
 
 
 def test_trace_step_records_latency_and_tokens():
     with trace_step("run1", "extract", group="g") as step:
-        step.add_usage(SimpleNamespace(model_dump=lambda: {"input_tokens": 100, "output_tokens": 20}))
-        step.add_usage(SimpleNamespace(model_dump=lambda: {"input_tokens": 50, "output_tokens": 5}))
+        step.add_usage(
+            SimpleNamespace(
+                model_dump=lambda: {"input_tokens": 100, "output_tokens": 20}
+            )
+        )
+        step.add_usage(
+            SimpleNamespace(model_dump=lambda: {"input_tokens": 50, "output_tokens": 5})
+        )
     event = step.event
     assert (event["node"], event["group"]) == ("extract", "g")
     assert (event["input_tokens"], event["output_tokens"]) == (150, 25)

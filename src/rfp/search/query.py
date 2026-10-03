@@ -15,7 +15,7 @@ TOKEN = re.compile(r"[A-Za-z0-9#][A-Za-z0-9#-]*")
 @dataclass
 class QueryPlan:
     original: str
-    keyword_query: str                       # original + expansions, for BM25
+    keyword_query: str  # original + expansions, for BM25
     expansions: list[str] = field(default_factory=list)
     identifiers: list[str] = field(default_factory=list)
     sparse_weight: float = 1.0
@@ -43,7 +43,8 @@ def expand_query(query: str) -> list[str]:
 def find_identifiers(query: str) -> list[str]:
     """Tokens that mix letters and digits and are at least 5 chars: JA-207652, WD22TB4, 210-BLYZ."""
     return [
-        tok for tok in TOKEN.findall(query)
+        tok
+        for tok in TOKEN.findall(query)
         if len(tok) >= 5 and re.search(r"\d", tok) and re.search(r"[A-Za-z]", tok)
     ]
 
@@ -56,5 +57,7 @@ def plan_query(query: str, cfg: SearchConfig) -> QueryPlan:
         keyword_query=" ".join([query, *expansions]),
         expansions=expansions,
         identifiers=identifiers,
-        sparse_weight=cfg.identifier_sparse_weight if identifiers else cfg.sparse_weight,
+        sparse_weight=cfg.identifier_sparse_weight
+        if identifiers
+        else cfg.sparse_weight,
     )

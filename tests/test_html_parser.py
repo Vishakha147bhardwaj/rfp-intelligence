@@ -56,9 +56,12 @@ def test_table_fallback(tmp_path):
 
 
 def test_plain_page_uses_full_text(tmp_path):
-    html = "<html><body><script>x=1</script><p>Bids due Friday at noon.</p></body></html>"
+    html = (
+        "<html><body><script>x=1</script><p>Bids due Friday at noon.</p></body></html>"
+    )
     text = _parse(tmp_path, html).text
     assert "Bids due Friday at noon." in text and "x=1" not in text
+
 
 def test_see_more_marked_as_truncated(tmp_path):
     html = """<html><head><title>X</title></head><body>
@@ -68,5 +71,8 @@ def test_see_more_marked_as_truncated(tmp_path):
     <div class="mets-field"><span class="mets-field-label">Due</span><div class="mets-field-body">2</div></div>
     </body></html>"""
     text = _parse(tmp_path, html).text
-    assert "Description: Each submission must include a d [truncated on portal page]" in text
+    assert (
+        "Description: Each submission must include a d [truncated on portal page]"
+        in text
+    )
     assert "See more" not in text

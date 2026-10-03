@@ -9,8 +9,13 @@ from pydantic import BaseModel, Field
 
 from rfp.ingestion.pipeline import DATE_PATTERNS
 from rfp.llm.client import LLMClient, LLMError, LLMUsage
-from rfp.schemas.agents import (FieldResult, FieldSpec, FieldValidation, FieldValueT,
-                                ValidationSummary)
+from rfp.schemas.agents import (
+    FieldResult,
+    FieldSpec,
+    FieldValidation,
+    FieldValueT,
+    ValidationSummary,
+)
 
 log = structlog.get_logger()
 
@@ -20,8 +25,10 @@ TIME_VALUE = re.compile(
     r"\b(\d{1,2}):(\d{2})(?::\d{2})?\s*([ap]\.?m\.?)?|\b(\d{1,2})\s*([ap]\.?m\.?)(?![a-z])",
     re.IGNORECASE,
 )
-TIME_ZONE = re.compile(r"\b(?:[ECMP][SD]?T|UTC|GMT)\b|\b(?:Eastern|Central|Mountain|Pacific)\b")
-PASSAGE_CHARS = 2500   # per cited passage sent to the fact-checker
+TIME_ZONE = re.compile(
+    r"\b(?:[ECMP][SD]?T|UTC|GMT)\b|\b(?:Eastern|Central|Mountain|Pacific)\b"
+)
+PASSAGE_CHARS = 2500  # per cited passage sent to the fact-checker
 
 JUDGE_RULES = """You are a strict fact-checker for information extracted from bid documents.
 For each field you get the extracted value and the exact passages it cites.
@@ -52,6 +59,7 @@ class JudgeOutput(BaseModel):
 
 
 # ---------- deterministic helpers ----------
+
 
 def _text(value: FieldValueT) -> str:
     if value is None:
@@ -156,39 +164,53 @@ def consistency_problems(results: dict[str, FieldResult]) -> dict[str, list[str]
         pre_dates = [d for *_, d in _date_spans(_text(pre.value))]
         due_dates = [d for *_, d in _date_spans(_text(due.value))]
         if pre_dates and due_dates and min(pre_dates) > max(due_dates):
-            out["Pre Bid Meeting"] = [f"pre-bid date {min(pre_dates)} is after the due date {max(due_dates)}"]
+            out["Pre Bid Meeting"] = [
+                f"pre-bid date {min(pre_dates)} is after the due date {max(due_dates)}"
+            ]
     return out
 
 
 def summarize(validations: dict[str, FieldValidation]) -> ValidationSummary:
     statuses = [v.status for v in validations.values()]
-    return ValidationSummary(passed=statuses.count("passed"), failed=statuses.count("failed"),
-                             not_found=statuses.count("not_found"))
+    return ValidationSummary(
+        passed=statuses.count("passed"),
+        failed=statuses.count("failed"),
+        not_found=statuses.count("not_found"),
+    )
 
 
-def apply_validation(results: dict[str, FieldResult],
-                     validations: dict[str, FieldValidation]) -> dict[str, FieldResult]:
+def apply_validation(
+    results: dict[str, FieldResult], validations: dict[str, FieldValidation]
+) -> dict[str, FieldResult]:
     """Lower confidence and annotate fields that are still failing after all retries."""
     out = dict(results)
     for name, v in validations.items():
         r = results.get(name)
         if r is not None and v.status == "failed":
-            out[name] = r.model_copy(update={
-                "confidence": min(r.confidence, 0.4),
-                "notes": f"{r.notes} [Validation failed: {'; '.join(v.reasons)}]".strip(),
-            })
+            out[name] = r.model_copy(
+                update={
+                    "confidence": min(r.confidence, 0.4),
+                    "notes": f"{r.notes} [Validation failed: {'; '.join(v.reasons)}]".strip(),
+                }
+            )
     return out
 
 
 # ---------- the agent ----------
+
 
 class ValidatorAgent:
     def __init__(self, llm: LLMClient | None = None, tier: str = "smart"):
         self.llm = llm
         self.tier = tier
 
-    def run(self, bid_id: str, specs: list[FieldSpec], results: dict[str, FieldResult],
-            texts: dict[str, str]) -> tuple[dict[str, FieldValidation], LLMUsage | None]:
+    def run(
+        self,
+        bid_id: str,
+        specs: list[FieldSpec],
+        results: dict[str, FieldResult],
+        texts: dict[str, str],
+    ) -> tuple[dict[str, FieldValidation], LLMUsage | None]:
         """texts maps chunk_id -> chunk text for every cited source."""
         validations: dict[str, FieldValidation] = {}
         consistency = consistency_problems(results)
@@ -197,8 +219,9 @@ class ValidatorAgent:
             r = results.get(spec.name)
             if r is None or r.value is None:
                 note = r.notes if r else "field missing from results"
-                validations[spec.name] = FieldValidation(field=spec.name, status="not_found",
-                                                         reasons=[note[:200]])
+                validations[spec.name] = FieldValidation(
+                    field=spec.name, status="not_found", reasons=[note[:200]]
+                )
                 continue
             problems, warnings = format_problems(spec, r.value)
             cited = "\n\n".join(texts.get(s.chunk_id or "", "") for s in r.sources)
@@ -210,8 +233,10 @@ class ValidatorAgent:
                 problems += grounding_problems(_text(r.value), cited)
             problems += consistency.get(spec.name, [])
             validations[spec.name] = FieldValidation(
-                field=spec.name, status="failed" if problems else "passed",
-                reasons=problems, warnings=warnings,
+                field=spec.name,
+                status="failed" if problems else "passed",
+                reasons=problems,
+                warnings=warnings,
             )
 
         usage = None
@@ -227,8 +252,14 @@ class ValidatorAgent:
         log.info("validation_done", bid=bid_id, **summarize(validations).model_dump())
         return validations, usage
 
-    def _judge(self, bid_id: str, specs: list[FieldSpec], results: dict[str, FieldResult],
-               texts: dict[str, str], validations: dict[str, FieldValidation]) -> LLMUsage:
+    def _judge(
+        self,
+        bid_id: str,
+        specs: list[FieldSpec],
+        results: dict[str, FieldResult],
+        texts: dict[str, str],
+        validations: dict[str, FieldValidation],
+    ) -> LLMUsage:
         blocks = []
         for spec in specs:
             r = results[spec.name]
@@ -236,13 +267,23 @@ class ValidatorAgent:
                 f"[{s.file}, page {s.page}]\n{texts.get(s.chunk_id or '', '')[:PASSAGE_CHARS]}"
                 for s in r.sources
             )
-            blocks.append(f"### Field: {spec.name}\nMeaning: {spec.description} {spec.hints}\n"
-                          f"Value: {_text(r.value)}\nPassages:\n{passages}")
-        user = (f"Bid: {bid_id}\n\n" + "\n\n".join(blocks)
-                + "\n\nReturn exactly one judgement per field.")
-        output, usage = self.llm.structured(agent="validate", system=JUDGE_RULES, user=user,
-                                            response_model=JudgeOutput, tier=self.tier,
-                                            max_tokens=4096)
+            blocks.append(
+                f"### Field: {spec.name}\nMeaning: {spec.description} {spec.hints}\n"
+                f"Value: {_text(r.value)}\nPassages:\n{passages}"
+            )
+        user = (
+            f"Bid: {bid_id}\n\n"
+            + "\n\n".join(blocks)
+            + "\n\nReturn exactly one judgement per field."
+        )
+        output, usage = self.llm.structured(
+            agent="validate",
+            system=JUDGE_RULES,
+            user=user,
+            response_model=JudgeOutput,
+            tier=self.tier,
+            max_tokens=4096,
+        )
         for j in output.judgements:
             v = validations.get(j.field)
             if v is not None and v.status == "passed" and not j.supported:

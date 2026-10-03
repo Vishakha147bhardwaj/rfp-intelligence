@@ -3,6 +3,7 @@
 import json
 import sys
 from pathlib import Path
+
 from rfp.ingestion.cleaner import clean_pages
 from rfp.ingestion.pdf_parser import parse_pdf
 
@@ -13,7 +14,9 @@ print("removed boilerplate:", removed)
 
 print(f"{path.name}: {len(pages)} pages, errors={errors}")
 for p in pages:
-    print(f"\n--- page {p.page_number} | {len(p.text)} chars | {len(p.tables)} tables | empty={p.is_empty}")
+    print(
+        f"\n--- page {p.page_number} | {len(p.text)} chars | {len(p.tables)} tables | empty={p.is_empty}"
+    )
     print("headings:", p.headings[:6])
     print("text start:", p.text[:200].replace("\n", " / "))
     for t in p.tables[:1]:

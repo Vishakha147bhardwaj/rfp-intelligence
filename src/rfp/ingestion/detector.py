@@ -47,11 +47,15 @@ def _any_match(patterns: list[str], text: str) -> bool:
     return any(re.search(p, text, re.IGNORECASE) for p in patterns)
 
 
-def _build(doc_type: DocType, name: str, head: str, rules: dict, matched_by: str) -> Detection:
+def _build(
+    doc_type: DocType, name: str, head: str, rules: dict, matched_by: str
+) -> Detection:
     number = None
     if doc_type == DocType.ADDENDUM:
         patterns = rules.get("addendum_number_patterns", [])
-        number = find_addendum_number(name, patterns) or find_addendum_number(head, patterns)
+        number = find_addendum_number(name, patterns) or find_addendum_number(
+            head, patterns
+        )
     return Detection(doc_type, number, matched_by)
 
 

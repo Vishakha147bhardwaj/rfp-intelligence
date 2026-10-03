@@ -2,6 +2,7 @@
 
 import re
 from collections import Counter
+from itertools import pairwise
 from pathlib import Path
 
 import pdfplumber
@@ -12,16 +13,23 @@ from rfp.schemas.documents import Page, Table
 
 log = structlog.get_logger()
 
-BOLD_FLAG = 16          # PyMuPDF span flag bit for bold text
-LINE_TOLERANCE = 5.0    # points: words whose vertical centres are this close share a line
-COLUMN_GAP = 15.0       # points: a horizontal gap wider than this separates table columns
-LAYOUT_CELL_CHARS = 150 # avg cell length above which a 2-column table is "layout", not data
+BOLD_FLAG = 16  # PyMuPDF span flag bit for bold text
+LINE_TOLERANCE = 5.0  # points: words whose vertical centres are this close share a line
+COLUMN_GAP = 15.0  # points: a horizontal gap wider than this separates table columns
+LAYOUT_CELL_CHARS = (
+    150  # avg cell length above which a 2-column table is "layout", not data
+)
 PAGE_LABEL = re.compile(r"^page\s+\d+", re.IGNORECASE)
-URL_TAIL = re.compile(r"(@|https?://|www\.)\S*$")  # text currently ends inside an email/URL
+URL_TAIL = re.compile(
+    r"(@|https?://|www\.)\S*$"
+)  # text currently ends inside an email/URL
 LIST_START = re.compile(r"^(\d+[.)]|[•▪\-–])\s")  # next line begins a new list item
-FORM_EMPTY_RATIO = 0.4  # tables with at least this share of empty cells are forms, not data
+FORM_EMPTY_RATIO = (
+    0.4  # tables with at least this share of empty cells are forms, not data
+)
 
 # ---------- tables ----------
+
 
 def _join_cell_lines(cell: str | None) -> str:
     """Join a cell's wrapped lines with spaces, but never split an email or URL."""
@@ -86,7 +94,9 @@ def rows_to_markdown(rows: list[list[str]]) -> str:
     return "\n".join(lines)
 
 
-def _extract_tables(plumber_page, page_number: int) -> tuple[list[Table], list[tuple], list[str]]:
+def _extract_tables(
+    plumber_page, page_number: int
+) -> tuple[list[Table], list[tuple], list[str]]:
     """Return (data tables, bounding boxes of everything captured, layout-table texts)."""
     tables, boxes, layout_texts = [], [], []
     for found in plumber_page.find_tables():
@@ -109,6 +119,7 @@ def _extract_tables(plumber_page, page_number: int) -> tuple[list[Table], list[t
 
 
 # ---------- headings ----------
+
 
 def _body_font_size(doc) -> float:
     """Most common font size in the document, weighted by characters = normal body text."""
@@ -145,9 +156,7 @@ def _is_heading(spans: list[dict], text: str, body_size: float) -> bool:
         return True
     if bold and len(words) >= 2 and not ends_like_sentence:
         return True
-    if text.isupper() and 2 <= len(words) <= 8 and not ends_like_sentence:
-        return True
-    return False
+    return text.isupper() and 2 <= len(words) <= 8 and not ends_like_sentence
 
 
 def _page_headings(page, table_boxes, body_size: float) -> list[str]:
@@ -166,6 +175,7 @@ def _page_headings(page, table_boxes, body_size: float) -> list[str]:
 
 # ---------- text (row-by-row reconstruction) ----------
 
+
 def _words_to_lines(words: list[tuple]) -> list[dict]:
     """Group words into visual lines by their vertical centre."""
     words = sorted(words, key=lambda w: ((w[1] + w[3]) / 2, w[0]))
@@ -183,7 +193,7 @@ def _line_text(words: list[tuple]) -> str:
     """Join a line's words left to right; wide gaps become 3 spaces (column break)."""
     words = sorted(words, key=lambda w: w[0])
     parts = [words[0][4]]
-    for prev, cur in zip(words, words[1:]):
+    for prev, cur in pairwise(words):
         parts.append("   " if cur[0] - prev[2] > COLUMN_GAP else " ")
         parts.append(cur[4])
     return "".join(parts)
@@ -191,7 +201,9 @@ def _line_text(words: list[tuple]) -> str:
 
 def _page_text(page, table_boxes) -> str:
     """Rebuild page text row by row so borderless table rows stay together."""
-    words = [w for w in page.get_text("words") if not _center_inside(w[:4], table_boxes)]
+    words = [
+        w for w in page.get_text("words") if not _center_inside(w[:4], table_boxes)
+    ]
     if not words:
         return ""
     lines = _words_to_lines(words)
@@ -209,6 +221,7 @@ def _page_text(page, table_boxes) -> str:
 
 
 # ---------- public entry point ----------
+
 
 def parse_pdf(path: Path) -> tuple[list[Page], list[str]]:
     """Return (pages, errors). Never raises: problems are recorded in errors."""
@@ -230,7 +243,9 @@ def parse_pdf(path: Path) -> tuple[list[Page], list[str]]:
         for index, page in enumerate(doc):
             number = index + 1
             try:
-                tables, boxes, layout_texts = _extract_tables(plumber.pages[index], number)
+                tables, boxes, layout_texts = _extract_tables(
+                    plumber.pages[index], number
+                )
             except Exception as exc:
                 tables, boxes, layout_texts = [], [], []
                 errors.append(f"page {number}: table extraction failed: {exc}")
@@ -246,10 +261,17 @@ def parse_pdf(path: Path) -> tuple[list[Page], list[str]]:
 
             is_empty = not text.strip() and not tables
             if is_empty:
-                log.warning("empty_page", file=path.name, page=number)  # OCR candidate later
+                log.warning(
+                    "empty_page", file=path.name, page=number
+                )  # OCR candidate later
 
             pages.append(
-                Page(page_number=number, text=text, tables=tables,
-                     headings=headings, is_empty=is_empty)
+                Page(
+                    page_number=number,
+                    text=text,
+                    tables=tables,
+                    headings=headings,
+                    is_empty=is_empty,
+                )
             )
     return pages, errors

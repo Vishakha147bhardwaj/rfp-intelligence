@@ -13,7 +13,9 @@ FIELDS_PATH = PROJECT_ROOT / "config" / "fields.yaml"
 
 
 @lru_cache
-def load_registry(path: Path = FIELDS_PATH) -> tuple[dict[str, str], tuple[FieldSpec, ...]]:
+def load_registry(
+    path: Path = FIELDS_PATH,
+) -> tuple[dict[str, str], tuple[FieldSpec, ...]]:
     """Return (group name -> description, all field specs in file order)."""
     data = yaml.safe_load(path.read_text())
     groups = data["groups"]

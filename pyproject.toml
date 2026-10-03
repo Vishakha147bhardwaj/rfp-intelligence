@@ -47,3 +47,12 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 filterwarnings = ["ignore:builtin type .* has no __module__ attribute:DeprecationWarning"]
+
+[tool.ruff.lint]
+# BLE001: broad `except Exception` is deliberate at error-isolation boundaries
+# (one bad file / page / agent step must never crash the pipeline); each one logs the error.
+ignore = ["BLE001"]
+
+[tool.ruff.lint.flake8-bugbear]
+# Typer's documented style declares CLI arguments as function defaults.
+extend-immutable-calls = ["typer.Argument", "typer.Option"]

@@ -1,12 +1,12 @@
 from types import SimpleNamespace
 
+import anthropic
+import httpx
 import pytest
 from pydantic import BaseModel
 
 from rfp.llm.client import LLMClient, LLMError
 from rfp.settings import Settings
-import anthropic
-import httpx
 
 
 class Out(BaseModel):
@@ -16,8 +16,12 @@ class Out(BaseModel):
 def fake_response(tool_input: dict, input_tokens: int = 100, output_tokens: int = 10):
     return SimpleNamespace(
         content=[SimpleNamespace(type="tool_use", id="toolu_1", input=tool_input)],
-        usage=SimpleNamespace(input_tokens=input_tokens, output_tokens=output_tokens,
-                              cache_read_input_tokens=0, cache_creation_input_tokens=0),
+        usage=SimpleNamespace(
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            cache_read_input_tokens=0,
+            cache_creation_input_tokens=0,
+        ),
     )
 
 
@@ -32,9 +36,13 @@ def test_missing_key_gives_clear_error():
 
 def test_valid_output_and_usage(monkeypatch):
     client = make_client()
-    monkeypatch.setattr(client, "_call", lambda *a, **k: fake_response({"value": "ok"}, 120, 15))
+    monkeypatch.setattr(
+        client, "_call", lambda *a, **k: fake_response({"value": "ok"}, 120, 15)
+    )
 
-    result, usage = client.structured(agent="t", system="s", user="u", response_model=Out)
+    result, usage = client.structured(
+        agent="t", system="s", user="u", response_model=Out
+    )
 
     assert result.value == "ok"
     assert (usage.input_tokens, usage.output_tokens, usage.attempts) == (120, 15, 1)
@@ -51,10 +59,12 @@ def test_invalid_output_is_re_asked(monkeypatch):
         return next(responses)
 
     monkeypatch.setattr(client, "_call", fake_call)
-    result, usage = client.structured(agent="t", system="s", user="u", response_model=Out)
+    result, usage = client.structured(
+        agent="t", system="s", user="u", response_model=Out
+    )
 
     assert result.value == "fixed"
-    assert message_counts == [1, 3]       # retry carries Claude's answer + our error message
+    assert message_counts == [1, 3]  # retry carries Claude's answer + our error message
     assert (usage.attempts, usage.input_tokens) == (2, 200)
 
 
@@ -75,6 +85,7 @@ def test_other_failures_become_llm_error(monkeypatch):
     with pytest.raises(LLMError, match="t: connection reset"):
         client.structured(agent="t", system="s", user="u", response_model=Out)
 
+
 def test_falls_back_to_auto_when_forced_tool_unsupported(monkeypatch):
     client = make_client()
     forced_flags = []
@@ -85,13 +96,18 @@ def test_falls_back_to_auto_when_forced_tool_unsupported(monkeypatch):
             request = httpx.Request("POST", "https://api.anthropic.com/v1/messages")
             raise anthropic.BadRequestError(
                 'tool_choice: type "tool" and "any" are not supported for this model.',
-                response=httpx.Response(400, request=request), body=None,
+                response=httpx.Response(400, request=request),
+                body=None,
             )
         return fake_response({"value": "ok"})
 
     monkeypatch.setattr(client, "_call", fake_call)
-    first, _ = client.structured(agent="t", system="s", user="u", response_model=Out, tier="smart")
-    second, _ = client.structured(agent="t", system="s", user="u", response_model=Out, tier="smart")
+    first, _ = client.structured(
+        agent="t", system="s", user="u", response_model=Out, tier="smart"
+    )
+    second, _ = client.structured(
+        agent="t", system="s", user="u", response_model=Out, tier="smart"
+    )
 
     assert first.value == second.value == "ok"
-    assert forced_flags == [True, False, False]     # fallback is remembered for this model
+    assert forced_flags == [True, False, False]  # fallback is remembered for this model

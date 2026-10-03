@@ -10,12 +10,19 @@ _spec.loader.exec_module(ee)
 
 
 def test_wrong_date_is_detected():
-    score, detail = ee.score_field({"datetime": "July 9, 2024 2:00 PM"}, "June 27, 2024 2:00 PM")
+    score, detail = ee.score_field(
+        {"datetime": "July 9, 2024 2:00 PM"}, "June 27, 2024 2:00 PM"
+    )
     assert score < 1 and "2024-07-09" in detail
 
 
 def test_reformatted_date_still_counts():
-    assert ee.score_field({"datetime": "July 9, 2024 2:00 PM"}, "07/09/2024 at 14:00 CST")[0] == 1.0
+    assert (
+        ee.score_field({"datetime": "July 9, 2024 2:00 PM"}, "07/09/2024 at 14:00 CST")[
+            0
+        ]
+        == 1.0
+    )
 
 
 def test_missing_list_item_is_partial():
@@ -24,7 +31,10 @@ def test_missing_list_item_is_partial():
 
 
 def test_keyword_alternatives():
-    assert ee.score_field({"keywords": ["eMMA|eMaryland"]}, "via eMaryland Marketplace")[0] == 1.0
+    assert (
+        ee.score_field({"keywords": ["eMMA|eMaryland"]}, "via eMaryland Marketplace")[0]
+        == 1.0
+    )
 
 
 def test_invented_value_scores_zero():

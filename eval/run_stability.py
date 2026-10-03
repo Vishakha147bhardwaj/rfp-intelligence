@@ -9,10 +9,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from run_extraction_eval import evaluate_bid  # noqa: E402
+from run_extraction_eval import evaluate_bid
 
-from rfp.agents.graph import run_extraction  # noqa: E402
-from rfp.search.store import ChunkStore  # noqa: E402
+from rfp.agents.graph import run_extraction
+from rfp.search.store import ChunkStore
 
 RUNS = int(sys.argv[1]) if len(sys.argv) > 1 else 3
 BIDS = sys.argv[2:] or ["Bid1", "Bid2"]
@@ -40,8 +40,13 @@ def main() -> None:
     correct = sum(sum(v) for v in per_field.values())
     total = sum(len(v) for v in per_field.values())
     unstable = sum(not all(v) for v in per_field.values())
-    lines += ["", f"Overall: {correct}/{total} field-runs correct ({correct / total:.0%}); "
-                  f"{unstable} field(s) were not correct in every run."]
+    lines += [
+        "",
+        (
+            f"Overall: {correct}/{total} field-runs correct ({correct / total:.0%}); "
+            f"{unstable} field(s) were not correct in every run."
+        ),
+    ]
     report = "\n".join(lines) + "\n"
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "stability_results.md").write_text(report)

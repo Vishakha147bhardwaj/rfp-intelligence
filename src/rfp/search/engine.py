@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, computed_field
 
 from rfp.search.embeddings import embed_dense_query, embed_sparse_query
 from rfp.search.fusion import reciprocal_rank_fusion
@@ -10,7 +10,6 @@ from rfp.search.query import plan_query
 from rfp.search.reranker import rerank_scores
 from rfp.search.store import DENSE, SPARSE, ChunkStore, build_filter
 from rfp.settings import SearchConfig, get_settings
-from pydantic import BaseModel, computed_field
 
 Mode = Literal["dense", "sparse", "hybrid", "hybrid_rerank"]
 MODES = ("dense", "sparse", "hybrid", "hybrid_rerank")
@@ -28,7 +27,7 @@ class SearchResult(BaseModel):
     text: str
     context_header: str
     score: float
-    dense_rank: int | None = None     # position in the dense list (None = not retrieved)
+    dense_rank: int | None = None  # position in the dense list (None = not retrieved)
     sparse_rank: int | None = None
 
     @computed_field
@@ -59,8 +58,12 @@ class SearchEngine:
         if mode not in MODES:
             raise ValueError(f"mode must be one of {MODES}")
         plan = plan_query(query, self.cfg)
-        flt = build_filter(bid_id=bid_id, doc_type=doc_type,
-                           addendum_number=addendum_number, file_name=file_name)
+        flt = build_filter(
+            bid_id=bid_id,
+            doc_type=doc_type,
+            addendum_number=addendum_number,
+            file_name=file_name,
+        )
         n = candidates or self.cfg.retrieve_k
         payloads: dict[str, dict] = {}
         dense_ids: list[str] = []
@@ -71,7 +74,9 @@ class SearchEngine:
                 payloads[str(p.id)] = p.payload
                 dense_ids.append(str(p.id))
         if mode != "dense":
-            for p in self._retrieve(embed_sparse_query(plan.keyword_query), SPARSE, flt, n):
+            for p in self._retrieve(
+                embed_sparse_query(plan.keyword_query), SPARSE, flt, n
+            ):
                 payloads[str(p.id)] = p.payload
                 sparse_ids.append(str(p.id))
 
@@ -87,11 +92,17 @@ class SearchEngine:
 
         if mode == "hybrid_rerank" and candidates:
             passages = [
-                (f"{payloads[c]['context_header']}\n" if self.cfg.rerank_include_header else "")
+                (
+                    f"{payloads[c]['context_header']}\n"
+                    if self.cfg.rerank_include_header
+                    else ""
+                )
                 + payloads[c]["text"]
                 for c in candidates
             ]
-            scores = dict(zip(candidates, rerank_scores(query, passages, self.cfg.rerank_model)))
+            scores = dict(
+                zip(candidates, rerank_scores(query, passages, self.cfg.rerank_model))
+            )
             candidates.sort(key=lambda c: scores[c], reverse=True)
         else:
             scores = fused
@@ -102,9 +113,20 @@ class SearchEngine:
                 score=float(scores[c]),
                 dense_rank=dense_ids.index(c) + 1 if c in dense_ids else None,
                 sparse_rank=sparse_ids.index(c) + 1 if c in sparse_ids else None,
-                **{k: payloads[c][k] for k in ("bid_id", "file_name", "page_number", "doc_type",
-                                                "addendum_number", "section", "text", "context_header",
-                                                "chunk_index")},
+                **{
+                    k: payloads[c][k]
+                    for k in (
+                        "bid_id",
+                        "file_name",
+                        "page_number",
+                        "doc_type",
+                        "addendum_number",
+                        "section",
+                        "text",
+                        "context_header",
+                        "chunk_index",
+                    )
+                },
             )
             for c in candidates[:top_k]
         ]

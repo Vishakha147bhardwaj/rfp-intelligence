@@ -6,7 +6,12 @@ from typing import Literal, TypeVar
 import anthropic
 import structlog
 from pydantic import BaseModel, ValidationError
-from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
+from tenacity import (
+    retry,
+    retry_if_exception_type,
+    stop_after_attempt,
+    wait_exponential,
+)
 
 from rfp.settings import Settings, get_settings
 
@@ -56,15 +61,20 @@ class LLMClient:
     def __init__(self, settings: Settings | None = None):
         settings = settings or get_settings()
         if not settings.anthropic_api_key:
-            raise LLMError("ANTHROPIC_API_KEY is not set - copy .env.example to .env and add your key")
+            raise LLMError(
+                "ANTHROPIC_API_KEY is not set - copy .env.example to .env and add your key"
+            )
         self.cfg = settings.llm
-        self.models: dict[str, str] = {"smart": settings.llm_model_smart, "fast": settings.llm_model_fast}
+        self.models: dict[str, str] = {
+            "smart": settings.llm_model_smart,
+            "fast": settings.llm_model_fast,
+        }
         self.client = anthropic.Anthropic(
             api_key=settings.anthropic_api_key,
             timeout=self.cfg.timeout_s,
-            max_retries=0,                 # tenacity owns retries, so attempts aren't multiplied
+            max_retries=0,  # tenacity owns retries, so attempts aren't multiplied
         )
-        self._no_forced_tool: set[str] = set()   # models that reject tool_choice "tool"
+        self._no_forced_tool: set[str] = set()  # models that reject tool_choice "tool"
 
     def structured(
         self,
@@ -90,9 +100,13 @@ class LLMClient:
 
         try:
             for attempt in range(1, self.cfg.validation_retries + 2):
-                response = self._create(model, system, messages, tool, max_tokens or self.cfg.max_tokens)
+                response = self._create(
+                    model, system, messages, tool, max_tokens or self.cfg.max_tokens
+                )
                 usage.add(response.usage)
-                block = next((b for b in response.content if b.type == "tool_use"), None)
+                block = next(
+                    (b for b in response.content if b.type == "tool_use"), None
+                )
                 if block is None:
                     error = "The response did not call the submit tool."
                 else:
@@ -104,25 +118,46 @@ class LLMClient:
                     except ValidationError as exc:
                         error = str(exc)
 
-                log.warning("llm_invalid_output", agent=agent, attempt=attempt, error=error[:300])
+                log.warning(
+                    "llm_invalid_output",
+                    agent=agent,
+                    attempt=attempt,
+                    error=error[:300],
+                )
                 messages.append({"role": "assistant", "content": response.content})
                 if block is None:
-                    messages.append({"role": "user", "content": f"You must call the {TOOL_NAME} tool."})
+                    messages.append(
+                        {
+                            "role": "user",
+                            "content": f"You must call the {TOOL_NAME} tool.",
+                        }
+                    )
                 else:
-                    messages.append({"role": "user", "content": [{
-                        "type": "tool_result",
-                        "tool_use_id": block.id,
-                        "is_error": True,
-                        "content": f"Invalid input: {error}\nCall {TOOL_NAME} again with corrected input.",
-                    }]})
-            raise LLMError(f"{agent}: output still invalid after {usage.attempts} attempts: {error[:300]}")
+                    messages.append(
+                        {
+                            "role": "user",
+                            "content": [
+                                {
+                                    "type": "tool_result",
+                                    "tool_use_id": block.id,
+                                    "is_error": True,
+                                    "content": f"Invalid input: {error}\nCall {TOOL_NAME} again with corrected input.",
+                                }
+                            ],
+                        }
+                    )
+            raise LLMError(
+                f"{agent}: output still invalid after {usage.attempts} attempts: {error[:300]}"
+            )
         except LLMError:
             raise
         except Exception as exc:
             log.error("llm_failed", agent=agent, model=model, error=str(exc))
             raise LLMError(f"{agent}: {exc}") from exc
 
-    def _create(self, model: str, system: str, messages: list[dict], tool: dict, max_tokens: int):
+    def _create(
+        self, model: str, system: str, messages: list[dict], tool: dict, max_tokens: int
+    ):
         """Force the tool when the model allows it; otherwise fall back to 'auto' and remember."""
         force = model not in self._no_forced_tool
         try:
@@ -140,18 +175,32 @@ class LLMClient:
         wait=wait_exponential(min=1, max=10),
         reraise=True,
     )
-    def _call(self, model: str, system: str, messages: list[dict], tool: dict,
-              max_tokens: int, force: bool = True):
+    def _call(
+        self,
+        model: str,
+        system: str,
+        messages: list[dict],
+        tool: dict,
+        max_tokens: int,
+        force: bool = True,
+    ):
         optional = {}
-        if self.cfg.temperature is not None:        # only send when configured
+        if self.cfg.temperature is not None:  # only send when configured
             optional["temperature"] = self.cfg.temperature
         return self.client.messages.create(
             model=model,
             max_tokens=max_tokens,
-            system=[{"type": "text", "text": system + SUBMIT_INSTRUCTION,
-                     "cache_control": {"type": "ephemeral"}}],
+            system=[
+                {
+                    "type": "text",
+                    "text": system + SUBMIT_INSTRUCTION,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
             messages=messages,
             tools=[tool],
-            tool_choice={"type": "tool", "name": TOOL_NAME} if force else {"type": "auto"},
+            tool_choice={"type": "tool", "name": TOOL_NAME}
+            if force
+            else {"type": "auto"},
             **optional,
         )

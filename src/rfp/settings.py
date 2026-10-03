@@ -7,7 +7,7 @@ import yaml
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]   # settings.py -> rfp -> src -> root
+PROJECT_ROOT = Path(__file__).resolve().parents[2]  # settings.py -> rfp -> src -> root
 CONFIG_PATH = PROJECT_ROOT / "config" / "config.yaml"
 
 
@@ -16,6 +16,8 @@ class ChunkingConfig(BaseModel):
     max_tokens: int = 650
     min_tokens: int = 80
     overlap_tokens: int = 80
+
+
 class SearchConfig(BaseModel):
     dense_model: str = "BAAI/bge-small-en-v1.5"
     dense_dim: int = 384
@@ -30,20 +32,25 @@ class SearchConfig(BaseModel):
     identifier_sparse_weight: float = 2.0
     rerank_include_header: bool = False
 
+
 class LLMConfig(BaseModel):
     timeout_s: float = 60
     max_tokens: int = 2048
     temperature: float | None = None
     validation_retries: int = 2
+
+
 class AgentsConfig(BaseModel):
     per_query_k: int = 5
     per_field_k: int = 5
     extraction_tier: str = "fast"
-    neighbor_seeds: int = 2     # expand around this many top hits
-    neighbor_window: int = 1    # how many chunks before/after each seed
+    neighbor_seeds: int = 2  # expand around this many top hits
+    neighbor_window: int = 1  # how many chunks before/after each seed
     validator_tier: str = "smart"
     max_field_retries: int = 2
     rerank_candidates: int = 12
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 
@@ -52,7 +59,7 @@ class Settings(BaseSettings):
     llm_provider: str = "anthropic"
     llm_model_smart: str = "claude-sonnet-5-5"
     llm_model_fast: str = "claude-haiku-4-5-20251001"
-        # paths (relative to the project root)
+    # paths (relative to the project root)
     bids_dir: str = "data/bids"
     processed_dir: str = "data/processed"
     # from config.yaml
@@ -60,6 +67,7 @@ class Settings(BaseSettings):
     search: SearchConfig = SearchConfig()
     llm: LLMConfig = LLMConfig()
     agents: AgentsConfig = AgentsConfig()
+
 
 @lru_cache
 def get_settings() -> Settings:
