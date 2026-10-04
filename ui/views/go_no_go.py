@@ -16,7 +16,7 @@ bids = bid_ids()
 c1, c2 = st.columns(2)
 bid = c1.selectbox("Bid", bids) if bids else None
 as_of = c2.date_input("Evaluate as of", value=date(2024, 6, 1))
-if bid and st.button("Evaluate", type="primary", use_container_width=True):
+if bid and st.button("Evaluate", type="primary"):
     with st.spinner("Checking every criterion..."):
         report = api(
             "POST",

@@ -12,7 +12,7 @@ page_header(
 )
 bids = bid_ids()
 chosen = st.multiselect("Bids", bids, default=bids[:2])
-if st.button("Compare", type="primary", use_container_width=True) and len(chosen) >= 2:
+if st.button("Compare", type="primary") and len(chosen) >= 2:
     with st.spinner("Comparing..."):
         report = api("POST", "/compare", json={"bid_ids": chosen}, timeout=300)
     if report.get("analysis"):

@@ -18,7 +18,7 @@ if not bids:
     st.stop()
 
 bid = st.selectbox("Bid", bids)
-if st.button("Run extraction (a few minutes)", use_container_width=True):
+if st.button("Run extraction (a few minutes)"):
     with st.spinner(
         "Agents at work: retrieving, extracting, reconciling, validating..."
     ):
@@ -83,5 +83,4 @@ st.download_button(
     path.read_text(),
     file_name=path.name,
     mime="application/json",
-    use_container_width=True,
 )

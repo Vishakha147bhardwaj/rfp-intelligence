@@ -10,19 +10,28 @@ page_header(
     "Hybrid search: meaning (dense) and exact words (BM25), fused and reranked.",
     art("docs"),
 )
-query = st.text_input(
-    "Query", placeholder="e.g. bid bond requirement, WD22TB4, pre-bid meeting"
-)
-c1, c2, c3 = st.columns(3)
-bid = c1.selectbox("Bid", ["All", *bid_ids()])
-doc_type = c2.selectbox(
-    "Document", ["All", "rfp", "addendum", "bid_page", "specs", "affidavit"]
-)
-mode = c3.selectbox("Mode", ["hybrid_rerank", "hybrid", "dense", "sparse"])
-top_k = st.slider("Results", 1, 20, 5)
 
-if st.button("Search", type="primary", use_container_width=True) and query:
-    params = {"q": query, "top_k": top_k, "mode": mode}
+# A form: the box and a compact button on one line; pressing Enter submits too.
+with st.form("search", border=False):
+    box, button = st.columns([5, 1], vertical_alignment="center")
+    query = box.text_input(
+        "Search the bids",
+        label_visibility="collapsed",
+        placeholder="Search: bid bond requirement, WD22TB4, pre-bid meeting...",
+    )
+    submitted = button.form_submit_button(
+        "Search", type="primary", icon=":material/search:", use_container_width=True
+    )
+    f1, f2, f3, f4 = st.columns(4)
+    bid = f1.selectbox("Bid", ["All", *bid_ids()])
+    doc_type = f2.selectbox(
+        "Document", ["All", "rfp", "addendum", "bid_page", "specs", "affidavit"]
+    )
+    mode = f3.selectbox("Mode", ["hybrid_rerank", "hybrid", "dense", "sparse"])
+    top_k = f4.number_input("Results", min_value=1, max_value=20, value=5)
+
+if submitted and query:
+    params = {"q": query, "top_k": int(top_k), "mode": mode}
     if bid != "All":
         params["bid_id"] = bid
     if doc_type != "All":

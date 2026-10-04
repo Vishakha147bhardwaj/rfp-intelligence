@@ -114,7 +114,7 @@ header[data-testid="stHeader"] a, header[data-testid="stHeader"] span { font-wei
 .stat .name { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
 
 /* ---------- buttons and links ---------- */
-.stButton > button, .stDownloadButton > button, a[data-testid="stPageLink-NavLink"] {
+.stButton > button, .stDownloadButton > button, .stFormSubmitButton > button, a[data-testid="stPageLink-NavLink"] {
   border-radius: 999px !important; font-weight: 600 !important; padding: 0.55rem 1.3rem !important;
   border: 1px solid var(--line) !important; background: rgba(255, 255, 255, 0.9) !important;
   transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease !important; }
@@ -122,11 +122,11 @@ header[data-testid="stHeader"] a, header[data-testid="stHeader"] span { font-wei
   transform: translateY(-2px); box-shadow: 0 10px 24px rgba(30, 34, 53, 0.18);
   border-color: rgba(30, 34, 53, 0.4) !important; }
 .stButton > button:active { transform: translateY(0) scale(0.98); }
-[data-testid="stBaseButton-primary"] {
+[data-testid="stBaseButton-primary"], [data-testid="stBaseButton-primaryFormSubmit"] {
   background: linear-gradient(120deg, #3A4060, #1E2235 45%, #4A5170) !important; background-size: 220% 220% !important;
   color: #fff !important; border: none !important; box-shadow: 0 8px 22px rgba(30, 34, 53, 0.32);
   animation: sheen 7s ease infinite; }
-[data-testid="stBaseButton-primary"] p { color: #fff !important; }
+[data-testid="stBaseButton-primary"] p, [data-testid="stBaseButton-primaryFormSubmit"] p { color: #fff !important; }
 a[data-testid="stPageLink-NavLink"] p { color: var(--violet) !important; font-weight: 600; }
 
 /* ---------- inputs ---------- */
@@ -162,6 +162,36 @@ a.card.feature { text-decoration: none !important; color: inherit !important; po
 a.card.feature .farrow { margin-left: auto; align-self: center; font-size: 1.2rem; color: var(--muted);
   transition: translate 0.2s ease, color 0.2s ease; }
 a.card.feature:hover .farrow { translate: 5px 0; color: var(--ink); }
+
+/* ---------- search bar: pill box + matching pill button ---------- */
+[data-testid="InputInstructions"] { display: none !important; }
+[data-testid="stForm"] [data-baseweb="input"] {
+  min-height: 50px; border-radius: 999px !important; padding: 0 0.6rem;
+  border: 1px solid var(--line) !important; background: #fff !important; box-shadow: var(--shadow); }
+[data-testid="stForm"] [data-baseweb="input"]:focus-within { border-color: rgba(30, 34, 53, 0.45) !important; }
+[data-testid="stForm"] [data-baseweb="input"] input { font-size: 1rem; padding: 0 0.4rem; }
+.stFormSubmitButton > button { height: 50px; min-height: 50px; border-radius: 999px !important;
+  padding: 0 1.4rem !important; }
+[data-testid="stBaseButton-primaryFormSubmit"] {
+  background: linear-gradient(120deg, #3A4060, #1E2235 45%, #4A5170) !important; background-size: 220% 220% !important;
+  border: none !important; box-shadow: 0 8px 22px rgba(30, 34, 53, 0.28); animation: sheen 7s ease infinite; }
+[data-testid="stBaseButton-primaryFormSubmit"], [data-testid="stBaseButton-primaryFormSubmit"] * {
+  color: #fff !important; font-weight: 600 !important; }
+
+/* search button: always navy with bright white text (beats the global p colour) */
+.stFormSubmitButton > button {
+  background: linear-gradient(120deg, #3A4060, #1E2235 45%, #4A5170) !important; background-size: 220% 220% !important;
+  border: none !important; box-shadow: 0 8px 22px rgba(30, 34, 53, 0.28); }
+.stFormSubmitButton > button p, .stFormSubmitButton > button span, .stFormSubmitButton > button div,
+.stFormSubmitButton > button [data-testid="stMarkdownContainer"] {
+  color: #FFFFFF !important; font-weight: 600 !important; }
+.stFormSubmitButton > button:hover { box-shadow: 0 10px 26px rgba(30, 34, 53, 0.4); }
+
+
+/* search bar: rectangular box + matching rectangular button */
+.stTextInput [data-testid="stTextInputRootElement"] { height: 46px; min-height: 46px; border-radius: 10px !important; }
+.stFormSubmitButton > button { height: 46px !important; min-height: 46px !important; border-radius: 10px !important;
+  padding: 0 1.4rem !important; box-shadow: 0 4px 12px rgba(30, 34, 53, 0.18) !important; }
 </style>
 """
 
