@@ -192,6 +192,34 @@ a.card.feature:hover .farrow { translate: 5px 0; color: var(--ink); }
 .stTextInput [data-testid="stTextInputRootElement"] { height: 46px; min-height: 46px; border-radius: 10px !important; }
 .stFormSubmitButton > button { height: 46px !important; min-height: 46px !important; border-radius: 10px !important;
   padding: 0 1.4rem !important; box-shadow: 0 4px 12px rgba(30, 34, 53, 0.18) !important; }
+
+/* chat: even padding, content kept inside the bubble */
+[data-testid="stChatMessage"] { padding: 1.1rem 1.4rem !important; gap: 0.9rem; }
+[data-testid="stChatMessage"] [data-testid="stChatMessageContent"] { min-width: 0; padding-right: 0.2rem; }
+/* sources expander: soft border, no heavy outline, fits inside the bubble */
+[data-testid="stChatMessage"] [data-testid="stExpander"] { margin-top: 0.6rem; max-width: 100%; }
+[data-testid="stExpander"] details { border: 1px solid var(--line) !important; border-radius: 14px !important;
+  background: rgba(250, 249, 246, 0.7); box-shadow: none !important; }
+[data-testid="stExpander"] summary { border: none !important; outline: none !important; box-shadow: none !important;
+  background: transparent !important; border-radius: 14px; }
+[data-testid="stExpander"] summary:focus-visible { box-shadow: 0 0 0 3px rgba(30, 34, 53, 0.12) !important; }
+[data-testid="stExpander"] .card { box-shadow: none; margin-bottom: 0.6rem; }
+
+
+/* chat box at the top of the page: a clean white card */
+[data-testid="stChatInput"] { background: #FFFFFF !important; border: 1px solid rgba(30, 34, 53, 0.12) !important;
+  border-radius: 14px !important; box-shadow: 0 8px 28px rgba(30, 34, 53, 0.10) !important; margin-bottom: 1rem; }
+[data-testid="stChatInput"]:focus-within { border-color: rgba(30, 34, 53, 0.4) !important; }
+/* smooth scrolling: no live blur while scrolling, no animated blurred background, no replayed chat animations */
+.card, .stat, [data-testid="stChatMessage"] { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.stApp::before, .stApp::after { filter: none !important; animation: none !important; }
+[data-testid="stChatMessage"], [data-testid="stChatMessage"] .card { animation: none !important; }
+
+/* chat mode: bottom panel matches the page; content scrolls neatly behind it with a short fade */
+[data-testid="stBottom"] > div { background: #FAF9F6 !important; }
+[data-testid="stBottom"]::before { content: ""; position: absolute; left: 0; right: 0; top: -32px; height: 32px;
+  background: linear-gradient(to top, #FAF9F6, rgba(250, 249, 246, 0)); pointer-events: none; }
+[data-testid="stBottomBlockContainer"] { padding-top: 0.8rem !important; padding-bottom: 1.2rem !important; }
 </style>
 """
 
