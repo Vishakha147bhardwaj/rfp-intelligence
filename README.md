@@ -1,5 +1,7 @@
 # RFP Intelligence Platform
 
+**Demo video:** [Watch the walkthrough on Google Drive](https://drive.google.com/file/d/1pqJAAnpCS6n0_snwXTxMMhVBrX0TbYEA/view?usp=sharing)
+
 A RAG search engine and a multi-agent system that make bid / RFP documents **searchable, answerable and extractable**. Every value and every answer is backed by a citation to a source file and page.
 
 - **Extraction mode:** a bid folder becomes a structured JSON record of 20 fields, each with value, sources, confidence and notes, plus an addendum change log and a validation summary.
