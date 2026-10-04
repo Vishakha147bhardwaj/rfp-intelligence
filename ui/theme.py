@@ -220,6 +220,38 @@ a.card.feature:hover .farrow { translate: 5px 0; color: var(--ink); }
 [data-testid="stBottom"]::before { content: ""; position: absolute; left: 0; right: 0; top: -32px; height: 32px;
   background: linear-gradient(to top, #FAF9F6, rgba(250, 249, 246, 0)); pointer-events: none; }
 [data-testid="stBottomBlockContainer"] { padding-top: 0.8rem !important; padding-bottom: 1.2rem !important; }
+
+/* primary buttons (Compare, Evaluate): navy with white text - more specific than the generic white button rule */
+.stButton > button[data-testid="stBaseButton-primary"] {
+  background: linear-gradient(120deg, #3A4060, #1E2235 45%, #4A5170) !important; background-size: 220% 220% !important;
+  border: none !important; box-shadow: 0 6px 16px rgba(30, 34, 53, 0.22) !important; }
+.stButton > button[data-testid="stBaseButton-primary"] p, .stButton > button[data-testid="stBaseButton-primary"] span,
+.stButton > button[data-testid="stBaseButton-primary"] div { color: #FFFFFF !important; font-weight: 600 !important; }
+.stButton > button[data-testid="stBaseButton-primary"]:disabled { opacity: 0.45; box-shadow: none !important; }
+
+/* bid chips: selected = navy with white text, unselected = white with a thin border */
+[data-testid="stBaseButton-pills"] { border-radius: 999px !important; background: #FFFFFF !important;
+  border: 1px solid rgba(30, 34, 53, 0.18) !important; padding: 0.35rem 1.1rem !important; }
+[data-testid="stBaseButton-pillsActive"] { border-radius: 999px !important; background: #1E2235 !important;
+  border: 1px solid #1E2235 !important; padding: 0.35rem 1.1rem !important; }
+[data-testid="stBaseButton-pillsActive"] p, [data-testid="stBaseButton-pillsActive"] span { color: #FFFFFF !important; }
+
+/* bid chips (by their kind attribute): selected = navy + white text, unselected = white + thin border */
+[data-testid="stButtonGroup"] button { border-radius: 999px !important; padding: 0.35rem 1.1rem !important; }
+[data-testid="stButtonGroup"] button[kind="pills"] { background: #FFFFFF !important;
+  border: 1px solid rgba(30, 34, 53, 0.18) !important; }
+[data-testid="stButtonGroup"] button[kind="pillsActive"] { background: #1E2235 !important; border: 1px solid #1E2235 !important; }
+[data-testid="stButtonGroup"] button[kind="pillsActive"] p,
+[data-testid="stButtonGroup"] button[kind="pillsActive"] span { color: #FFFFFF !important; }
+
+/* bid chips: selected chip found by its accessibility state */
+[data-testid="stButtonGroup"] button[aria-checked="true"],
+[data-testid="stButtonGroup"] button[aria-pressed="true"],
+[data-testid="stButtonGroup"] button[aria-selected="true"] {
+  background: #1E2235 !important; border-color: #1E2235 !important; }
+[data-testid="stButtonGroup"] button[aria-checked="true"] *,
+[data-testid="stButtonGroup"] button[aria-pressed="true"] *,
+[data-testid="stButtonGroup"] button[aria-selected="true"] * { color: #FFFFFF !important; }
 </style>
 """
 

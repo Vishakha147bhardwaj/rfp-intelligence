@@ -25,7 +25,8 @@ COMPARE_RULES = """You compare bids for a sales team using ONLY the extracted fi
   (installation, delivery), contract term, and risks.
 - A value shown as "not stated" means the documents do not state it - never guess it.
 - Values marked with a warning sign failed validation; mention that if you rely on them.
-- Be concrete and concise."""
+- Be concrete and concise.
+- Never add up, total or estimate quantities; state them exactly as listed, item by item."""
 
 
 class Difference(BaseModel):

@@ -29,7 +29,8 @@ Use ONLY the company profile and the extracted bid fields provided.
 - pass: the bid's requirement is clearly met by the profile, or the bid has no such requirement.
 - fail: the bid states a requirement the profile clearly does not meet.
 - unknown: the information needed is missing or ambiguous - never guess.
-Give a one-sentence reason that names the bid fields you used."""
+Give a one-sentence reason that names the bid fields you used.
+- Never add up, total or estimate quantities; state them exactly as listed, item by item."""
 
 
 class Criterion(BaseModel):

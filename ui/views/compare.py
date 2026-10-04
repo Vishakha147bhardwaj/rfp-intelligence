@@ -11,8 +11,31 @@ page_header(
     art("scales"),
 )
 bids = bid_ids()
-chosen = st.multiselect("Bids", bids, default=bids[:2])
-if st.button("Compare", type="primary") and len(chosen) >= 2:
+
+# One selection bar: bid chips on the left, the Compare button on the right.
+with st.container(border=True):
+    left, right = st.columns([3, 1], vertical_alignment="center")
+    with left:
+        st.caption("Select two or more bids")
+        chosen = (
+            st.pills(
+                "Bids to compare",
+                bids,
+                selection_mode="multi",
+                default=bids[:2],
+                label_visibility="collapsed",
+            )
+            or []
+        )
+    clicked = right.button(
+        "Compare",
+        type="primary",
+        icon=":material/compare_arrows:",
+        disabled=len(chosen) < 2,
+        use_container_width=True,
+    )
+
+if clicked:
     with st.spinner("Comparing..."):
         report = api("POST", "/compare", json={"bid_ids": chosen}, timeout=300)
     if report.get("analysis"):
