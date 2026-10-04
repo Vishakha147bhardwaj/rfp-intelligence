@@ -192,6 +192,76 @@ a.card.feature:hover .farrow { translate: 5px 0; color: var(--ink); }
 .stTextInput [data-testid="stTextInputRootElement"] { height: 46px; min-height: 46px; border-radius: 10px !important; }
 .stFormSubmitButton > button { height: 46px !important; min-height: 46px !important; border-radius: 10px !important;
   padding: 0 1.4rem !important; box-shadow: 0 4px 12px rgba(30, 34, 53, 0.18) !important; }
+
+/* chat: even padding, content kept inside the bubble */
+[data-testid="stChatMessage"] { padding: 1.1rem 1.4rem !important; gap: 0.9rem; }
+[data-testid="stChatMessage"] [data-testid="stChatMessageContent"] { min-width: 0; padding-right: 0.2rem; }
+/* sources expander: soft border, no heavy outline, fits inside the bubble */
+[data-testid="stChatMessage"] [data-testid="stExpander"] { margin-top: 0.6rem; max-width: 100%; }
+[data-testid="stExpander"] details { border: 1px solid var(--line) !important; border-radius: 14px !important;
+  background: rgba(250, 249, 246, 0.7); box-shadow: none !important; }
+[data-testid="stExpander"] summary { border: none !important; outline: none !important; box-shadow: none !important;
+  background: transparent !important; border-radius: 14px; }
+[data-testid="stExpander"] summary:focus-visible { box-shadow: 0 0 0 3px rgba(30, 34, 53, 0.12) !important; }
+[data-testid="stExpander"] .card { box-shadow: none; margin-bottom: 0.6rem; }
+
+
+/* chat box at the top of the page: a clean white card */
+[data-testid="stChatInput"] { background: #FFFFFF !important; border: 1px solid rgba(30, 34, 53, 0.12) !important;
+  border-radius: 14px !important; box-shadow: 0 8px 28px rgba(30, 34, 53, 0.10) !important; margin-bottom: 1rem; }
+[data-testid="stChatInput"]:focus-within { border-color: rgba(30, 34, 53, 0.4) !important; }
+/* smooth scrolling: no live blur while scrolling, no animated blurred background, no replayed chat animations */
+.card, .stat, [data-testid="stChatMessage"] { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.stApp::before, .stApp::after { filter: none !important; animation: none !important; }
+[data-testid="stChatMessage"], [data-testid="stChatMessage"] .card { animation: none !important; }
+
+/* chat mode: bottom panel matches the page; content scrolls neatly behind it with a short fade */
+[data-testid="stBottom"] > div { background: #FAF9F6 !important; }
+[data-testid="stBottom"]::before { content: ""; position: absolute; left: 0; right: 0; top: -32px; height: 32px;
+  background: linear-gradient(to top, #FAF9F6, rgba(250, 249, 246, 0)); pointer-events: none; }
+[data-testid="stBottomBlockContainer"] { padding-top: 0.8rem !important; padding-bottom: 1.2rem !important; }
+
+/* primary buttons (Compare, Evaluate): navy with white text - more specific than the generic white button rule */
+.stButton > button[data-testid="stBaseButton-primary"] {
+  background: linear-gradient(120deg, #3A4060, #1E2235 45%, #4A5170) !important; background-size: 220% 220% !important;
+  border: none !important; box-shadow: 0 6px 16px rgba(30, 34, 53, 0.22) !important; }
+.stButton > button[data-testid="stBaseButton-primary"] p, .stButton > button[data-testid="stBaseButton-primary"] span,
+.stButton > button[data-testid="stBaseButton-primary"] div { color: #FFFFFF !important; font-weight: 600 !important; }
+.stButton > button[data-testid="stBaseButton-primary"]:disabled { opacity: 0.45; box-shadow: none !important; }
+
+/* bid chips: selected = navy with white text, unselected = white with a thin border */
+[data-testid="stBaseButton-pills"] { border-radius: 999px !important; background: #FFFFFF !important;
+  border: 1px solid rgba(30, 34, 53, 0.18) !important; padding: 0.35rem 1.1rem !important; }
+[data-testid="stBaseButton-pillsActive"] { border-radius: 999px !important; background: #1E2235 !important;
+  border: 1px solid #1E2235 !important; padding: 0.35rem 1.1rem !important; }
+[data-testid="stBaseButton-pillsActive"] p, [data-testid="stBaseButton-pillsActive"] span { color: #FFFFFF !important; }
+
+/* bid chips (by their kind attribute): selected = navy + white text, unselected = white + thin border */
+[data-testid="stButtonGroup"] button { border-radius: 999px !important; padding: 0.35rem 1.1rem !important; }
+[data-testid="stButtonGroup"] button[kind="pills"] { background: #FFFFFF !important;
+  border: 1px solid rgba(30, 34, 53, 0.18) !important; }
+[data-testid="stButtonGroup"] button[kind="pillsActive"] { background: #1E2235 !important; border: 1px solid #1E2235 !important; }
+[data-testid="stButtonGroup"] button[kind="pillsActive"] p,
+[data-testid="stButtonGroup"] button[kind="pillsActive"] span { color: #FFFFFF !important; }
+
+/* bid chips: selected chip found by its accessibility state */
+[data-testid="stButtonGroup"] button[aria-checked="true"],
+[data-testid="stButtonGroup"] button[aria-pressed="true"],
+[data-testid="stButtonGroup"] button[aria-selected="true"] {
+  background: #1E2235 !important; border-color: #1E2235 !important; }
+[data-testid="stButtonGroup"] button[aria-checked="true"] *,
+[data-testid="stButtonGroup"] button[aria-pressed="true"] *,
+[data-testid="stButtonGroup"] button[aria-selected="true"] * { color: #FFFFFF !important; }
+
+/* labels: one style everywhere, matching the card labels (small, bold, uppercase, spaced) */
+[data-testid="stWidgetLabel"] p,
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stCaptionContainer"] p {
+  font-size: 0.74rem !important; font-weight: 700 !important; letter-spacing: 0.08em !important;
+  text-transform: uppercase !important; color: #6F6B66 !important; }
+
+/* field labels in the selection bars */
+.flabel { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #6F6B66; margin: 0.15rem 0 0.35rem; }
 </style>
 """
 
@@ -284,3 +354,8 @@ def footer() -> None:
         '<div class="footer">Every answer is grounded in the bid documents and cites its source.</div>',
         unsafe_allow_html=True,
     )
+
+
+def field_label(text: str) -> None:
+    """A small uppercase label, styled like the card labels (WHY, DEADLINE)."""
+    st.markdown(f'<div class="flabel">{escape(text)}</div>', unsafe_allow_html=True)

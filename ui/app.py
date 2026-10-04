@@ -13,7 +13,11 @@ HERE = Path(__file__).parent
 
 st.set_page_config(page_title="RFP Intelligence", page_icon="✦", layout="centered")
 apply_theme()
-st.logo(str(HERE / "assets" / "logo.svg"), size="large")
+st.logo(
+    str(HERE / "assets" / "logo.svg"),
+    size="large",
+    icon_image=str(HERE / "assets" / "logo_icon.svg"),
+)
 
 pages = [
     st.Page("views/home.py", title="Home", icon=":material/home:", default=True),
