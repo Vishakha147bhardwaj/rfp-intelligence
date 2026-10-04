@@ -252,6 +252,16 @@ a.card.feature:hover .farrow { translate: 5px 0; color: var(--ink); }
 [data-testid="stButtonGroup"] button[aria-checked="true"] *,
 [data-testid="stButtonGroup"] button[aria-pressed="true"] *,
 [data-testid="stButtonGroup"] button[aria-selected="true"] * { color: #FFFFFF !important; }
+
+/* labels: one style everywhere, matching the card labels (small, bold, uppercase, spaced) */
+[data-testid="stWidgetLabel"] p,
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stCaptionContainer"] p {
+  font-size: 0.74rem !important; font-weight: 700 !important; letter-spacing: 0.08em !important;
+  text-transform: uppercase !important; color: #6F6B66 !important; }
+
+/* field labels in the selection bars */
+.flabel { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #6F6B66; margin: 0.15rem 0 0.35rem; }
 </style>
 """
 
@@ -344,3 +354,8 @@ def footer() -> None:
         '<div class="footer">Every answer is grounded in the bid documents and cites its source.</div>',
         unsafe_allow_html=True,
     )
+
+
+def field_label(text: str) -> None:
+    """A small uppercase label, styled like the card labels (WHY, DEADLINE)."""
+    st.markdown(f'<div class="flabel">{escape(text)}</div>', unsafe_allow_html=True)

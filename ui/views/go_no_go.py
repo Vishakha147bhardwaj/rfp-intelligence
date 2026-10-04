@@ -13,10 +13,36 @@ page_header(
     art("checklist"),
 )
 bids = bid_ids()
-c1, c2 = st.columns(2)
-bid = c1.selectbox("Bid", bids) if bids else None
-as_of = c2.date_input("Evaluate as of", value=date(2024, 6, 1))
-if bid and st.button("Evaluate", type="primary"):
+
+# One selection bar: bid chips, the date, and the Evaluate button on one line.
+with st.container(border=True):
+    pick, when, go = st.columns([2, 2, 1], vertical_alignment="bottom")
+    with pick:
+        st.caption("Bid")
+        bid = st.pills(
+            "Bid",
+            bids,
+            selection_mode="single",
+            label_visibility="collapsed",
+            default="Bid2" if "Bid2" in bids else (bids[0] if bids else None),
+        )
+    with when:
+        st.caption("Evaluate as of")
+        as_of = st.date_input(
+            "Evaluate as of",
+            value=date(2024, 6, 1),
+            format="YYYY-MM-DD",
+            label_visibility="collapsed",
+        )
+    clicked = go.button(
+        "Evaluate",
+        type="primary",
+        icon=":material/verified:",
+        disabled=not bid,
+        use_container_width=True,
+    )
+
+if clicked:
     with st.spinner("Checking every criterion..."):
         report = api(
             "POST",

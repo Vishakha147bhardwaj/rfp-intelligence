@@ -1,7 +1,7 @@
 import streamlit as st
 from assets import art
 from common import api, bid_ids
-from theme import card, empty_state, page_header
+from theme import card, empty_state, field_label, page_header
 
 page_header(
     "Compare",
@@ -14,19 +14,18 @@ bids = bid_ids()
 
 # One selection bar: bid chips on the left, the Compare button on the right.
 with st.container(border=True):
+    field_label("Select two or more bids")
     left, right = st.columns([3, 1], vertical_alignment="center")
-    with left:
-        st.caption("Select two or more bids")
-        chosen = (
-            st.pills(
-                "Bids to compare",
-                bids,
-                selection_mode="multi",
-                default=bids[:2],
-                label_visibility="collapsed",
-            )
-            or []
+    chosen = (
+        left.pills(
+            "Bids to compare",
+            bids,
+            selection_mode="multi",
+            default=bids[:2],
+            label_visibility="collapsed",
         )
+        or []
+    )
     clicked = right.button(
         "Compare",
         type="primary",
